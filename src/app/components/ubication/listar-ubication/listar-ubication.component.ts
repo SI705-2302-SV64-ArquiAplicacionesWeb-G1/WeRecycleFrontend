@@ -18,7 +18,6 @@ displayedColumns: string[] = [
 'ubicationDate',
 'Ciudad',
 'contactUbication',
-'descUbication',
 'accion02',
 ];
 constructor(private uS: UbicationService) {}
