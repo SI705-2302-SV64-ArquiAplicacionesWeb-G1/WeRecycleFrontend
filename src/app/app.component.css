@@ -1,0 +1,25 @@
+.menu{
+    background-color: #0D0D0D;
+    color:#fff;
+    font-size: 20px;
+    padding:20px;
+    border-bottom: 3px solid #468966;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-menu{
+    background-color: transparent;
+    color:#fff;
+    border:none;
+    margin:0 20px;
+
+}
+
+.logo-menu{
+    background-image: url("img/logo-recicly.png");
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+}
+
