@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Useror } from '../models/useror';
+import { Roles } from '../models/roles';
 import { HttpClient } from '@angular/common/http';
-
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
 })
-export class UserorService {
-
+export class RolesService {
   private url = `${base_url}/typeusers`;
-  private listaCambio = new Subject<Useror[]>();
+  private listaCambio = new Subject<Roles[]>();
   constructor(private http:HttpClient) { }
 
   list() {
-    return this.http.get<Useror[]>(this.url);
+    return this.http.get<Roles[]>(this.url);
   }
-  insert(user: Useror) {
-    return this.http.post(this.url, user);
+  insert(rol: Roles) {
+    return this.http.post(this.url, rol);
   }
 
-  setlist(listaNueva: Useror[]) {
+  setlist(listaNueva: Roles[]) {
     this.listaCambio.next(listaNueva);
   }
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container" style="text-align: center">
+      <h2>Registro de Materiales Reciclables</h2>
+      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Material Reciclable</mat-label>
+          <input
+            matInput
+            placeholder="Nombre"
+            formControlName="nameRecyclableMaterial"
+          />
+          <mat-error
+            *ngIf="obtenerControlCampo('nameRecyclableMaterial')?.errors?.['required']"
+          >
+            El Nombre es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Descripcion</mat-label>
+          <input
+            matInput
+            placeholder="descripcion"
+            formControlName="descriptionRecyclableMaterial"
+          />
+          <mat-error
+            *ngIf="obtenerControlCampo('descriptionRecyclableMaterial')?.errors?.['required']"
+          >
+            La direcciónes obligatoria .
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Tipo</mat-label>
+            <input
+              matInput
+              placeholder="Tipo"
+              formControlName="typeRecyclableMaterial"
+            />
+            <mat-error
+              *ngIf="obtenerControlCampo('typeRecyclableMaterial')?.errors?.['required']"
+            >
+              El tipo es obligatorio .
+            </mat-error>
+          </mat-form-field>
+        <button mat-raised-button color="primary">Aceptar</button>
+        <button mat-raised-button color="warn" routerLink="/RecyclableMaterialController">
+          Cancelar
+        </button>
+        <p>{{ mensaje }}</p>
+      </form>
+    </div>
+  </body>
+</html>

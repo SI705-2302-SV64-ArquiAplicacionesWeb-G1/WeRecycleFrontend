@@ -1,10 +1,19 @@
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RecyclableMaterial } from './models/recyclable-material';
+import { CreaeditaRecyclablematerialComponent } from './components/recyclable-material/creaedita-recyclablematerial/creaedita-recyclablematerial.component';
 import { FrequenQuestions } from './models/frequenQuestions';
 import { CreaeditaFrequenquestionsComponent } from './components/frequenquestions/creaedita-frequenquestions/creaedita-frequenquestions.component';
 import { FrequenquestionsComponent } from './components/frequenquestions/frequenquestions.component';
 
 const routes: Routes = [
+    {
+    path:'RecyclableMaterialController',
+    component:RecyclableMaterial,
+    children:[
+      {path: 'nuevo', component:CreaeditaRecyclablematerialComponent}
+    ]
+  }
   {
     path: 'frequentquestioncontroller',
     component: FrequenquestionsComponent,

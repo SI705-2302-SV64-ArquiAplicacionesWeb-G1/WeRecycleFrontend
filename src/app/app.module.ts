@@ -2,6 +2,10 @@ import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { UserorComponent } from './components/useror/useror.component';
+import { RecyclableMaterialComponent } from './components/recyclable-material/recyclable-material.component';
+import { CreaeditaRecyclablematerialComponent } from './components/recyclable-material/creaedita-recyclablematerial/creaedita-recyclablematerial.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FrequenquestionsComponent } from './components/frequenquestions/frequenquestions.component';
 import { ListarFrequenquestionsComponent } from './components/frequenquestions/listar-frequenquestions/listar-frequenquestions.component';
@@ -20,16 +24,21 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
     AppComponent,
+
+    RolesComponent,
+    UserorComponent,
+    RecyclableMaterialComponent,
+    CreaeditaRecyclablematerialComponent,
     FrequenquestionsComponent,
     ListarFrequenquestionsComponent,
     CreaeditaFrequenquestionsComponent,
-
   ],
   imports: [
+    ReactiveFormsModule,
+    MatToolbarModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -46,9 +55,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatMenuModule,
     FormsModule,
     ReactiveFormsModule,
-    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
