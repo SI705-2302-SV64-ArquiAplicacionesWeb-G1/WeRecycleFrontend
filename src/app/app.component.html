@@ -1,3 +1,15 @@
 
-<app-frequenquestions></app-frequenquestions>
-<router-outlet></router-outlet>
+<mat-toolbar class="menu">
+  <div><a href="/"><div class="logo-menu" > </div></a></div>
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuUniversidad">Inicio</button>
+    <button mat-button>Contáctanos</button>
+
+  </div>
+</mat-toolbar>
+
+<mat-menu #menuUniversidad="matMenu">
+  <button mat-menu-item routerLink="/ubications/mapa">Registrar ubicación</button>
+  
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
