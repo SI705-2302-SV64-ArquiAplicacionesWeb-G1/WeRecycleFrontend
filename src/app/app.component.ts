@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'WeRecycle';
+  isHomePage: boolean;
+
+  constructor(private router: Router) {
+    this.isHomePage = this.router.url === '/';
+
+    this.router.events.subscribe((event: any) => {
+      if (event instanceof NavigationEnd) {
+        this.isHomePage = this.router.url === '/';
+      }
+    });
+  }
 }

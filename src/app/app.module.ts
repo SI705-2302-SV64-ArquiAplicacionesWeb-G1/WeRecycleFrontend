@@ -19,15 +19,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FrequenquestionsComponent } from './components/frequenquestions/frequenquestions.component';
 import { ListarFrequenquestionsComponent } from './components/frequenquestions/listar-frequenquestions/listar-frequenquestions.component';
 import { CreaeditaFrequenquestionsComponent } from './components/frequenquestions/creaedita-frequenquestions/creaedita-frequenquestions.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+
+import { CommonModule } from '@angular/common'; // Importa CommonModule desde @angular/common
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     MatToolbarModule,
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -62,6 +65,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatMenuModule,
     FormsModule,
     ReactiveFormsModule,
+    MatGridListModule,
+    MatSidenavModule,
+    MatListModule,
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent],
