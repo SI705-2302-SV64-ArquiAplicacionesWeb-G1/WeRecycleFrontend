@@ -29,7 +29,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 
-import { CommonModule } from '@angular/common'; // Importa CommonModule desde @angular/common
+import { CommonModule } from '@angular/common';
+import { ResourceComponent } from './components/resource/resource.component';
+import { CreaeditaResourseComponent } from './components/resource/creaedita-resourse/creaedita-resourse.component';
+import { ListarResourseComponent } from './components/resource/listar-resourse/listar-resourse.component'; // Importa CommonModule desde @angular/common
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { CommonModule } from '@angular/common'; // Importa CommonModule desde @a
     FrequenquestionsComponent,
     ListarFrequenquestionsComponent,
     CreaeditaFrequenquestionsComponent,
+    ResourceComponent,
+    CreaeditaResourseComponent,
+    ListarResourseComponent,
   ],
   imports: [
     ReactiveFormsModule,

@@ -7,6 +7,9 @@ import { CreaeditaRecyclablematerialComponent } from './components/recyclable-ma
 import { FrequenQuestions } from './models/frequenQuestions';
 import { CreaeditaFrequenquestionsComponent } from './components/frequenquestions/creaedita-frequenquestions/creaedita-frequenquestions.component';
 import { FrequenquestionsComponent } from './components/frequenquestions/frequenquestions.component';
+import { ResourceComponent } from './components/resource/resource.component';
+import { CreaeditaResourseComponent } from './components/resource/creaedita-resourse/creaedita-resourse.component';
+import { ListarResourseComponent } from './components/resource/listar-resourse/listar-resourse.component';
 
 const routes: Routes = [
     {
@@ -25,6 +28,12 @@ const routes: Routes = [
   path: 'ubications', component: UbicationComponent, children: [
     { path: 'mapa', component: CrearUbicationComponent }
 
+  ]
+},{
+  path: 'recurso',component: ResourceComponent,
+  children: [
+    {path: 'nuevo', component:CreaeditaResourseComponent},
+    {path: 'lista', component:ListarResourseComponent},
   ]
 }
 ];

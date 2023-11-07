@@ -14,6 +14,7 @@
         <button mat-button>Eventos</button>
         <button mat-button onclick="window.location.href='/ubications/mapa'">Mapa</button>
         <button mat-button>Preguntas frecuentes</button>
+        <button mat-button onclick="window.location.href='/recurso/nuevo'">Recursos</button>
       </div>
     </div>
     
@@ -125,6 +126,14 @@
   </div>
 </section>
 
+<section id="Recursos">
+  <mat-menu #menuDispositivo="matMenu">
+    <button mat-menu-item routerLink="/recursos/nuevo">Registrar</button>
+    <button mat-menu-item routerLink="/recursos">Listar</button>
+    <!-- Agrega más elementos de menú si es necesario -->
+  </mat-menu>
+</section>
+
 <footer>
   <div class="column footer-logo">
   </div>
@@ -139,6 +148,7 @@
       <li class="list-item_footer"><button mat-button >Blog</button></li>
       <li class="list-item_footer"><button mat-button>Eventos</button></li>
       <li class="list-item_footer"><button mat-button onclick="window.location.href='/ubications/mapa'">Mapa</button></li>
+      <li class="list-item_footer"><button mat-button onclick="window.location.href='/recursos/nuevo'">Recursos</button></li>
     </ul>
     
   </div>
@@ -163,7 +173,8 @@
         <button mat-button >Blog</button>
         <button mat-button>Eventos</button>
         <button mat-button onclick="window.location.href='/ubications/mapa'">Mapa</button>
-        <button mat-button>Preguntas frecuentes</button>
+        <button mat-button onclick="window.location.href='/recursos/nuevo'">Preguntas frecuentes</button>
+        <button mat-button>Recursos</button>
       </div>
     </div>
     
