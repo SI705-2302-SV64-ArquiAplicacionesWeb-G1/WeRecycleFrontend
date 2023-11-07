@@ -1,6 +1,6 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Ubication } from '../models/ubication';
 
@@ -29,8 +29,8 @@ export class UbicationService {
   }
 
 
-  insert(ubi: Ubication) {
-    return this.http.post(this.url, ubi);
+  insert(ubi: Ubication): Observable<Ubication> {
+    return this.http.post<Ubication>(this.url, ubi);
   }
 
   setList(listaNueva: Ubication[]) {

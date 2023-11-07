@@ -42,6 +42,11 @@
             <div class="logo-menu"></div>
           </a>
         </div>
+        <button mat-button>Materiales</button>
+        <button mat-button >Blog</button>
+        <button mat-button>Eventos</button>
+        <button mat-button onclick="window.location.href='/center-recycling'">Mapa</button>
+        <button mat-button>Preguntas frecuentes</button>
       </div>
 
       <div>
@@ -179,6 +184,9 @@
       </ul>
     </div>
   </footer>
+
+  </div>
+</section>
 </div>
 <router-outlet></router-outlet>
 <ng-template #otherMenu>
@@ -199,9 +207,7 @@
         </button>
         <button mat-button>Blog</button>
         <button mat-button>Eventos</button>
-        <button mat-button onclick="window.location.href='/ubications/mapa'">
-          Mapa
-        </button>
+        <button mat-button onclick="window.location.href='/ubications'">Mapa</button>
         <button mat-button>Preguntas frecuentes</button>
       </div>
     </div>

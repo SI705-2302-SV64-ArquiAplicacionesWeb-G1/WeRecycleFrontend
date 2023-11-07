@@ -15,6 +15,10 @@ import { RecyclableMaterialComponent } from './components/recyclable-material/re
 import { ListarRecyclablematerialComponent } from './components/recyclable-material/listar-recyclablematerial/listar-recyclablematerial.component';
 import { ListaRolesComponent } from './components/roles/lista-roles/lista-roles.component';
 import { ListaUserorComponent } from './components/useror/lista-useror/lista-useror.component';
+import { RecyclingCenterComponent } from './components/recycling-center/recycling-center.component';
+import { CrearRecyclingCenterComponent } from './components/recycling-center/crear-recycling-center/crear-recycling-center.component';
+import { EventsComponent } from './components/events/events.component';
+import { CrearEventComponent } from './components/events/crear-event/crear-event.component';
 
 const routes: Routes = [
   {
@@ -65,6 +69,20 @@ const routes: Routes = [
       },
     ],
   },
+
+  {
+    path: 'center-recycling', component: RecyclingCenterComponent, children: [
+      { path: 'nuevo', component: CrearRecyclingCenterComponent }
+  
+    ]
+  },
+
+  {
+    path: 'event', component: EventsComponent, children: [
+      { path: 'nuevo', component: CrearEventComponent }
+  
+    ]
+  }
 ];
 
 @NgModule({

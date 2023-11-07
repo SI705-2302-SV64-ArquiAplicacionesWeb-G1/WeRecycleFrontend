@@ -11,6 +11,7 @@ import {
 import * as moment from 'moment';
 import { Ubication } from 'src/app/models/ubication';
 
+
 @Component({
   selector: 'app-crear-ubication',
   templateUrl: './crear-ubication.component.html',
@@ -38,8 +39,9 @@ constructor(
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
-      this.init();
-      });
+      this.init();});
+
+      
       this.form = this.formBuilder.group({
         idUbication: [''],
         ubicationDate: ['', Validators.required],

@@ -1,0 +1,53 @@
+
+
+.sidenav {
+    width: 30%;
+    padding:100px 30px 50px;
+  }
+  
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+  
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+
+  .sidenav-container{
+    margin-top: -80px;
+  }
+
+  .buscador{
+    width: 100%;
+    border: 0 solid;
+  }
+/*
+  .sidenav-container {
+    display: flex;
+    height: 100vh;
+}
+.sidenav {
+    width: 25%;
+}
+.map-container {
+    width: 75%;
+    height: 100%;
+    position: relative;
+}
+.info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.info-item {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+*/
+

@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,7 +23,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -35,6 +36,15 @@ import { CreaeditaRolesComponent } from './components/roles/creaedita-roles/crea
 import { ListarRecyclablematerialComponent } from './components/recyclable-material/listar-recyclablematerial/listar-recyclablematerial.component';
 import { ListaRolesComponent } from './components/roles/lista-roles/lista-roles.component';
 import { ListaUserorComponent } from './components/useror/lista-useror/lista-useror.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MapaSidenavComponent } from './components/mapa-sidenav/mapa-sidenav.component';
+import { RecyclingCenterComponent } from './components/recycling-center/recycling-center.component';
+import { ListarRecyclingCenterComponent } from './components/recycling-center/listar-recycling-center/listar-recycling-center.component'; // Importa CommonModule desde @angular/common
+import { CrearRecyclingCenterComponent } from './components/recycling-center/crear-recycling-center/crear-recycling-center.component';
+import { EventsComponent } from './components/events/events.component';
+import { CrearEventComponent } from './components/events/crear-event/crear-event.component';
+import { ListarEventComponent } from './components/events/listar-event/listar-event.component';
+
 
 @NgModule({
   declarations: [
@@ -53,10 +63,16 @@ import { ListaUserorComponent } from './components/useror/lista-useror/lista-use
     CreaeditaRolesComponent,
     ListarRecyclablematerialComponent,
     ListaRolesComponent,
-    ListaUserorComponent
+    ListaUserorComponent,
+    MapaSidenavComponent,
+    RecyclingCenterComponent,
+    ListarRecyclingCenterComponent,
+    CrearRecyclingCenterComponent,
+    EventsComponent,
+    CrearEventComponent,
+    ListarEventComponent
   ],
   imports: [
-    ReactiveFormsModule,
     MatToolbarModule,
     BrowserModule,
     CommonModule,
@@ -78,6 +94,7 @@ import { ListaUserorComponent } from './components/useror/lista-useror/lista-use
     MatGridListModule,
     MatSidenavModule,
     MatListModule,
+    MatFormFieldModule,
 
   ],
   providers: [],

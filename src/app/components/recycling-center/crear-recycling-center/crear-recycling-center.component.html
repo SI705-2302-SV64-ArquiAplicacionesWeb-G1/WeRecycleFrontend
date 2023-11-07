@@ -1,0 +1,46 @@
+<div class="container">
+  <h2>Crear Centro de Reciclaje</h2>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div>
+      <label for="nameRecyclingCenter">Nombre del Centro de Reciclaje:</label>
+      <input type="text" id="nameRecyclingCenter" formControlName="nameRecyclingCenter" required>
+    </div>
+    <div>
+      <label for="licenseRecyclingCenter">Licencia del Centro de Reciclaje:</label>
+      <input type="text" id="licenseRecyclingCenter" formControlName="licenseRecyclingCenter" required>
+    </div>
+    <div>
+      <label for="openinghourRecyclingCenter">Hora de Apertura del Centro de Reciclaje:</label>
+      <input type="number" id="openinghourRecyclingCenter" formControlName="openinghourRecyclingCenter" required>
+    </div>
+    
+    <div>
+      <label for="closingtimeRecyclingCenter">Hora de Cierre del Centro de Reciclaje:</label>
+      <input type="number" id="closingtimeRecyclingCenter" formControlName="closingtimeRecyclingCenter" required>
+    </div>
+ 
+    <div>
+      <label for="addressUbication">Dirección de Ubicación:</label>
+      <input type="text" id="addressUbication" formControlName="addressUbication" required>
+    </div>
+    <div>
+      <label for="cityUbication">Ciudad de Ubicación:</label>
+      <input type="text" id="cityUbication" formControlName="cityUbication" required>
+    </div>
+    <div>
+      <label for="contactUbication">Contacto de Ubicación:</label>
+      <input type="text" id="contactUbication" formControlName="contactUbication" required>
+    </div>
+    <div>
+      <label for="typeUbication">Tipo de Ubicación:</label>
+      <input type="text" id="typeUbication" formControlName="typeUbication" required>
+    </div>
+    <div>
+      <label for="descUbication">Descripción de Ubicación:</label>
+      <input type="text" id="descUbication" formControlName="descUbication" required>
+    </div>
+    <button type="submit" [disabled]="!form.valid">Crear</button>
+  </form>
+</div>
+
+
