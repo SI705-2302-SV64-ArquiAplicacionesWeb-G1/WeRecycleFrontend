@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,13 +23,22 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
+import { MapaSidenavComponent } from './components/mapa-sidenav/mapa-sidenav.component';
+import { RecyclingCenterComponent } from './components/recycling-center/recycling-center.component';
+import { ListarRecyclingCenterComponent } from './components/recycling-center/listar-recycling-center/listar-recycling-center.component'; // Importa CommonModule desde @angular/common
+import { CrearRecyclingCenterComponent } from './components/recycling-center/crear-recycling-center/crear-recycling-center.component';
+import { EventsComponent } from './components/events/events.component';
+import { CrearEventComponent } from './components/events/crear-event/crear-event.component';
+import { ListarEventComponent } from './components/events/listar-event/listar-event.component';
 
-import { CommonModule } from '@angular/common'; // Importa CommonModule desde @angular/common
 
 @NgModule({
   declarations: [
@@ -44,9 +53,15 @@ import { CommonModule } from '@angular/common'; // Importa CommonModule desde @a
     FrequenquestionsComponent,
     ListarFrequenquestionsComponent,
     CreaeditaFrequenquestionsComponent,
+    MapaSidenavComponent,
+    RecyclingCenterComponent,
+    ListarRecyclingCenterComponent,
+    CrearRecyclingCenterComponent,
+    EventsComponent,
+    CrearEventComponent,
+    ListarEventComponent
   ],
   imports: [
-    ReactiveFormsModule,
     MatToolbarModule,
     BrowserModule,
     CommonModule,
@@ -68,7 +83,8 @@ import { CommonModule } from '@angular/common'; // Importa CommonModule desde @a
     MatGridListModule,
     MatSidenavModule,
     MatListModule,
-    
+    MatFormFieldModule,
+
 
   ],
   providers: [],

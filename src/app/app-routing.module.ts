@@ -7,6 +7,10 @@ import { CreaeditaRecyclablematerialComponent } from './components/recyclable-ma
 import { FrequenQuestions } from './models/frequenQuestions';
 import { CreaeditaFrequenquestionsComponent } from './components/frequenquestions/creaedita-frequenquestions/creaedita-frequenquestions.component';
 import { FrequenquestionsComponent } from './components/frequenquestions/frequenquestions.component';
+import { RecyclingCenterComponent } from './components/recycling-center/recycling-center.component';
+import { CrearRecyclingCenterComponent } from './components/recycling-center/crear-recycling-center/crear-recycling-center.component';
+import { EventsComponent } from './components/events/events.component';
+import { CrearEventComponent } from './components/events/crear-event/crear-event.component';
 
 const routes: Routes = [
     {
@@ -26,7 +30,21 @@ const routes: Routes = [
     { path: 'mapa', component: CrearUbicationComponent }
 
   ]
-}
+  },
+
+  {
+    path: 'center-recycling', component: RecyclingCenterComponent, children: [
+      { path: 'nuevo', component: CrearRecyclingCenterComponent }
+  
+    ]
+  },
+
+  {
+    path: 'event', component: EventsComponent, children: [
+      { path: 'nuevo', component: CrearEventComponent }
+  
+    ]
+  }
 ];
 
 @NgModule({
