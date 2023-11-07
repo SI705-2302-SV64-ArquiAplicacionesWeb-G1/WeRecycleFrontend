@@ -1,0 +1,56 @@
+<div class="container">
+    <h2>Crear Evento</h2>
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <div>
+        <label for="title">Nombre del Evento:</label>
+        <input type="text" id="title" formControlName="title" required>
+      </div>
+      <mat-form-field>
+        <mat-label>Fecha:</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div>
+        <label for="description">Descripción:</label>
+        <input type="text" id="description" formControlName="description" required>
+      </div>
+      
+      <div>
+        <label for="hora">Hora:</label>
+        <input type="number" id="hora" formControlName="hora" required>
+      </div>
+   
+      <div>
+        <label for="numberParticipant">Numero de participantes:</label>
+        <input type="text" id="numberParticipant" formControlName="numberParticipant" required>
+      </div>
+
+      <div>
+        <label for="addressUbication">Dirección</label>
+        <input type="text" id="addressUbication" formControlName="addressUbication" required>
+      </div>
+
+      <div>
+        <label for="cityUbication">Ciudad de Ubicación:</label>
+        <input type="text" id="cityUbication" formControlName="cityUbication" required>
+      </div>
+      <div>
+        <label for="contactUbication">Contacto de Ubicación:</label>
+        <input type="text" id="contactUbication" formControlName="contactUbication" required>
+      </div>
+      <div>
+        <label for="typeUbication">Tipo de Ubicación:</label>
+        <input type="text" id="typeUbication" formControlName="typeUbication" required>
+      </div>
+      <div>
+        <label for="descUbication">Descripción de Ubicación:</label>
+        <input type="text" id="descUbication" formControlName="descUbication" required>
+      </div>
+      <button type="submit" [disabled]="!form.valid">Crear</button>
+    </form>
+  </div>
+  
+  
+  
