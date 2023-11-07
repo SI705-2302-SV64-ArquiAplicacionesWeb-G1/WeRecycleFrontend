@@ -1,4 +1,5 @@
 import { Roles } from "./roles"
+import { Ubication } from "./ubication"
 
 export class Useror extends Roles{
     idUser: number = 0
@@ -6,6 +7,7 @@ export class Useror extends Roles{
     userPassword : string = ""
     userEmail : string = ""
     userAge: number  = 0
-    Roles: string = ""
+    roles:Roles = new Roles()
+    ubicationUser: Ubication = new Ubication()
     
 }

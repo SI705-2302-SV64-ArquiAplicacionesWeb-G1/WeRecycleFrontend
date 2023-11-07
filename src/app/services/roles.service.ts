@@ -26,4 +26,8 @@ export class RolesService {
   getlist() {
     return this.listaCambio.asObservable();
   }
+
+  delete(id:number){
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }

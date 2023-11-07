@@ -1,13 +1,5 @@
-import { RecyclableMaterial } from './../../models/recyclable-material';
-import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { RecyclableMaterialService } from 'src/app/services/recyclable-material.service';
+import { Component} from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-recyclable-material',
@@ -15,6 +7,5 @@ import { RecyclableMaterialService } from 'src/app/services/recyclable-material.
   styleUrls: ['./recyclable-material.component.css'],
 })
 export class RecyclableMaterialComponent{
-  constructor(public route: ActivatedRoute){}
+  constructor(public route:ActivatedRoute){}
 }
-console.log("vamos")

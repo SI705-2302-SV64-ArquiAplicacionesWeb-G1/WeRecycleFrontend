@@ -29,8 +29,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
+import { CreaeditaUserorComponent } from './components/useror/creaedita-useror/creaedita-useror.component';
+import { MatError } from '@angular/material/form-field';
+import { CreaeditaRolesComponent } from './components/roles/creaedita-roles/creaedita-roles.component';
+import { ListarRecyclablematerialComponent } from './components/recyclable-material/listar-recyclablematerial/listar-recyclablematerial.component';
+import { ListaRolesComponent } from './components/roles/lista-roles/lista-roles.component';
+import { ListaUserorComponent } from './components/useror/lista-useror/lista-useror.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { MapaSidenavComponent } from './components/mapa-sidenav/mapa-sidenav.component';
 import { RecyclingCenterComponent } from './components/recycling-center/recycling-center.component';
 import { ListarRecyclingCenterComponent } from './components/recycling-center/listar-recycling-center/listar-recycling-center.component'; // Importa CommonModule desde @angular/common
@@ -53,6 +59,11 @@ import { ListarEventComponent } from './components/events/listar-event/listar-ev
     FrequenquestionsComponent,
     ListarFrequenquestionsComponent,
     CreaeditaFrequenquestionsComponent,
+    CreaeditaUserorComponent,
+    CreaeditaRolesComponent,
+    ListarRecyclablematerialComponent,
+    ListaRolesComponent,
+    ListaUserorComponent,
     MapaSidenavComponent,
     RecyclingCenterComponent,
     ListarRecyclingCenterComponent,
@@ -84,7 +95,6 @@ import { ListarEventComponent } from './components/events/listar-event/listar-ev
     MatSidenavModule,
     MatListModule,
     MatFormFieldModule,
-
 
   ],
   providers: [],
