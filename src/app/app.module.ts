@@ -28,8 +28,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
-
-import { CommonModule } from '@angular/common'; // Importa CommonModule desde @angular/common
+import { CommonModule } from '@angular/common';
+import { CreaeditaUserorComponent } from './components/useror/creaedita-useror/creaedita-useror.component';
+import { MatError } from '@angular/material/form-field';
+import { CreaeditaRolesComponent } from './components/roles/creaedita-roles/creaedita-roles.component';
+import { ListarRecyclablematerialComponent } from './components/recyclable-material/listar-recyclablematerial/listar-recyclablematerial.component';
+import { ListaRolesComponent } from './components/roles/lista-roles/lista-roles.component';
+import { ListaUserorComponent } from './components/useror/lista-useror/lista-useror.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,11 @@ import { CommonModule } from '@angular/common'; // Importa CommonModule desde @a
     FrequenquestionsComponent,
     ListarFrequenquestionsComponent,
     CreaeditaFrequenquestionsComponent,
+    CreaeditaUserorComponent,
+    CreaeditaRolesComponent,
+    ListarRecyclablematerialComponent,
+    ListaRolesComponent,
+    ListaUserorComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -68,7 +78,6 @@ import { CommonModule } from '@angular/common'; // Importa CommonModule desde @a
     MatGridListModule,
     MatSidenavModule,
     MatListModule,
-    
 
   ],
   providers: [],

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+</head>
+<body>
+<div class="container" style="text-align: center">
+<h2>Registro de usuarios</h2>
+<form [formGroup]="form" (submit)="aceptar()" class="example-form">
+<mat-form-field class="example-full-width" *ngIf="edicion">
+<mat-label>idUser</mat-label>
+<input matInput placeholder="Id" formControlName="idUser" />
+</mat-form-field>
+<br/>
+
+    <mat-form-field class="example-full-width">
+    <mat-label>Nombre</mat-label>
+    <input
+    matInput
+    placeholder="Nombre"
+    formControlName="userName"/>
+    <mat-error *ngIf="obtenerControlCampo('userName')?.errors?.['required']">
+    El nombre es obligatorio .
+    </mat-error>
+    </mat-form-field>
+    <br />
+    
+
+<mat-form-field class="example-full-width">
+<mat-label>Password</mat-label>
+<input
+    matInput
+    placeholder="Password"
+    formControlName="userPassword"/>
+    <mat-error *ngIf="obtenerControlCampo('userPassword')?.errors?.['required']">
+    El password es obligatorio .
+    </mat-error>
+    </mat-form-field>
+
+<br />
+<mat-form-field class="example-full-width">
+    <mat-label>Correo Electronico</mat-label>
+    <input
+        matInput
+        placeholder="email"
+        formControlName="userEmail"/>
+        <mat-error *ngIf="obtenerControlCampo('userEmail')?.errors?.['required']">
+        El correo es obligatorio .
+        </mat-error>
+        </mat-form-field>
+    
+    <br />
+    
+
+
+<mat-form-field class="example-full-width">
+    <mat-label>Edad</mat-label>
+    <input matInput type="number" placeholder="Edad" formControlName="userAge"/>
+    <mat-error *ngIf="obtenerControlCampo('userAge')?.errors?.['required']">
+        La edad es obligatoria.
+    </mat-error>
+</mat-form-field>
+<br />
+
+<mat-form-field>
+    <mat-label>Rol</mat-label>
+    <mat-select formControlName="roles">
+      <mat-option
+        *ngFor="let u of listaRoles"
+        [value]="u.idTypeUser"
+      >
+        {{ u.idTypeUser }}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="obtenerControlCampo('roles')?.errors?.['required']"
+    >
+      El rol es obligatorio.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Ubicacion</mat-label>
+    <mat-select formControlName="ubicationUser">
+      <mat-option
+        *ngFor="let u of listaUbicaciones"
+        [value]="u.idUbication"
+      >
+        {{ u.idUbication}}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="obtenerControlCampo('ubicationUser')?.errors?.['required']"
+    >
+      La ubicacion es obligatoria.
+    </mat-error>
+  </mat-form-field>
+
+
+
+<button mat-raised-button color="primary">Aceptar</button>
+<button mat-raised-button color="warn" routerLink="/ubications">
+Cancelar
+</button>
+<p>{{ mensaje }}</p>
+</form>
+</div>
+</body>
+</html>
+

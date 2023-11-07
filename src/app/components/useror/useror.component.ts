@@ -1,13 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder,
-  AbstractControl,
-} from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-useror',
@@ -15,4 +7,5 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./useror.component.css']
 })
 export class UserorComponent {
+  constructor(public route:ActivatedRoute){}
 }
