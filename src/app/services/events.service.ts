@@ -1,6 +1,6 @@
+import { environment } from './../../environments/environment';
 import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
 import { Events } from '../models/events';
 const base_url = environment.base;
