@@ -10,7 +10,7 @@ const base_url = environment.base;
 })
 export class UserorService {
 
-  private url = `${base_url}/typeusers`;
+  private url = `${base_url}/users`;
   private listaCambio = new Subject<Useror[]>();
   constructor(private http:HttpClient) { }
 
@@ -28,4 +28,15 @@ export class UserorService {
   getlist() {
     return this.listaCambio.asObservable();
   }
+  
+  delete(id: number){
+    return this.http.delete(`${this.url}/${id}`);
+  }
+  listId(id: number) {
+    return this.http.get<Useror>(`${this.url}/${id}`);
+    }
+
+    update(u: Useror) {
+      return this.http.put(this.url, u);
+      }
 }

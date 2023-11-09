@@ -14,7 +14,7 @@ import { RecyclableMaterialService } from 'src/app/services/recyclable-material.
   templateUrl: './creaedita-recyclablematerial.component.html',
   styleUrls: ['./creaedita-recyclablematerial.component.css'],
 })
-export class CreaeditaRecyclablematerialComponent {
+export class CreaeditaRecyclablematerialComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   recyclablematerial: RecyclableMaterial = new RecyclableMaterial();
   mensaje: string = '';
