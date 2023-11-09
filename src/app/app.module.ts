@@ -45,6 +45,7 @@ import { EventsComponent } from './components/events/events.component';
 import { CrearEventComponent } from './components/events/crear-event/crear-event.component';
 import { ListarEventComponent } from './components/events/listar-event/listar-event.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -97,7 +98,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MatSidenavModule,
     MatListModule,
     MatFormFieldModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    MatCardModule,
    
   ],
   providers: [],

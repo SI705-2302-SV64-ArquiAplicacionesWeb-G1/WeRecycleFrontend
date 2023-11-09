@@ -53,11 +53,11 @@ this.rS.setList(data);
 filter(en: any) {
 this.dataSource.filter = en.target.value.trim();
 }
-
+/*
 center = {lat: -12.046374, lng: -77.042793};
 zoom = 10;
 heatmapOptions = {radius: 5};
 heatmapData = [
 
-];
+];*/
 }
