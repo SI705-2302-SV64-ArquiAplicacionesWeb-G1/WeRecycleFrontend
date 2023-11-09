@@ -131,7 +131,7 @@ export class CrearRecyclingCenterComponent implements OnInit {
     this.rS.insert(this.recyclingCenter).subscribe(
       () => {
         console.log('Recycling Center inserted successfully.');
-        this.router.navigate(['/ubications']);
+        this.router.navigate(['/center-recycling']);
       },
       (error) => {
         console.error('Error al insertar el centro de reciclaje', error);

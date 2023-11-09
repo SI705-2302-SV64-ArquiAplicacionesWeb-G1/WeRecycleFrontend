@@ -38,6 +38,8 @@ import { CrearRecyclingCenterComponent } from './components/recycling-center/cre
 import { EventsComponent } from './components/events/events.component';
 import { CrearEventComponent } from './components/events/crear-event/crear-event.component';
 import { ListarEventComponent } from './components/events/listar-event/listar-event.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+
 
 
 @NgModule({
@@ -84,8 +86,8 @@ import { ListarEventComponent } from './components/events/listar-event/listar-ev
     MatSidenavModule,
     MatListModule,
     MatFormFieldModule,
-
-
+    GoogleMapsModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent],
