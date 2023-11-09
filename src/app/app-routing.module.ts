@@ -19,6 +19,9 @@ import { RecyclingCenterComponent } from './components/recycling-center/recyclin
 import { CrearRecyclingCenterComponent } from './components/recycling-center/crear-recycling-center/crear-recycling-center.component';
 import { EventsComponent } from './components/events/events.component';
 import { CrearEventComponent } from './components/events/crear-event/crear-event.component';
+import { ResourceComponent } from './components/resource/resource.component';
+import { CreaeditaResourseComponent } from './components/resource/creaedita-resourse/creaedita-resourse.component';
+import { ListarResourseComponent } from './components/resource/listar-resourse/listar-resourse.component';
 
 const routes: Routes = [
   {
@@ -81,6 +84,14 @@ const routes: Routes = [
     path: 'event', component: EventsComponent, children: [
       { path: 'nuevo', component: CrearEventComponent }
   
+    ]
+  }
+  ,
+  {
+    path: 'recurso',component: ResourceComponent,
+    children: [
+      {path: 'nuevo', component:CreaeditaResourseComponent},
+      {path: 'lista', component:ListarResourseComponent},
     ]
   }
 ];

@@ -45,9 +45,9 @@ import { EventsComponent } from './components/events/events.component';
 import { CrearEventComponent } from './components/events/crear-event/crear-event.component';
 import { ListarEventComponent } from './components/events/listar-event/listar-event.component';
 import { GoogleMapsModule } from '@angular/google-maps';
-
-
-
+import { ResourceComponent } from './components/resource/resource.component';
+import { CreaeditaResourseComponent } from './components/resource/creaedita-resourse/creaedita-resourse.component';
+import { ListarResourseComponent } from './components/resource/listar-resourse/listar-resourse.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +72,10 @@ import { GoogleMapsModule } from '@angular/google-maps';
     CrearRecyclingCenterComponent,
     EventsComponent,
     CrearEventComponent,
-    ListarEventComponent
+    ListarEventComponent,
+    ResourceComponent,
+    CreaeditaResourseComponent,
+    ListarResourseComponent
   ],
   imports: [
     MatToolbarModule,

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <h2 style="text-align: center">Lista de Recursos</h2>
+      <div style="text-align: right">
+        <button mat-raised-button color="primary" routerLink="/resource/nuevo">
+          Nuevo
+        </button>
+      </div>
+      
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row
+        definition" -->
+        <!-- Position Column -->
+        <ng-container matColumnDef="codigo">
+          <th mat-header-cell *matHeaderCellDef>Código</th>
+          <td mat-cell *matCellDef="let element">{{ element.idResource }}</td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="titulo">
+          <th mat-header-cell *matHeaderCellDef>Título</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.resourceTitle }}
+          </td>
+        </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef>Descripción</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.resourceDescription }}
+          </td>
+        </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="rutas">
+          <th mat-header-cell *matHeaderCellDef>Rutas</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.resourcesPaths }}
+          </td>
+        </ng-container>
+                        <!-- Otras columnas -->
+
+             <ng-container matColumnDef="accion01">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let element">
+        <button
+        mat-raised-button
+        color="warn"
+        [routerLink]="['ediciones', element.idUniversity]"
+        >
+        Actualizar
+        </button>
+        </td></ng-container
+        >
+        <ng-container matColumnDef="accion02">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let element">
+        <button
+        mat-raised-button
+        color="accent"
+        (click)="eliminar(element.idUniversity)"
+        >
+        Eliminar
+        </button>
+        </td>
+        </ng-container
+        >               
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 15]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </body>
+</html>
