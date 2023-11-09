@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container"style="text-align: center">
+      <h2>Registro de recursos</h2>
+      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Titulo</mat-label>
+          <input matInput placeholder="Titulo" formControlName="RecursoTitulo" />
+          <mat-error
+            *ngIf="obtenerControlCampo('RecursoTitulo')?.errors?.['required']"
+          >
+            El titulo es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Descripcion</mat-label>
+            <input matInput placeholder="Descripcion" formControlName="RecursoDescripcion" />
+            <mat-error
+              *ngIf="obtenerControlCampo('RecursoDescripcion')?.errors?.['required']"
+            >
+              La descripcion es obligatorio.
+            </mat-error>
+          </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Rutas</mat-label>
+          <input matInput placeholder="Rutas" formControlName="Recursorutas" />
+          <mat-error
+            *ngIf="obtenerControlCampo('Recursorutas')?.errors?.['required']"
+          >
+            Las rutas son obligatorios.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <button mat-raised-button routerLink="/recursos/nuevo" class="registro">Registro</button>
+        <p>{{ mensaje }}</p>
+      </form>
+    </div>
+  </body>
+</html>
+
+
