@@ -1,9 +1,10 @@
-import { environment } from './../../environments/environment';
+
 import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Events } from '../models/events';
 import { environment } from 'src/environments/environment';
+
 const base_url = environment.base;
 
 @Injectable({

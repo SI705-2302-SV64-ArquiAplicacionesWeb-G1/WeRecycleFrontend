@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Useror } from '../models/useror';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const base_url = environment.base;
 @Injectable({
@@ -18,7 +18,12 @@ export class UserorService {
     return this.http.get<Useror[]>(this.url);
   }
   insert(user: Useror) {
-    return this.http.post(this.url, user);
+    let token = sessionStorage.getItem('token');
+    return this.http.post(this.url, user, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
   setlist(listaNueva: Useror[]) {
