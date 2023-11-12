@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { RecyclingCenter } from '../models/RecyclingCenter';
@@ -40,6 +41,6 @@ export class RecyclingCenterService {
 
   update(rec: RecyclingCenter) {
     return this.http.put(this.url, rec);
-    }
+  }
 
 }

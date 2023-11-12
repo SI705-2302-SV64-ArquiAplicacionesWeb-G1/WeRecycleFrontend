@@ -15,6 +15,12 @@
           >
             Materiales
           </button>
+
+          
+          <button mat-button onclick="window.location.href='/PublicationController'">Blog </button>
+          <button mat-button>Eventos</button>
+          <button mat-button onclick="window.location.href='/ubications/mapa'">
+
           <button mat-button>Blog</button>
           <button mat-button onclick="window.location.href='/event'">Eventos </button>
           <button mat-button onclick="window.location.href='/center-recycling'">
@@ -43,8 +49,13 @@
           </a>
         </div>
         <button mat-button>Materiales</button>
+
+        <button mat-button onclick="window.location.href='/PublicationController'">Blog</button>
+        <button mat-button>Eventos</button>
+
         <button mat-button >Blog</button>
         <button mat-button onclick="window.location.href='/event'">Eventos </button>
+
         <button mat-button onclick="window.location.href='/center-recycling'">Mapa</button>
         <button mat-button>Preguntas frecuentes</button>
       </div>
@@ -174,8 +185,13 @@
             Materiales
           </button>
         </li>
+
+        <li class="list-item_footer"><button mat-button  [routerLink]="['/PublicationController']">Blog</button></li>
+        <li class="list-item_footer"><button mat-button>Eventos</button></li>
+
         <li class="list-item_footer"><button mat-button>Blog</button></li>
         <li class="list-item_footer"><button mat-button onclick="window.location.href='/event'">Eventos</button></li>
+
         <li class="list-item_footer">
           <button mat-button onclick="window.location.href='/center-recycling'">
             Mapa
@@ -185,7 +201,11 @@
     </div>
   </footer>
 
+
+</div>
+
   </div>
+
 
 <router-outlet></router-outlet>
 <ng-template #otherMenu>

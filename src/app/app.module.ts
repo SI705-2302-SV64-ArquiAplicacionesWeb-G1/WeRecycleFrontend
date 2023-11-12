@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { Publication } from 'src/app/models/publication';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -44,6 +45,15 @@ import { CrearRecyclingCenterComponent } from './components/recycling-center/cre
 import { EventsComponent } from './components/events/events.component';
 import { CrearEventComponent } from './components/events/crear-event/crear-event.component';
 import { ListarEventComponent } from './components/events/listar-event/listar-event.component';
+
+import { PublicationComponent } from './components/publication/publication.component';
+import { ListarPublicationComponent } from './components/publication/listar-publication/listar-publication.component';
+import { TypeRecursoComponent } from './components/type-recurso/type-recurso.component';
+import { ListarTiporecursoComponent } from './components/type-recurso/listar-tiporecurso/listar-tiporecurso.component';
+import { CreaeditaTiporecursoComponent } from './components/type-recurso/creaedita-tiporecurso/creaedita-tiporecurso.component';
+import {MatCardModule} from'@angular/material/card';
+import{CreaeditaPublicationComponent} from './components/publication/creaedita-publication/creaedita-publication.component';
+=======
 import { GoogleMapsModule } from '@angular/google-maps';
 
 
@@ -72,7 +82,13 @@ import { GoogleMapsModule } from '@angular/google-maps';
     CrearRecyclingCenterComponent,
     EventsComponent,
     CrearEventComponent,
-    ListarEventComponent
+    ListarEventComponent,
+    PublicationComponent,
+    ListarPublicationComponent,
+    CreaeditaPublicationComponent,
+    TypeRecursoComponent,
+    ListarTiporecursoComponent,
+    CreaeditaTiporecursoComponent
   ],
   imports: [
     MatToolbarModule,
@@ -97,8 +113,13 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MatSidenavModule,
     MatListModule,
     MatFormFieldModule,
+
+    MatCardModule,
+
+
     GoogleMapsModule
    
+
   ],
   providers: [],
   bootstrap: [AppComponent],

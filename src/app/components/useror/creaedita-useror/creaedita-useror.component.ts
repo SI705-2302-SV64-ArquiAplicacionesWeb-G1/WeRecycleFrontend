@@ -5,6 +5,7 @@ import { Roles } from 'src/app/models/roles';
 import { Ubication } from 'src/app/models/ubication';
 import { Useror } from 'src/app/models/useror';
 import { RolesService } from 'src/app/services/roles.service';
+import { TypeRecursoService } from 'src/app/services/type-recurso.service';
 import { UbicationService } from 'src/app/services/ubication.service';
 import { UserorService } from 'src/app/services/useror.service';
 
@@ -26,7 +27,8 @@ export class CreaeditaUserorComponent implements OnInit{
     private formBuilder:FormBuilder,
     private route: ActivatedRoute,
     private uR: UbicationService,
-    private rR: RolesService){}
+    private rR: RolesService ){}
+   
 
     ngOnInit(): void {
         this.route.params.subscribe((data:Params)=>{
