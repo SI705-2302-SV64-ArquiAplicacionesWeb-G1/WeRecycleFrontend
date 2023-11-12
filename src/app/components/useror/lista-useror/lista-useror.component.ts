@@ -18,7 +18,6 @@ export class ListaUserorComponent implements OnInit{
     'userPassword',
     'userEmail',
     'userAge',
-    'roles'
   ];
   constructor(private uS: UserorService){}
   ngOnInit(): void {

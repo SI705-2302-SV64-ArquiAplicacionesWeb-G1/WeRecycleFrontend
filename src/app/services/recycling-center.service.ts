@@ -1,8 +1,8 @@
 import { Observable, Subject } from 'rxjs';
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { RecyclingCenter } from '../models/RecyclingCenter';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 const base_url = environment.base;
 
 @Injectable({
@@ -40,7 +40,7 @@ export class RecyclingCenterService {
 
   update(rec: RecyclingCenter) {
     return this.http.put(this.url, rec);
-    }
+  }
 
 
     getCentroForUser(userId: number): Observable<RecyclingCenter[]> {

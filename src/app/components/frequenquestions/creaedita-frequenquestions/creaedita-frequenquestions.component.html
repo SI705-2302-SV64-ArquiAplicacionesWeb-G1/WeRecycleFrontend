@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
-    <div class="container" style="text-align: center">
+  <body >
+    <div style="text-align: center">
       <h2>Registro de Preguntas Frecuentes</h2>
 
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
@@ -15,9 +15,7 @@
             <input matInput placeholder="Id" formControlName="idFrequenQuestions" />
           </mat-form-field>
           <br />
-
-
-
+          
         <mat-form-field class="example-full-width">
           <mat-label>Pregunta</mat-label>
           <input matInput placeholder="pregunta" formControlName="question" />
@@ -66,7 +64,7 @@
         </mat-form-field>
         <br />
 
-        <mat-form-field>
+        <mat-form-field class="example-full-width">
             <mat-label>Elige una fecha</mat-label>
             <input
               matInput
@@ -104,10 +102,13 @@
         </mat-form-field>
         <br />
 
-        <button mat-raised-button color="primary">Aceptar</button>
+        <div class="button-container">
+          <button mat-raised-button color="primary">Aceptar</button>
         <button mat-raised-button color="warn" routerLink="/frequentquestioncontroller">
           Cancelar
         </button>
+        </div>
+        
         <p>{{ mensaje }}</p>
       </form>
     </div>

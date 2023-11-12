@@ -7,6 +7,7 @@ import { Useror } from './models/useror';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
+import { LoginService } from './services/login.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,8 +21,8 @@ export class AppComponent implements OnInit, OnDestroy {
   users: Useror[]=[];
   userLast = this.users[this.users.length - 1];
   dataSource: RecyclingCenter[] = [];
-
-  constructor(private router: Router, private rS: RecyclingCenterService, private userS: UserorService) {
+  role : string ='';
+  constructor(private router: Router, private rS: RecyclingCenterService, private userS: UserorService, private loginService:LoginService) {
     this.isHomePage = this.router.url === '/';
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
@@ -67,5 +68,20 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+  cerrar(){
+    sessionStorage.clear();  
+  }
+  verificar(){
+    this.role = this.loginService.showRole();
+    return this.loginService.verificar();
+  }
+
+  validarRol(){
+    if(this.role == 'ADMIN' || this.role == 'WEB'){
+      return true;
+    }else{
+      return false;
+    }
   }
 }

@@ -55,31 +55,25 @@
     
 
 
-<mat-form-field class="example-full-width">
-    <mat-label>Edad</mat-label>
-    <input matInput type="number" placeholder="Edad" formControlName="userAge"/>
-    <mat-error *ngIf="obtenerControlCampo('userAge')?.errors?.['required']">
-        La edad es obligatoria.
-    </mat-error>
-</mat-form-field>
-<br />
 
-<mat-form-field>
-    <mat-label>Rol</mat-label>
-    <mat-select formControlName="roles">
-      <mat-option
-        *ngFor="let u of listaRoles"
-        [value]="u.idTypeUser"
-      >
-        {{ u.idTypeUser }}
-      </mat-option>
-    </mat-select>
-    <mat-error
-      *ngIf="obtenerControlCampo('roles')?.errors?.['required']"
-    >
-      El rol es obligatorio.
-    </mat-error>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <input
+      matInput
+      placeholder="Ingrese fecha de nacimiento"
+      [matDatepicker]="picker"
+      formControlName="userAge"
+      [max]="maxFecha"
+      />
+      <mat-hint>YYYY/MM/DD</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="obtenerControlCampo('userAge')?.errors?.['required']" >
+      La fecha es obligatoria.
+      </mat-error>
   </mat-form-field>
+  
+  <br/>
+
 
 
 <button mat-raised-button color="primary">Aceptar</button>
