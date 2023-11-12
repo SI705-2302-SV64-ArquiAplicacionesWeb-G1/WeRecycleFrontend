@@ -3,7 +3,6 @@ import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { RecyclingCenter } from '../models/RecyclingCenter';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 const base_url = environment.base;
 
 @Injectable({

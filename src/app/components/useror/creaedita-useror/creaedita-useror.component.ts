@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import * as moment from 'moment';
 import { Roles } from 'src/app/models/roles';
 import { Ubication } from 'src/app/models/ubication';
 import { Useror } from 'src/app/models/useror';
@@ -20,14 +21,13 @@ export class CreaeditaUserorComponent implements OnInit{
   mensaje: string = '';
   listaRoles: Roles[]= [];
   listaUbicaciones: Ubication[]= [];
+  maxFecha: Date = moment().add(-1, 'days').toDate();
   id: number =0 ;
   edicion : boolean = false;
   constructor(private uS: UserorService,
     private router:Router,
     private formBuilder:FormBuilder,
-    private route: ActivatedRoute,
-    private uR: UbicationService,
-    private rR: RolesService ){}
+    private route: ActivatedRoute){}
    
 
     ngOnInit(): void {
@@ -42,15 +42,7 @@ export class CreaeditaUserorComponent implements OnInit{
           userPassword :['',Validators.required],
           userEmail : ['',Validators.required],
           userAge:['',Validators.required],
-          roles: ['',Validators.required],
-          ubicationUser:['',Validators.required],
         });
-        this.uR.list().subscribe((data)=>{
-          this.listaUbicaciones = data
-        })
-        this.rR.list().subscribe((data)=>{
-          this.listaRoles = data
-        })
       }
    aceptar():void{
     if (this.form.valid){
@@ -59,8 +51,6 @@ export class CreaeditaUserorComponent implements OnInit{
       this.useror.userPassword = this.form.value.userPassword;
       this.useror.userEmail = this.form.value.userEmail;
       this.useror.userAge = this.form.value.userAge;
-      this.useror.roles.idTypeUser = this.form.value.roles;
-      this.useror.ubicationUser.idUbication = this.form.value.ubicationUser;
         this.uS.insert(this.useror).subscribe((data)=>{
           this.uS.list().subscribe((data)=>{
             this.uS.setlist(data);
@@ -91,8 +81,6 @@ export class CreaeditaUserorComponent implements OnInit{
             userPassword : new FormControl(data.userPassword),
             userEmail : new FormControl(data.userEmail),
             userAge:new FormControl(data.userAge),
-            roles: new FormControl(data.roles),
-            ubicationUser: new FormControl (data.ubicationUser),
           })
         })
       }
