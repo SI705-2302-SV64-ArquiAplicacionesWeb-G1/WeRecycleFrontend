@@ -2,47 +2,60 @@
     <mat-sidenav #drawer class="sidenav" fixedInViewport
         [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
         [mode]="(isHandset$ | async) ? 'over' : 'side'"
-        [opened]="(isHandset$ | async) === false">
+        [opened]="(isHandset$ | async) === false" >
         
-        <mat-form-field>
-            <input matInput (keyup)="filter($event)" placeholder="Buscador" />
+        <mat-form-field class="buscador">
+            <input matInput  (keyup)="filter($event)" placeholder="Buscador" /><mat-icon class="icon-search">search</mat-icon>
         </mat-form-field>
 
         <h4>Resultados</h4>
 
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-            <!-- Agregué un atributo para definir las columnas que se mostrarán -->
-            <ng-container matColumnDef="nombre">
-                <th mat-header-cell *matHeaderCellDef>Nombre</th>
-                <td mat-cell *matCellDef="let element">{{ element.title }}</td>
-            </ng-container>
-
-
-                <ng-container matColumnDef="direccion">
-                    <th mat-header-cell *matHeaderCellDef>Dirección</th>
-                    <td mat-cell *matCellDef="let element">{{ element.idUbication.addressUbication }}</td>
-                </ng-container>
-                
-                <ng-container matColumnDef="fecha">
-                    <th mat-header-cell *matHeaderCellDef>Fecha: </th>
-                    <td mat-cell *matCellDef="let element">{{ element.date }}</td>
-                </ng-container>
-    
-                <ng-container matColumnDef="hora">
-                    <th mat-header-cell *matHeaderCellDef>Hora:</th>
-                    <td mat-cell *matCellDef="let element">{{ element.hora }}</td>
-                </ng-container>
- 
-  
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
+        <mat-card class="mat-elevation-z8" >
+            <mat-card-content *ngFor="let evento of filteredData" class="example-card" (click)="selectEvent(evento)">
+              <div class="card-container">
+                <mat-card >
+                  <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{ evento.title }}</mat-card-title>
+                    
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p>{{ evento.idUbication.addressUbication }}</p>
+                    <p>Fecha: {{ evento.date }} </p>
+                    <p>Hora: {{ evento.hora }}:00</p>
+                  </mat-card-content>
+                </mat-card>
+         <br> 
+              </div>
+            </mat-card-content>
+          </mat-card> 
 
         <mat-paginator
         [pageSizeOptions]="[5, 10, 25, 100]"
         showFirstLastButtons
         ></mat-paginator>
     </mat-sidenav>
-    
+
+    <mat-card class="event-info-container" >
+        <mat-card-content >
+              <mat-card-header>
+                <mat-card-title><h3>{{ eventSelected?.title }}</h3></mat-card-title>
+                
+              </mat-card-header>
+              <mat-card-content>
+                <div class="contendor-info-select">
+                    <p> {{eventSelected?.idUbication.addressUbication}} -  {{eventSelected?.idUbication.cityUbication}}</p>
+                    <div>
+                        <p> {{eventSelected?.idUbication.ubicationDate}}</p>
+                        <p> {{eventSelected?.hora}}:00 horas</p>
+                    </div>
+                </div>
+               <button class="btn-verde btn-regular" >Seguir</button> 
+               <p class="p-descripcion">{{eventSelected?.description}}</p>
+              </mat-card-content>
+        </mat-card-content>
+      </mat-card> 
+
+      <button class="btn-crear" routerLink="/event/nuevo">crear</button>
   </mat-sidenav-container>
   

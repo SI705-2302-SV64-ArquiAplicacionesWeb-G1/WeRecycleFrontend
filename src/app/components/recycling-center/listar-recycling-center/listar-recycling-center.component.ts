@@ -22,7 +22,9 @@ export class ListarRecyclingCenterComponent implements OnInit{
       shareReplay()
     );
 
-    dataSource: MatTableDataSource<RecyclingCenter> = new MatTableDataSource();
+    /*dataSource: MatTableDataSource<RecyclingCenter> = new MatTableDataSource();*/
+    dataSource: RecyclingCenter[] = [];
+  filteredData: RecyclingCenter[] = [];
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     displayedColumns: string[] = [
     'nombre',
@@ -32,32 +34,36 @@ export class ListarRecyclingCenterComponent implements OnInit{
     ];
 
     constructor(private rS: RecyclingCenterService) {}
-ngOnInit(): void {
-  
-this.rS.list().subscribe((data) => {
-this.dataSource = new MatTableDataSource(data);
-this.dataSource.paginator = this.paginator;
-});
-this.rS.getList().subscribe((data) => {
-this.dataSource = new MatTableDataSource(data);
-this.dataSource.paginator = this.paginator;
-});
-}
-eliminar(id: number) {
-this.rS.delete(id).subscribe((data) => {
-this.rS.list().subscribe((data) => {
-this.rS.setList(data);
-});
-});
-}
-filter(en: any) {
-this.dataSource.filter = en.target.value.trim();
-}
-/*
+
 center = {lat: -12.046374, lng: -77.042793};
 zoom = 10;
 heatmapOptions = {radius: 5};
 heatmapData = [
 
-];*/
+];
+
+  
+ngOnInit(): void {
+  this.rS.list().subscribe((data) => {
+    this.dataSource = data;
+    this.filteredData = data;
+  });
+}
+
+eliminar(id: number) {
+  this.rS.delete(id).subscribe((data) => {
+    this.rS.list().subscribe((data) => {
+      this.dataSource = data;
+      this.filteredData = data;
+    });
+  });
+}
+
+filter(en: any) {
+  const filterValue = en.target.value.toLowerCase();
+  this.filteredData = this.dataSource.filter((item) =>
+    item.nameRecyclingCenter.toLowerCase().includes(filterValue)
+  );
+}
+
 }

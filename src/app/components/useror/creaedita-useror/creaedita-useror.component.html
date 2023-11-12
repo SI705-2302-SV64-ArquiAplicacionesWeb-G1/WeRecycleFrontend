@@ -81,24 +81,6 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Ubicacion</mat-label>
-    <mat-select formControlName="ubicationUser">
-      <mat-option
-        *ngFor="let u of listaUbicaciones"
-        [value]="u.idUbication"
-      >
-        {{ u.idUbication}}
-      </mat-option>
-    </mat-select>
-    <mat-error
-      *ngIf="obtenerControlCampo('ubicationUser')?.errors?.['required']"
-    >
-      La ubicacion es obligatoria.
-    </mat-error>
-  </mat-form-field>
-
-
 
 <button mat-raised-button color="primary">Aceptar</button>
 <button mat-raised-button color="warn" routerLink="/ubications">

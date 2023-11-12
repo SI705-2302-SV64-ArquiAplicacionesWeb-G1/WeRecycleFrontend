@@ -1,5 +1,5 @@
 .sidenav {
-    width: 50%;
+    width: 45%;
     padding:100px 30px 50px;
   }
   
@@ -13,3 +13,105 @@
     z-index: 10;
   }
   
+  .buscador{
+    width: 98%;
+    border: 0 solid;
+  }
+
+  mat-card-title{
+    padding: 0 !important;
+    margin-bottom: 15px;
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+  }
+
+  .mat-mdc-card-avatar {
+    display: none;
+  }
+
+  mat-card-content p {
+    margin: 0 0 5px !important;
+    font-size: 15px;
+
+    font-family: 'Libre Franklin', sans-serif;
+  }
+
+  .mat-mdc-card-content:first-child {
+    padding-top: 0px; 
+}
+
+.mat-mdc-card-content {
+  display: block;
+  padding: 0 0px;
+}
+
+.mat-mdc-card-content p{
+  display: block;
+  padding: 0 20px;
+}
+
+.mat-mdc-card-header {
+  display: flex;
+  padding: 16px 20px 0;
+}
+
+.mat-mdc-card {
+  position: unset;
+}
+
+.buscador{
+position: relative;  
+margin-bottom: 20px !important;
+border-radius: 10px;
+
+}
+
+.icon-search{
+  position: absolute;
+  right: 0;
+}
+
+
+
+.mat-mdc-form-field-focus-overlay{
+  border-radius: 10px;
+  border:1px solid #c4c4c4;
+
+}
+
+.mat-mdc-card{
+  width: 98% !important;
+  padding: 0 !important;
+}
+
+
+.event-info-container{
+  padding: 20px !important;
+  margin:30px;
+  width: 81% !important;
+  min-height: 350px;
+}
+
+.contendor-info-select{
+  display: flex;
+  justify-content: space-between;
+}
+
+.event-info-container button{
+  margin:10px 20px 50px!important;
+}
+
+.example-card mat-card-title{
+  color:#006400;
+  font-size: 20px !important;
+}
+
+.p-descripcion{
+  margin-left: 20px !important;
+}
+
+.event-info-container h3{
+  font-size: 30px !important;
+  font-weight: 600 !important;
+}

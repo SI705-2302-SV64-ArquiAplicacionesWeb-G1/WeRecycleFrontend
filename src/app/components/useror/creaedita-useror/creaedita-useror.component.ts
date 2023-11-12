@@ -18,7 +18,6 @@ export class CreaeditaUserorComponent implements OnInit{
   useror: Useror = new Useror();
   mensaje: string = '';
   listaRoles: Roles[]= [];
-  listaUbicaciones: Ubication[]= [];
   id: number =0 ;
   edicion : boolean = false;
   constructor(private uS: UserorService,
@@ -26,7 +25,9 @@ export class CreaeditaUserorComponent implements OnInit{
     private formBuilder:FormBuilder,
     private route: ActivatedRoute,
     private uR: UbicationService,
-    private rR: RolesService){}
+    private rR: RolesService){
+
+    }
 
     ngOnInit(): void {
         this.route.params.subscribe((data:Params)=>{
@@ -41,11 +42,8 @@ export class CreaeditaUserorComponent implements OnInit{
           userEmail : ['',Validators.required],
           userAge:['',Validators.required],
           roles: ['',Validators.required],
-          ubicationUser:['',Validators.required],
         });
-        this.uR.list().subscribe((data)=>{
-          this.listaUbicaciones = data
-        })
+    
         this.rR.list().subscribe((data)=>{
           this.listaRoles = data
         })
@@ -58,7 +56,6 @@ export class CreaeditaUserorComponent implements OnInit{
       this.useror.userEmail = this.form.value.userEmail;
       this.useror.userAge = this.form.value.userAge;
       this.useror.roles.idTypeUser = this.form.value.roles;
-      this.useror.ubicationUser.idUbication = this.form.value.ubicationUser;
         this.uS.insert(this.useror).subscribe((data)=>{
           this.uS.list().subscribe((data)=>{
             this.uS.setlist(data);
@@ -90,7 +87,6 @@ export class CreaeditaUserorComponent implements OnInit{
             userEmail : new FormControl(data.userEmail),
             userAge:new FormControl(data.userAge),
             roles: new FormControl(data.roles),
-            ubicationUser: new FormControl (data.ubicationUser),
           })
         })
       }

@@ -46,6 +46,10 @@ import { CrearEventComponent } from './components/events/crear-event/crear-event
 import { ListarEventComponent } from './components/events/listar-event/listar-event.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import {MatCardModule} from '@angular/material/card';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ListarMisEventosComponent } from './components/events/listar-mis-eventos/listar-mis-eventos.component';
+import { ListarMiCentroComponent } from './components/recycling-center/listar-mi-centro/listar-mi-centro.component';
+
 
 
 
@@ -73,10 +77,14 @@ import {MatCardModule} from '@angular/material/card';
     CrearRecyclingCenterComponent,
     EventsComponent,
     CrearEventComponent,
-    ListarEventComponent
+    ListarEventComponent,
+    ListarMisEventosComponent,
+    ListarMiCentroComponent
+    
   ],
   imports: [
     MatToolbarModule,
+    MatAutocompleteModule,
     BrowserModule,
     CommonModule,
     AppRoutingModule,

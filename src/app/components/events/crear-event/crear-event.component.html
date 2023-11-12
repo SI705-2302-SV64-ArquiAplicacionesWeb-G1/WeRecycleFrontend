@@ -1,15 +1,15 @@
 <div class="container">
-    <h2>Crear Evento</h2>
+    <h2>Crea tu Evento</h2>
     <form [formGroup]="form" (submit)="onSubmit()">
       
       <mat-form-field appearance="fill" class="example-full-width">
-        <mat-label for="title">Nombre del Evento:</mat-label>
+        <mat-label for="title">Título</mat-label>
         <input matInput type="text" id="title" formControlName="title" required>
       </mat-form-field>
 
       <br/>
       <mat-form-field class="example-full-width">
-        <mat-label>Fecha:</mat-label>
+        <mat-label>Ingrese fecha</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="date" required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -17,53 +17,73 @@
      <br/> 
 
       <mat-form-field class="example-full-width">
-        <mat-label for="description">Descripción:</mat-label>
-        <input matInput type="text" id="description" formControlName="description" required>
+        <mat-label for="description">Escriba una descripción</mat-label>
+        <textarea matInput type="text" id="description" formControlName="description" required  style="height: 110px;"></textarea>
       </mat-form-field>
       
         <br />
       
       <mat-form-field class="example-full-width">
         <mat-label for="hora">Hora:</mat-label>
-        <input matInput type="number" id="hora" formControlName="hora" required>
+        <input matInput type="number" id="hora" formControlName="hora" required required  max="24" min="0">
       </mat-form-field>
       
         <br />
  
       <mat-form-field class="example-full-width">
-        <mat-label for="numberParticipant">Numero de participantes:</mat-label>
-        <input matInput type="number" id="numberParticipant" formControlName="numberParticipant" required>
+        <mat-label for="numberParticipant">Numero de participantes</mat-label>
+        <input matInput type="number" id="numberParticipant" formControlName="numberParticipant" >
       </mat-form-field>
       
         <br />
 
+      <div class="container-flex">
+        <mat-form-field class="form-ciudad">
+          <mat-label for="addressUbication">Dirección</mat-label>
+          <input matInput type="text" id="addressUbication" formControlName="addressUbication" required>
+        </mat-form-field> <br/>
+        
+      
+        <mat-form-field class="form-ciudad">
+          <input type="text" placeholder="Distrito" matInput formControlName="cityUbication" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredTipoCiudad | async" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        
+      </div>
+<br>
       <mat-form-field class="example-full-width">
-        <mat-label for="addressUbication">Dirección:</mat-label>
-        <input matInput type="text" id="addressUbication" formControlName="addressUbication" required>
-      </mat-form-field> <br/>
-
-      <mat-form-field class="example-full-width">
-        <mat-label for="cityUbication">Ciudad de Ubicación:</mat-label>
-        <input matInput type="text" id="cityUbication" formControlName="cityUbication" required>
-      </mat-form-field> <br/>
-
-      <mat-form-field class="example-full-width">
-        <mat-label for="contactUbication">Contacto de Ubicación:</mat-label>
+         <mat-label for="contactUbication">Número de contacto</mat-label>
         <input matInput type="number" id="contactUbication" formControlName="contactUbication" required>
-      </mat-form-field> <br/>
+        <mat-error *ngIf="form.get('contactUbication')?.hasError('invalidContactNumber')">
+           El número de contacto debe tener exactamente 9 dígitos.
+         </mat-error>
+      </mat-form-field> <br>
 
       <mat-form-field class="example-full-width">
-        <mat-label for="typeUbication">Tipo de Ubicación:</mat-label>
-        <input matInput type="text" id="typeUbication" formControlName="typeUbication" required>
-      </mat-form-field> <br/>
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="typeUbication">
+        <mat-option *ngFor="let p of tipoLugar" [value]="p.value">
+        {{ p.viewValue }}
+        </mat-option>
+        </mat-select>
+        </mat-form-field>
+      <br />
   
 
       <mat-form-field class="example-full-width">
-        <mat-label for="descUbication">Descripción de Ubicación:</mat-label>
+        <mat-label for="descUbication">Referencia de Ubicación:</mat-label>
         <input matInput type="text" id="descUbication" formControlName="descUbication" required>
       </mat-form-field> <br/>
       
-      <button type="submit" [disabled]="!form.valid">Crear</button>
+      <div class="contenedor-btn">
+  <button class="btn-verde btn-regular"  type="submit" [disabled]="!form.valid">Subir</button>
+  <button class="btn-rojo btn-regular" onclick="window.location.href=''" >Cancelar</button>
+</div>
+
     </form>
   </div>
   

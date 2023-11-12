@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Useror } from '../models/useror';
 import { HttpClient } from '@angular/common/http';
@@ -22,7 +22,10 @@ export class UserorService {
   }
 
   setlist(listaNueva: Useror[]) {
+    console.log("Lista actualizada en el servicio:", listaNueva);
+
     this.listaCambio.next(listaNueva);
+    
   }
 
   getlist() {
@@ -39,4 +42,15 @@ export class UserorService {
     update(u: Useror) {
       return this.http.put(this.url, u);
       }
+
+      getLastCreatedUser(): Observable<Useror | null> {
+        return this.listaCambio.pipe(
+          map(users => {
+            const lastUser = users.length > 0 ? users[users.length - 1] : null;
+            console.log("Último usuario emitido:", lastUser);
+            return lastUser;
+          })
+        );
+      
+}
 }

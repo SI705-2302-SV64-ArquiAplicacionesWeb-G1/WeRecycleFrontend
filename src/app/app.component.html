@@ -24,15 +24,15 @@
         </div>
       </div>
 
-      <div>
+      <div class="btn-inicio">
+        <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>store</mat-icon></button>
         <button class="btn-principal btn-verde">Iniciar sesión</button>
-        <button
-          class="btn-principal btn-blanco"
-          onclick="window.location.href='/users/user'"
-        >
-          Regístrate
-        </button>
+        <button class="btn-principal btn-blanco" onclick="window.location.href='/users/user'">Regístrate </button>
       </div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item onclick="window.location.href=''">Mis materiales</button>
+        <button mat-menu-item (click)="redirectToRecyclingCenter()">Centro de reciclaje</button>
+      </mat-menu>
     </mat-toolbar>
 
     <mat-toolbar class="menu menu-corto">
@@ -204,6 +204,7 @@
         >
           Materiales
         </button>
+        
         <button mat-button>Blog</button>
         <button mat-button onclick="window.location.href='/event'">Eventos</button>
         <button mat-button onclick="window.location.href='/center-recycling'">Mapa</button>
@@ -212,6 +213,7 @@
     </div>
 
     <div>
+      <mat-icon class="icon-tienda">store</mat-icon>
       <button class="btn-principal btn-verde">Iniciar sesión</button>
       <button class="btn-principal btn-blanco">Regístrate</button>
     </div>

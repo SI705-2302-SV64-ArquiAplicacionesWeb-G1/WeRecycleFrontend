@@ -19,6 +19,8 @@ import { RecyclingCenterComponent } from './components/recycling-center/recyclin
 import { CrearRecyclingCenterComponent } from './components/recycling-center/crear-recycling-center/crear-recycling-center.component';
 import { EventsComponent } from './components/events/events.component';
 import { CrearEventComponent } from './components/events/crear-event/crear-event.component';
+import { ListarMisEventosComponent } from './components/events/listar-mis-eventos/listar-mis-eventos.component';
+import { ListarMiCentroComponent } from './components/recycling-center/listar-mi-centro/listar-mi-centro.component';
 
 const routes: Routes = [
   {
@@ -72,15 +74,18 @@ const routes: Routes = [
 
   {
     path: 'center-recycling', component: RecyclingCenterComponent, children: [
-      { path: 'nuevo', component: CrearRecyclingCenterComponent }
+      { path: 'nuevo', component: CrearRecyclingCenterComponent },
+      { path: 'mi-centro', component: ListarMiCentroComponent },
+      { path: 'mi-centro/:id', component: CrearRecyclingCenterComponent },
   
     ]
   },
 
   {
     path: 'event', component: EventsComponent, children: [
-      { path: 'nuevo', component: CrearEventComponent }
-  
+      { path: 'nuevo', component: CrearEventComponent },
+      { path: 'mis-eventos/:id', component: CrearEventComponent },
+      { path: 'mis-eventos', component: ListarMisEventosComponent }
     ]
   }
 ];

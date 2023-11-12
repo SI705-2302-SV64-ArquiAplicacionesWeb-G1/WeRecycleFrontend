@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { RecyclingCenter } from '../models/RecyclingCenter';
 import { HttpClient } from '@angular/common/http';
@@ -40,6 +40,17 @@ export class RecyclingCenterService {
 
   update(rec: RecyclingCenter) {
     return this.http.put(this.url, rec);
+    }
+
+
+    getCentroForUser(userId: number): Observable<RecyclingCenter[]> {
+      const urlWithUserId = `${this.url}/mi-centro/${userId}`;
+      return this.http.get<RecyclingCenter[]>(urlWithUserId);
+    }
+
+
+    listId(id: number) {
+      return this.http.get<RecyclingCenter>(`${this.url}/centro-por-id/${id}`);
     }
 
 }

@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Events } from '../models/events';
@@ -37,5 +37,14 @@ export class EventsService {
 
   update(rec: Events) {
     return this.http.put(this.url, rec);
+    }
+
+    getEventsForUser(userId: number): Observable<Events[]> {
+      const urlWithUserId = `${this.url}/mis-eventos/${userId}`;
+      return this.http.get<Events[]>(urlWithUserId);
+    }
+
+    listId(id: number) {
+      return this.http.get<Events>(`${this.url}/evento-por-id/${id}`);
     }
 }
