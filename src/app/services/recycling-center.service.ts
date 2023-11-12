@@ -40,6 +40,6 @@ export class RecyclingCenterService {
 
   update(rec: RecyclingCenter) {
     return this.http.put(this.url, rec);
-    }
+  }
 
 }

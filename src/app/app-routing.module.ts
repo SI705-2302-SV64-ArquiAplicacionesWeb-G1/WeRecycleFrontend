@@ -1,3 +1,4 @@
+import { CreaeditaPublicationComponent } from './components/publication/creaedita-publication/creaedita-publication.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UbicationComponent } from './components/ubication/ubication.component';
@@ -19,6 +20,9 @@ import { RecyclingCenterComponent } from './components/recycling-center/recyclin
 import { CrearRecyclingCenterComponent } from './components/recycling-center/crear-recycling-center/crear-recycling-center.component';
 import { EventsComponent } from './components/events/events.component';
 import { CrearEventComponent } from './components/events/crear-event/crear-event.component';
+import { PublicationComponent } from './components/publication/publication.component';
+import { TypeRecursoComponent } from './components/type-recurso/type-recurso.component';
+import { CreaeditaTiporecursoComponent } from './components/type-recurso/creaedita-tiporecurso/creaedita-tiporecurso.component';
 
 const routes: Routes = [
   {
@@ -82,8 +86,26 @@ const routes: Routes = [
       { path: 'nuevo', component: CrearEventComponent }
   
     ]
+  },
+
+  {
+    path: 'PublicationController',
+    component: PublicationComponent,
+    children: [
+      { path: 'nuevo', component: CreaeditaPublicationComponent },
+    ],
+  },
+
+  {
+    path: 'TypeRecursoController',
+    component: TypeRecursoComponent,
+    children: [
+      { path: 'nuevo', component: CreaeditaTiporecursoComponent },
+    ],
   }
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

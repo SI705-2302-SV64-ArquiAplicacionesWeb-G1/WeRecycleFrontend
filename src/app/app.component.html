@@ -15,7 +15,8 @@
           >
             Materiales
           </button>
-          <button mat-button>Blog</button>
+          
+          <button mat-button onclick="window.location.href='/PublicationController'">Blog </button>
           <button mat-button>Eventos</button>
           <button mat-button onclick="window.location.href='/ubications/mapa'">
             Mapa
@@ -43,7 +44,7 @@
           </a>
         </div>
         <button mat-button>Materiales</button>
-        <button mat-button >Blog</button>
+        <button mat-button onclick="window.location.href='/PublicationController'">Blog</button>
         <button mat-button>Eventos</button>
         <button mat-button onclick="window.location.href='/center-recycling'">Mapa</button>
         <button mat-button>Preguntas frecuentes</button>
@@ -174,7 +175,7 @@
             Materiales
           </button>
         </li>
-        <li class="list-item_footer"><button mat-button>Blog</button></li>
+        <li class="list-item_footer"><button mat-button  [routerLink]="['/PublicationController']">Blog</button></li>
         <li class="list-item_footer"><button mat-button>Eventos</button></li>
         <li class="list-item_footer">
           <button mat-button onclick="window.location.href='/ubications/mapa'">
