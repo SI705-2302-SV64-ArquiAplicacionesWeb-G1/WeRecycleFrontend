@@ -33,6 +33,7 @@ export class ListarRecyclingCenterComponent implements OnInit{
 
     constructor(private rS: RecyclingCenterService) {}
 ngOnInit(): void {
+  
 this.rS.list().subscribe((data) => {
 this.dataSource = new MatTableDataSource(data);
 this.dataSource.paginator = this.paginator;
@@ -52,4 +53,11 @@ this.rS.setList(data);
 filter(en: any) {
 this.dataSource.filter = en.target.value.trim();
 }
+
+center = {lat: -12.046374, lng: -77.042793};
+zoom = 10;
+heatmapOptions = {radius: 5};
+heatmapData = [
+
+];
 }

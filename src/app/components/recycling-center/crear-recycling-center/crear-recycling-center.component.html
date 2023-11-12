@@ -1,44 +1,55 @@
 <div class="container">
   <h2>Crear Centro de Reciclaje</h2>
   <form [formGroup]="form" (submit)="onSubmit()">
-    <div>
-      <label for="nameRecyclingCenter">Nombre del Centro de Reciclaje:</label>
-      <input type="text" id="nameRecyclingCenter" formControlName="nameRecyclingCenter" required>
-    </div>
-    <div>
-      <label for="licenseRecyclingCenter">Licencia del Centro de Reciclaje:</label>
-      <input type="text" id="licenseRecyclingCenter" formControlName="licenseRecyclingCenter" required>
-    </div>
-    <div>
-      <label for="openinghourRecyclingCenter">Hora de Apertura del Centro de Reciclaje:</label>
-      <input type="number" id="openinghourRecyclingCenter" formControlName="openinghourRecyclingCenter" required>
-    </div>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label for="nameRecyclingCenter">Nombre del Centro de Reciclaje:</mat-label>
+      <input matInput type="text" id="nameRecyclingCenter" formControlName="nameRecyclingCenter" required>
+    </mat-form-field> <br/>
+
+
+    <mat-form-field class="example-full-width">
+      <mat-label for="licenseRecyclingCenter">Licencia del Centro de Reciclaje:</mat-label>
+      <input matInput type="text" id="licenseRecyclingCenter" formControlName="licenseRecyclingCenter" required>
+    </mat-form-field> <br/>
     
-    <div>
-      <label for="closingtimeRecyclingCenter">Hora de Cierre del Centro de Reciclaje:</label>
-      <input type="number" id="closingtimeRecyclingCenter" formControlName="closingtimeRecyclingCenter" required>
-    </div>
- 
-    <div>
-      <label for="addressUbication">Dirección de Ubicación:</label>
-      <input type="text" id="addressUbication" formControlName="addressUbication" required>
-    </div>
-    <div>
-      <label for="cityUbication">Ciudad de Ubicación:</label>
-      <input type="text" id="cityUbication" formControlName="cityUbication" required>
-    </div>
-    <div>
-      <label for="contactUbication">Contacto de Ubicación:</label>
-      <input type="text" id="contactUbication" formControlName="contactUbication" required>
-    </div>
-    <div>
-      <label for="typeUbication">Tipo de Ubicación:</label>
-      <input type="text" id="typeUbication" formControlName="typeUbication" required>
-    </div>
-    <div>
-      <label for="descUbication">Descripción de Ubicación:</label>
-      <input type="text" id="descUbication" formControlName="descUbication" required>
-    </div>
+    <mat-form-field class="example-full-width">
+      <mat-label for="openinghourRecyclingCenter">Hora de Apertura del Centro de Reciclaje:</mat-label>
+      <input matInput type="number" id="openinghourRecyclingCenter" formControlName="openinghourRecyclingCenter" required>
+    </mat-form-field> <br/>
+
+    <mat-form-field class="example-full-width">
+      <mat-label for="closingtimeRecyclingCenter">Hora de cierre del Centro de Reciclaje:</mat-label>
+      <input matInput type="number" id="closingtimeRecyclingCenter" formControlName="closingtimeRecyclingCenter" required>
+    </mat-form-field> <br/>
+
+
+    <mat-form-field class="example-full-width">
+      <mat-label for="addressUbication">Dirección de Ubicación:</mat-label>
+      <input matInput type="text" id="addressUbication" formControlName="addressUbication" required>
+    </mat-form-field> <br/>
+    
+    <mat-form-field class="example-full-width">
+      <mat-label for="cityUbication">Ciudad de Ubicación:</mat-label>
+      <input matInput type="text" id="cityUbication" formControlName="cityUbication" required>
+    </mat-form-field> <br/>
+
+    <mat-form-field class="example-full-width">
+      <mat-label for="contactUbication">Contacto de Ubicación:</mat-label>
+      <input matInput type="number" id="contactUbication" formControlName="contactUbication" required>
+    </mat-form-field> <br/>
+
+    <mat-form-field class="example-full-width">
+      <mat-label for="typeUbication">Tipo de Ubicación:</mat-label>
+      <input matInput type="text" id="typeUbication" formControlName="typeUbication" required>
+    </mat-form-field> <br/>
+
+
+    <mat-form-field class="example-full-width">
+      <mat-label for="descUbication">Descripcion de Ubicación:</mat-label>
+      <input matInput type="text" id="descUbication" formControlName="descUbication" required>
+    </mat-form-field> <br/>
+
     <button type="submit" [disabled]="!form.valid">Crear</button>
   </form>
 </div>
