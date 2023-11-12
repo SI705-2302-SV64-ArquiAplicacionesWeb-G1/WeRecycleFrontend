@@ -44,7 +44,7 @@ export class CreaeditaTiporecursoComponent implements OnInit{
           this.tS.setList(data);
         });
       });
-      this.router.navigate(['frequentquestioncontroller']);
+      this.router.navigate(['TypeRecursoController']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
