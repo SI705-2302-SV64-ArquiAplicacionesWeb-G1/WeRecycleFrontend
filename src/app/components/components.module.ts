@@ -49,11 +49,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ListarMisEventosComponent } from './events/listar-mis-eventos/listar-mis-eventos.component';
+import { ListarMiCentroComponent } from './recycling-center/listar-mi-centro/listar-mi-centro.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 @NgModule({
   declarations: [
+    
     UbicationComponent,
     CrearUbicationComponent,
     ListarUbicationComponent,
@@ -81,7 +84,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CreaeditaPublicationComponent,
     TypeRecursoComponent,
     ListarTiporecursoComponent,
-    CreaeditaTiporecursoComponent
+    CreaeditaTiporecursoComponent,
+    ListarMisEventosComponent,
+    ListarMiCentroComponent,
   ],
   imports: [
     CommonModule,
@@ -106,6 +111,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     MatCardModule,
     GoogleMapsModule,
+    MatAutocompleteModule
   ]
 })
 export class ComponentsModule { }

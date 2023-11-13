@@ -61,8 +61,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MatFormFieldModule,
     GoogleMapsModule,
     MatSnackBarModule,
-   
-
+    MatCardModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent],

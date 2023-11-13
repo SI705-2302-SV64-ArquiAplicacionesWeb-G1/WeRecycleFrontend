@@ -189,7 +189,7 @@ export class CrearEventComponent implements OnInit {
       this.eS.insert(this.event).subscribe(
         () => {
           console.log('Recycling Center inserted successfully.');
-          this.router.navigate(['/event']);
+          this.router.navigate(['components/event']);
         },
         (error) => {
           console.error('Error al actualizar el centro de reciclaje', error);
@@ -217,7 +217,7 @@ export class CrearEventComponent implements OnInit {
         console.log(this.event)
 
         console.log('Evento actualizado exitosamente.');
-        this.router.navigate(['/event']);
+        this.router.navigate(['components/event/mis-eventos']);
       },
       (error) => {
         console.error('Error al actualizar el evento', error);

@@ -18,6 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject<void>();
   isHomePage: boolean;
   recyclingCenter: any;
+
   users: Useror[]=[];
   userLast = this.users[this.users.length - 1];
   dataSource: RecyclingCenter[] = [];
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
     this.userS.list().subscribe({
       next: (users: Useror[]) => {
         this.userLast = users[users.length - 1];
@@ -48,17 +50,15 @@ export class AppComponent implements OnInit, OnDestroy {
   this.rS.getCentroForUser(this.userLast.idUser)
     .pipe(takeUntil(this.ngUnsubscribe))
     .subscribe((data) => {
-      console.log("Data from server:", data);  // Imprime los datos recibidos del servidor
       this.dataSource = data;
       this.recyclingCenter = this.dataSource;
-      console.log("recyclingCenter:", this.recyclingCenter);  // Imprime el valor de recyclingCenter
-  
+      console.log("recyclingCenter:", this.recyclingCenter);  
       if (this.recyclingCenter.length > 0) {
-        this.router.navigate(['/center-recycling/mi-centro']);
+        this.router.navigate(['components/center-recycling/mi-centro']);
         console.log("si entro");
       } else {
         console.log("no entro" + this.recyclingCenter.length);
-        this.router.navigate(['/center-recycling/nuevo']);
+        this.router.navigate(['components/center-recycling/nuevo']);
       }
     });
 }
@@ -79,6 +79,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   validarRol(){
     if(this.role == 'ADMIN' || this.role == 'WEB'){
+
       return true;
     }else{
       return false;

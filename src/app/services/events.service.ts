@@ -1,8 +1,9 @@
 import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Events } from '../models/events';
 import { environment } from 'src/environments/environment';
+import { Useror } from '../models/useror';
 
 const base_url = environment.base;
 
@@ -16,12 +17,23 @@ export class EventsService {
   constructor(private http:HttpClient) { }
 
   list() {
-    return this.http.get<Events[]>(this.url);
+    let token = sessionStorage.getItem('token');
+    return this.http.get<Events[]>(this.url,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
   }
 
 
   insert(rec: Events) {
-    return this.http.post(this.url, rec);
+    let token = sessionStorage.getItem('token');
+    return this.http.post(this.url, rec,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+    
   }
 
   setList(listaNueva: Events[]) {
@@ -33,19 +45,39 @@ export class EventsService {
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+    return this.http.delete(`${this.url}/${id}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
   update(rec: Events) {
-    return this.http.put(this.url, rec);
+    let token = sessionStorage.getItem('token');
+    return this.http.put(this.url, rec,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
     }
 
     getEventsForUser(userId: number): Observable<Events[]> {
+      let token = sessionStorage.getItem('token');
       const urlWithUserId = `${this.url}/mis-eventos/${userId}`;
-      return this.http.get<Events[]>(urlWithUserId);
+      return this.http.get<Events[]>(urlWithUserId,{
+        headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+      });
     }
 
     listId(id: number) {
-      return this.http.get<Events>(`${this.url}/evento-por-id/${id}`);
+      let token = sessionStorage.getItem('token');
+      return this.http.get<Events>(`${this.url}/evento-por-id/${id}`,{
+        headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+      });
     }
 }

@@ -13,7 +13,7 @@
                     <p>Fecha: {{ evento.date }} </p>
                     <p>Hora:  {{ evento.hora }}:00</p>
                     <button class="btn-rojo btn-regular" (click)="eliminar(evento.idEvent)"> Eliminar </button>
-                    <button class="btn-verde btn-regular"  [routerLink]="['mis-eventos', evento.idEvent]"> Editar </button>
+                    <button class="btn-verde btn-regular"  [routerLink]="[ evento.idEvent]"> Editar </button>
                   </mat-card-content>
                 </mat-card>
 

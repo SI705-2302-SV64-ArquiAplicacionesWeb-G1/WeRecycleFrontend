@@ -9,7 +9,7 @@
     <p>Hora de cierre:  {{ centro.closingtimeRecyclingCenter }}:00</p>
     </div>
    <div class="contenedor-btn">
-    <button class="btn-verde btn-regular" [routerLink]="['/center-recycling/mi-centro', centro.idRecyclingCenter]">Editar</button>
+    <button class="btn-verde btn-regular" [routerLink]="[ centro.idRecyclingCenter]">Editar</button>
     <button class="btn-rojo btn-regular" (click)="eliminar(centro.idRecyclingCenter)"> Eliminar </button>
 
   </div> 

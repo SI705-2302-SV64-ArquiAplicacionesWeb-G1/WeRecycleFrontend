@@ -15,7 +15,12 @@ export class UserorService {
   constructor(private http:HttpClient) { }
 
   list() {
-    return this.http.get<Useror[]>(this.url);
+    let token = sessionStorage.getItem('token');
+    return this.http.get<Useror[]>(this.url,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   insert(user: Useror) {
     let token = sessionStorage.getItem('token');
@@ -38,14 +43,32 @@ export class UserorService {
   }
   
   delete(id: number){
-    return this.http.delete(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.delete(`${this.url}/${id}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   listId(id: number) {
-    return this.http.get<Useror>(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Useror>(`${this.url}/${id}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
     }
 
     update(u: Useror) {
-      return this.http.put(this.url, u);
+      let token = sessionStorage.getItem('token');
+
+      return this.http.put(this.url, u,{
+        headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+      });
       }
 
       getLastCreatedUser(): Observable<Useror | null> {

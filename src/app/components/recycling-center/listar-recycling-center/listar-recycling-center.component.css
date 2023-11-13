@@ -82,3 +82,12 @@ border-radius: 10px;
 
 }
 
+
+mat-button {
+  background-color: red !important;
+  position:absolute;
+  bottom: 0 !important;
+}
+
+
+
