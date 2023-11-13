@@ -1,3 +1,5 @@
+import { Useror } from "./useror"
+
 export class Ubication{
     idUbication:number=0
     ubicationDate:Date=new Date()
@@ -6,4 +8,5 @@ export class Ubication{
     contactUbication:number=0
     typeUbication:String=""
     descUbication:String=""
+    idUsuario:Useror= new Useror()
 }

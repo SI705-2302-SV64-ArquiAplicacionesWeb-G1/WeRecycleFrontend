@@ -21,9 +21,14 @@ export class ListaUserorComponent implements OnInit{
   ];
   constructor(private uS: UserorService){}
   ngOnInit(): void {
+    console.log("ngOnInit se está ejecutando.");
+
       this.uS.list().subscribe((data)=>{
+
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
+        console.log("Datos recibidos del servicio:", data);
+
       });
       this.uS.getlist().subscribe((data)=>{
         this.dataSource = new MatTableDataSource(data);
@@ -37,4 +42,6 @@ export class ListaUserorComponent implements OnInit{
       })
     })
   }
+
+  
 }

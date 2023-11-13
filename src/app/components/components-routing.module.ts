@@ -21,6 +21,9 @@ import { PublicationComponent } from './publication/publication.component';
 import { CreaeditaPublicationComponent } from './publication/creaedita-publication/creaedita-publication.component';
 import { TypeRecursoComponent } from './type-recurso/type-recurso.component';
 import { CreaeditaTiporecursoComponent } from './type-recurso/creaedita-tiporecurso/creaedita-tiporecurso.component';
+import { ListarMiCentroComponent } from './recycling-center/listar-mi-centro/listar-mi-centro.component';
+import { ListarMisEventosComponent } from './events/listar-mis-eventos/listar-mis-eventos.component';
+
 
 const routes: Routes = [  {
   path: 'RecyclableMaterialController',
@@ -72,16 +75,21 @@ const routes: Routes = [  {
 },
 
 {
-  path: 'center-recycling', component: RecyclingCenterComponent, children: [
-    { path: 'nuevo', component: CrearRecyclingCenterComponent }
+  path: 'center-recycling',
+   component: RecyclingCenterComponent, children: [
+    { path: 'nuevo', component: CrearRecyclingCenterComponent },
+    { path: 'mi-centro', component: ListarMiCentroComponent },
+    { path: 'mi-centro/:id', component: CrearRecyclingCenterComponent },
 
   ]
 },
 
+
 {
   path: 'event', component: EventsComponent, children: [
-    { path: 'nuevo', component: CrearEventComponent }
-
+    { path: 'nuevo', component: CrearEventComponent },
+    { path: 'mis-eventos/:id', component: CrearEventComponent },
+    { path: 'mis-eventos', component: ListarMisEventosComponent }
   ]
 },
 
@@ -100,6 +108,8 @@ const routes: Routes = [  {
     { path: 'nuevo', component: CreaeditaTiporecursoComponent },
   ],
 }
+
+
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Useror } from '../models/useror';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -15,7 +15,12 @@ export class UserorService {
   constructor(private http:HttpClient) { }
 
   list() {
-    return this.http.get<Useror[]>(this.url);
+    let token = sessionStorage.getItem('token');
+    return this.http.get<Useror[]>(this.url,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   insert(user: Useror) {
     let token = sessionStorage.getItem('token');
@@ -27,7 +32,10 @@ export class UserorService {
   }
 
   setlist(listaNueva: Useror[]) {
+    console.log("Lista actualizada en el servicio:", listaNueva);
+
     this.listaCambio.next(listaNueva);
+    
   }
 
   getlist() {
@@ -35,13 +43,42 @@ export class UserorService {
   }
   
   delete(id: number){
-    return this.http.delete(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.delete(`${this.url}/${id}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   listId(id: number) {
-    return this.http.get<Useror>(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Useror>(`${this.url}/${id}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
     }
 
     update(u: Useror) {
-      return this.http.put(this.url, u);
+      let token = sessionStorage.getItem('token');
+
+      return this.http.put(this.url, u,{
+        headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+      });
       }
+
+      getLastCreatedUser(): Observable<Useror | null> {
+        return this.listaCambio.pipe(
+          map(users => {
+            const lastUser = users.length > 0 ? users[users.length - 1] : null;
+            console.log("Último usuario emitido:", lastUser);
+            return lastUser;
+          })
+        );
+      
+}
 }

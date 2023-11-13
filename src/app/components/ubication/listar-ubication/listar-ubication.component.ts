@@ -16,7 +16,7 @@ displayedColumns: string[] = [
 'idUbication',
 'addressUbication',
 'ubicationDate',
-'Ciudad',
+'ciudad',
 'contactUbication',
 'accion02',
 ];

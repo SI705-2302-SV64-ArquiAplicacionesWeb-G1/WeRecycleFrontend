@@ -1,8 +1,8 @@
+import { Observable, Subject } from 'rxjs';
 import { environment } from './../../environments/environment';
-import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { RecyclingCenter } from '../models/RecyclingCenter';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 const base_url = environment.base;
 
 @Injectable({
@@ -18,12 +18,22 @@ export class RecyclingCenterService {
    }
 
    list() {
-    return this.http.get<RecyclingCenter[]>(this.url);
+    let token = sessionStorage.getItem('token');
+    return this.http.get<RecyclingCenter[]>(this.url,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
 
   insert(rec: RecyclingCenter) {
-    return this.http.post(this.url, rec);
+    let token = sessionStorage.getItem('token');
+    return this.http.post(this.url, rec,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
   setList(listaNueva: RecyclingCenter[]) {
@@ -35,11 +45,42 @@ export class RecyclingCenterService {
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+    return this.http.delete(`${this.url}/${id}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
   update(rec: RecyclingCenter) {
-    return this.http.put(this.url, rec);
+    let token = sessionStorage.getItem('token');
+    return this.http.put(this.url, rec,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
+
+
+    getCentroForUser(userId: number): Observable<RecyclingCenter[]> {
+      let token = sessionStorage.getItem('token');
+      const urlWithUserId = `${this.url}/mi-centro/${userId}`;
+      return this.http.get<RecyclingCenter[]>(urlWithUserId,{
+        headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+      });
+    }
+
+
+    listId(id: number) {
+      let token = sessionStorage.getItem('token');
+      return this.http.get<RecyclingCenter>(`${this.url}/centro-por-id/${id}`,{
+        headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+      });
+    }
 
 }
