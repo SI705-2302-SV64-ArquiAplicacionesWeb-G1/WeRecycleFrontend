@@ -16,6 +16,7 @@ import { UserorService } from 'src/app/services/useror.service';
   styleUrls: ['./creaedita-useror.component.css']
 })
 export class CreaeditaUserorComponent implements OnInit{
+  hide = true;
   form: FormGroup = new FormGroup({});
   useror: Useror = new Useror();
   mensaje: string = '';

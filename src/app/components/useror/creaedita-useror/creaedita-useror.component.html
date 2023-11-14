@@ -31,18 +31,24 @@
 <mat-form-field class="example-full-width">
 <mat-label>Password</mat-label>
 <input
-    matInput
+    matInput [type]="hide ? 'password':'text'"
     placeholder="Password"
     formControlName="userPassword"/>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
     <mat-error *ngIf="obtenerControlCampo('userPassword')?.errors?.['required']">
     El password es obligatorio .
     </mat-error>
-    </mat-form-field>
+</mat-form-field>
 
 <br />
 <mat-form-field class="example-full-width">
     <mat-label>Correo Electronico</mat-label>
     <input
+        type="email"
+        name="email"
+        ngModel email
         matInput
         placeholder="email"
         formControlName="userEmail"/>
