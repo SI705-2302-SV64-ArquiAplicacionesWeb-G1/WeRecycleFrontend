@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Roles } from '../models/roles';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -13,10 +13,20 @@ export class RolesService {
   constructor(private http:HttpClient) { }
 
   list() {
-    return this.http.get<Roles[]>(this.url);
+    let token = sessionStorage.getItem('token');
+    return this.http.get<Roles[]>(this.url,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   insert(rol: Roles) {
-    return this.http.post(this.url, rol);
+    let token = sessionStorage.getItem('token');
+    return this.http.post(this.url, rol,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
   setlist(listaNueva: Roles[]) {
@@ -28,6 +38,11 @@ export class RolesService {
   }
 
   delete(id:number){
-    return this.http.delete(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+    return this.http.delete(`${this.url}/${id}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 }

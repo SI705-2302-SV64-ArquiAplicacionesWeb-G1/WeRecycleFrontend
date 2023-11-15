@@ -16,6 +16,7 @@ export class ListaRolesComponent implements OnInit{
     'idTypeUser',
     'typeAccount',
     'stateType',
+    'useror',
     'accion02'
   ];
   constructor(private rS: RolesService){}
