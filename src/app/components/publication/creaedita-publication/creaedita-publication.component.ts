@@ -68,20 +68,19 @@ export class CreaeditaPublicationComponent implements OnInit {
   }
   aceptar(): void {
     if (this.form.valid) {
-      this.publicacion.idPublication = this.form.value.idPublication;
       this.publicacion.title = this.form.value.title;
       this.publicacion.description=this.form.value.description;
       this.publicacion.archivo=this.form.value.archivo;
       this.publicacion.datePublication = this.form.value.datePublication;
-      this.publicacion.id_TypeRecurso.idTypeRecurso = this.form.value.id_TypeRecurso.idTypeRecurso;
-      this.publicacion.idUser.idUser = this.form.value.idUser.idUser;
+      this.publicacion.id_TypeRecurso.idTypeRecurso = this.form.value.id_TypeRecurso;
+      this.publicacion.idUser.idUser = this.form.value.idUser;
 
       this.pS.insert(this.publicacion).subscribe((data) => {
         this.pS.list().subscribe((data) => {
           this.pS.setlist(data);
         });
       });
-      this.router.navigate(['PublicationController']);
+      this.router.navigate(['components/PublicationController']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
@@ -100,7 +99,7 @@ export class CreaeditaPublicationComponent implements OnInit {
     return control;
   }
 
-  init(){
+  /*init(){
     if(this.edicion){
       this.pS.listId(this.id).subscribe((data)=>{
         this.form = new FormGroup({
@@ -109,12 +108,11 @@ export class CreaeditaPublicationComponent implements OnInit {
           description: new FormControl(data.description),
           archivo: new FormControl(data.archivo),
           datePublication : new FormControl(data.datePublication),
-          id_TypeRecurso : new FormControl(data.id_TypeRecurso),
-          idUser:new FormControl(data.idUser),
+          id_TypeRecurso : new FormControl(data.id_TypeRecurso.idTypeRecurso),
+          idUser:new FormControl(data.idUser.idUser),
         })
       })
     }
-  }
+  }*/
 
- 
 }

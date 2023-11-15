@@ -14,12 +14,17 @@ export class FrequenQuestionsService {
 
   constructor(private http: HttpClient) {}
   list() {
-    return this.http.get<FrequenQuestions[]>(this.url);
+    let token = sessionStorage.getItem('token');
+    return this.http.get<FrequenQuestions[]>(this.url,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
-  insert(camp: FrequenQuestions) {
+  insert(frec: FrequenQuestions) {
     let token = sessionStorage.getItem('token');
-    return this.http.post(this.url, camp,{
+    return this.http.post(this.url, frec,{
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
