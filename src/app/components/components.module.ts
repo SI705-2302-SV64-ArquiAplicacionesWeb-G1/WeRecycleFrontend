@@ -52,6 +52,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ListarMisEventosComponent } from './events/listar-mis-eventos/listar-mis-eventos.component';
 import { ListarMiCentroComponent } from './recycling-center/listar-mi-centro/listar-mi-centro.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { CommenttsComponent } from './commentts/commentts.component';
+import { CreaeditaCommenttsComponent } from './commentts/creaedita-commentts/creaedita-commentts.component';
+import { ListarCommenttsComponent } from './commentts/listar-commentts/listar-commentts.component';
+import { LikeComponent } from './like/like.component';
+import { CreaeditaLikeComponent } from './like/creaedita-like/creaedita-like.component';
+import { ListarLikeComponent } from './like/listar-like/listar-like.component';
+import { UsermaterialComponent } from './usermaterial/usermaterial.component';
+import { CreaeditaUsermaterialComponent } from './usermaterial/creaedita-usermaterial/creaedita-usermaterial.component';
+import { ListarUsermaterialComponent } from './usermaterial/listar-usermaterial/listar-usermaterial.component';
+import { EventuserComponent } from './eventuser/eventuser.component';
+import { CreaeditaEventuserComponent } from './eventuser/creaedita-eventuser/creaedita-eventuser.component';
+import { ListarEventuserComponent } from './eventuser/listar-eventuser/listar-eventuser.component';
 
 
 @NgModule({
@@ -87,6 +99,18 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     CreaeditaTiporecursoComponent,
     ListarMisEventosComponent,
     ListarMiCentroComponent,
+    CommenttsComponent,
+    CreaeditaCommenttsComponent,
+    ListarCommenttsComponent,
+    LikeComponent,
+    CreaeditaLikeComponent,
+    ListarLikeComponent,
+    UsermaterialComponent,
+    CreaeditaUsermaterialComponent,
+    ListarUsermaterialComponent,
+    EventuserComponent,
+    CreaeditaEventuserComponent,
+    ListarEventuserComponent,
   ],
   imports: [
     CommonModule,

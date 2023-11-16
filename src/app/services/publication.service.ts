@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
   import { Subject } from 'rxjs';
   import { environment } from 'src/environments/environment';
   import { Publication } from '../models/publication';
-  import { HttpClient } from '@angular/common/http';
+  import { HttpClient, HttpHeaders } from '@angular/common/http';
 
   const base_url = environment.base;
   @Injectable({
@@ -15,7 +15,12 @@ import { Injectable } from '@angular/core';
     constructor(private http: HttpClient) {}
 
     list() {
-      return this.http.get<Publication[]>(this.url);
+      let token = sessionStorage.getItem('token');
+      return this.http.get<Publication[]>(this.url,{
+        headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+      });
     }
 
     
