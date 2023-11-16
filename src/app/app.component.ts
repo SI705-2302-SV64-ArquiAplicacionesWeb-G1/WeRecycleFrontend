@@ -37,7 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.userS.list().subscribe({
       next: (users: Useror[]) => {
         this.userLast = users[users.length - 1];
-        console.log(this.userLast)
+  
       },
       error: (error) => {
         console.error('Error al obtener las ubicaciones', error);
@@ -78,7 +78,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   validarRol(){
-    if(this.role == 'ADMIN' || this.role == 'WEB'){
+    if(this.role == 'ADMIN' || this.role == 'ADMIN'){
 
       return true;
     }else{

@@ -14,7 +14,6 @@ import { UserorService } from 'src/app/services/useror.service';
 export class ListarMisEventosComponent implements OnInit {
 
   dataSource: Events[]=[];
-  userLast= new Useror();
     filteredData: Events[] = [];
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       displayedColumns: string[] = [
@@ -30,23 +29,18 @@ export class ListarMisEventosComponent implements OnInit {
         ) {}
 
         ngOnInit(): void {
-          this.userS.list().subscribe({
-            next: (users: Useror[]) => {
-              this.userLast = users[users.length - 1];
-              console.log(this.userLast);
-        
-              // Llama al servicio para obtener los eventos del usuario
-              this.eS.getEventsForUser(this.userLast.idUser).pipe(take(1)).subscribe((data) => {
-                // Ordena la lista por fecha en orden descendente
-                this.dataSource = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-                this.filteredData = this.dataSource;
-                        
-              });
-            },
-            error: (error) => {
-              console.error('Error al obtener las ubicaciones', error);
-            }
-          });
+          const currentUser = this.userS.getCurrentUser();
+
+          if (currentUser) {
+            // Llama al servicio para obtener los eventos del usuario
+            this.eS.getEventsForUser(currentUser.idUser).pipe(take(1)).subscribe((data) => {
+              // Ordena la lista por fecha en orden descendente
+              this.dataSource = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+              this.filteredData = this.dataSource;
+            });
+          } else {
+            console.error('Usuario actual no encontrado');
+          }
 
 
           this.eS.getList().subscribe((data=>{

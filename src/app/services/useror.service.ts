@@ -12,7 +12,18 @@ export class UserorService {
 
   private url = `${base_url}/users`;
   private listaCambio = new Subject<Useror[]>();
+  private currentUser: Useror | null = null;
+
   constructor(private http:HttpClient) { }
+
+  
+  getCurrentUser(): Useror | null {
+    return this.currentUser;
+  }
+
+  setCurrentUser(user: Useror): void {
+    this.currentUser = user;
+  }
 
   list() {
     let token = sessionStorage.getItem('token');
@@ -78,7 +89,16 @@ export class UserorService {
             console.log("Último usuario emitido:", lastUser);
             return lastUser;
           })
-        );
-      
+        );   
 }
+
+    getUserByName(name: String):Observable<Useror>  {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Useror>(`${this.url}/${name}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+    }
 }
