@@ -30,6 +30,11 @@ import { CommenttsComponent } from './commentts/commentts.component';
 import { LikeComponent } from './like/like.component';
 import { ListarLikeComponent } from './like/listar-like/listar-like.component';
 import { CreaeditaLikeComponent } from './like/creaedita-like/creaedita-like.component';
+import { UsermaterialComponent } from './usermaterial/usermaterial.component';
+import { ListarUsermaterialComponent } from './usermaterial/listar-usermaterial/listar-usermaterial.component';
+import { CreaeditaUsermaterialComponent } from './usermaterial/creaedita-usermaterial/creaedita-usermaterial.component';
+import { ListarEventComponent } from './events/listar-event/listar-event.component';
+import { CreaeditaEventuserComponent } from './eventuser/creaedita-eventuser/creaedita-eventuser.component';
 
 const routes: Routes = [
   {
@@ -128,6 +133,24 @@ const routes: Routes = [
       { path: 'nuevo', component: ListarLikeComponent },
 
       { path: 'crear', component: CreaeditaLikeComponent },
+    ],
+  },
+  {
+    path: 'MaterialUserControllet',
+    component: UsermaterialComponent,
+    children: [
+      { path: 'nuevo', component: ListarUsermaterialComponent },
+
+      { path: 'crear', component: CreaeditaUsermaterialComponent },
+    ],
+  },
+  {
+    path: 'eventsusercontroller',
+    component: UsermaterialComponent,
+    children: [
+      { path: 'nuevo', component: ListarEventComponent },
+
+      { path: 'crear', component: CreaeditaEventuserComponent },
     ],
   },
 ];

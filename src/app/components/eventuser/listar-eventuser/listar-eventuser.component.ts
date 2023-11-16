@@ -11,13 +11,15 @@ import { UsermaterialService } from 'src/app/services/usermaterial.service';
 export class ListarEventuserComponent implements OnInit {
   dataSource: MatTableDataSource<Comment> = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  displayedColumns: string[] = ['idComment', 'idPulication', 'description'];
+  displayedColumns: string[] = ['idEventUser', 'idUser', 'idEvent'];
   constructor(private uS: UsermaterialService) {}
   ngOnInit(): void {
     this.uS.list().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     });
     this.uS.getlist().subscribe((data) => {
+     
       this.dataSource.paginator = this.paginator;
     });
   }

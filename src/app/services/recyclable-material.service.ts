@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { RecyclableMaterial } from '../models/recyclable-material';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const base_url = environment.base;
 @Injectable({
@@ -14,10 +14,22 @@ export class RecyclableMaterialService {
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get<RecyclableMaterial[]>(this.url);
+    let token = sessionStorage.getItem('token');
+    return this.http.get<RecyclableMaterial[]>(this.url,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
+    
   }
   insert(recyclableMaterial: RecyclableMaterial) {
-    return this.http.post(this.url, recyclableMaterial);
+    let token = sessionStorage.getItem('token');
+    return this.http.post(this.url, recyclableMaterial,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
+    
   }
 
   setlist(listaNueva: RecyclableMaterial[]) {
