@@ -24,6 +24,8 @@ export class ListarPublicationComponent implements OnInit{
     'tiporecurso',
   ];
   constructor(private uS: PublicationService) {}
+  
+  
   ngOnInit(): void {
     this.uS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
@@ -34,5 +36,8 @@ export class ListarPublicationComponent implements OnInit{
       this.dataSource.paginator = this.paginator;
 
     });
-  }
+
+  } 
+  
+  
 }
