@@ -17,15 +17,14 @@
           >
             Roles
           </button>
-          <button mat-button [matMenuTriggerFor]="userMenu">Usuarios</button>
-          <button mat-button>Materiales</button>
-          <button mat-button>Blog</button>
-          <button mat-button [matMenuTriggerFor]="eventMenu">Eventos</button>
-
-          <button mat-button routerLink="components/center-recycling">
-            Mapa
-          </button>
-          <button mat-button>Preguntas frecuentes</button>
+          <button mat-button [matMenuTriggerFor]="userMenu"*ngIf="verificar()">Usuarios</button>
+          <button mat-button *ngIf="verificar()">Materiales</button>
+          <button mat-button *ngIf="verificar()">Blog</button>
+          <button mat-button [matMenuTriggerFor]="eventMenu" *ngIf="verificar()">Eventos</button>
+  
+          <button mat-button routerLink="components/center-recycling" *ngIf="verificar()">Mapa</button>
+          <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
+  
         </div>
       </div>
       <mat-menu #eventMenu="matMenu">
@@ -67,7 +66,7 @@
       </mat-menu>
 
       <div class="btn-inicio">
-        <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="verificar()">
+        <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="role == 'centro'">
           <mat-icon>store</mat-icon>
         </button>
         <button
@@ -99,10 +98,8 @@
       </div>
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>Mis materiales</button>
-        <button mat-menu-item (click)="redirectToRecyclingCenter()">
-          Centro de reciclaje
-        </button>
+        <button mat-menu-item *ngIf="verificar()">Mis materiales</button>
+        <button mat-menu-item (click)="redirectToRecyclingCenter()"*ngIf="verificar()">Centro de reciclaje</button>
       </mat-menu>
     </mat-toolbar>
 
@@ -121,12 +118,12 @@
         >
           Roles
         </button>
-        <button mat-button [matMenuTriggerFor]="userMenu">Usuarios</button>
+        <button mat-button [matMenuTriggerFor]="userMenu" *ngIf="verificar()">Usuarios</button>
         <button mat-button>Materiales</button>
         <button mat-button>Blog</button>
         <button mat-button>Eventos</button>
         <button mat-button>Mapa</button>
-        <button mat-button>Preguntas frecuentes</button>
+        <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
         <button mat-button routerLink="/login" (click)="cerrar()">
           <mat-icon>logout</mat-icon>
           <span>Cerrar sesión</span>
@@ -294,14 +291,13 @@
       </div>
 
       <div>
-        <button mat-button>Materiales</button>
-        <button mat-button>Blog</button>
-        <button mat-button [matMenuTriggerFor]="eventMenu">Eventos</button>
+        <button mat-button *ngIf="verificar()">Materiales</button>
+        <button mat-button *ngIf="verificar()">Blog</button>
+        <button mat-button [matMenuTriggerFor]="eventMenu" *ngIf="verificar()">Eventos</button>
 
-        <button mat-button routerLink="components/center-recycling">
-          Mapa
-        </button>
-        <button mat-button>Preguntas frecuentes</button>
+        <button mat-button routerLink="components/center-recycling" *ngIf="verificar()">Mapa</button>
+        <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
+
       </div>
     </div>
     <mat-menu #eventMenu="matMenu">

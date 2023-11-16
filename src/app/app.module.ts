@@ -23,8 +23,7 @@ import { CommonModule } from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LoginComponent } from './components/login/login.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GoogleMapsModule } from '@angular/google-maps';
@@ -62,7 +61,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     GoogleMapsModule,
     MatSnackBarModule,
     MatCardModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],

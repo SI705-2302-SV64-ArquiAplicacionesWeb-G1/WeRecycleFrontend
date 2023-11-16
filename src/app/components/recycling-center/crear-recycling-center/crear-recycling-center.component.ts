@@ -97,16 +97,16 @@ export class CrearRecyclingCenterComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       idRecyclingCenter:[''],
-      nameRecyclingCenter: ['q', Validators.required],
-      licenseRecyclingCenter: ['q', Validators.required],
-      openinghourRecyclingCenter: ['1', [Validators.required]],
-      closingtimeRecyclingCenter: ['2', [Validators.required]],
+      nameRecyclingCenter: ['', Validators.required],
+      licenseRecyclingCenter: ['', Validators.required],
+      openinghourRecyclingCenter: ['', [Validators.required]],
+      closingtimeRecyclingCenter: ['', [Validators.required]],
       idUbication: ['0', Validators.required],
-      addressUbication:['111', Validators.required],
-      cityUbication:['1', Validators.required],
-      contactUbication:['111111111', [Validators.required, this.validateContactNumber.bind(this)]],
-      descUbication:['1',],
-      typeUbication:['otros',Validators.required]
+      addressUbication:['', Validators.required],
+      cityUbication:['', Validators.required],
+      contactUbication:['', [Validators.required, this.validateContactNumber.bind(this)]],
+      descUbication:['',],
+      typeUbication:['',Validators.required]
     });
 
     this.filteredTipoCiudad = this.cityUbication.valueChanges.pipe(
