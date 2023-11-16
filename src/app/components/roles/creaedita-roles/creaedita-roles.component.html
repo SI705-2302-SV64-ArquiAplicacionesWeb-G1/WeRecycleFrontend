@@ -33,11 +33,29 @@
           <mat-error
             *ngIf="obtenerControlCampo('stateType')?.errors?.['required']"
           >
-            La direcciónes obligatoria .
+            El estado es obligatorio .
           </mat-error>
         </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Usuario </mat-label>
+          <mat-select formControlName="useror">
+            <mat-option
+              *ngFor="let u of listaUsuarios"
+              [value]="u.idUser"
+            >
+              {{ u.userName }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="obtenerControlCampo('useror')?.errors?.['required']"
+          >
+            El usuario es obligatorio.
+          </mat-error>
+      </mat-form-field>
+      <br />
         <button mat-raised-button color="primary">Aceptar</button>
-        <button mat-raised-button color="warn" routerLink="/typeusers/lista">
+        <button mat-raised-button color="warn" routerLink="/componentsypeusers/lista">
           Cancelar
         </button>
         <p>{{ mensaje }}</p>

@@ -10,6 +10,8 @@ import {
 import { Roles } from 'src/app/models/roles';
 import { RolesService } from 'src/app/services/roles.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Useror } from 'src/app/models/useror';
+import { UserorService } from 'src/app/services/useror.service';
 @Component({
   selector: 'app-creaedita-roles',
   templateUrl: './creaedita-roles.component.html',
@@ -23,8 +25,10 @@ export class CreaeditaRolesComponent implements OnInit {
     {value: 'ADMIN', viewValue: 'ADMIN'},
     {value: 'WEB', viewValue : 'WEB'}
   ];
+  listaUsuarios: Useror[]= [];
   constructor(private uS : RolesService,
     private router: Router,
+    private sS: UserorService,
     private formBuilder: FormBuilder,
     private route : ActivatedRoute){}
 
@@ -32,13 +36,18 @@ export class CreaeditaRolesComponent implements OnInit {
         this.form = this.formBuilder.group({
           idTypeUser:[''],
           typeAccount:['',Validators.required],
-          stateType:['',Validators.required]
+          stateType:['',Validators.required],
+          useror:['',Validators.required]
+        })
+        this.sS.list().subscribe((data)=>{
+          this.listaUsuarios =data;
         })
     }
     aceptar(): void {
       if (this.form.valid) {
         this.roles.typeAccount = this.form.value.typeAccount;
         this.roles.stateType = this.form.value.stateType;
+        this.roles.useror.idUser = this.form.value.useror;
         this.uS.insert(this.roles).subscribe((data) => {
           this.uS.list().subscribe((data) => {
             this.uS.setlist(data);

@@ -10,7 +10,7 @@
         <br />
         <h2 style="text-align: center">Lista de Roles</h2> <!-- Cambié "ubicaiones" a "ubicaciones" -->
         <div style="text-align: right">
-            <button mat-raised-button color="primary" routerLink="/typeusers/rol">
+            <button mat-raised-button color="primary" routerLink="/components/typeusers/rol">
                 Nuevo
             </button>
         </div>
@@ -32,7 +32,11 @@
                     <th mat-header-cell *matHeaderCellDef>Estado</th>
                     <td mat-cell *matCellDef="let element">{{ element.stateType }}</td>
                 </ng-container>
-    
+                <ng-container matColumnDef="useror">
+                    <th mat-header-cell *matHeaderCellDef>Usuario</th>
+                    <td mat-cell *matCellDef="let element">{{ element.useror.userName }}
+                    </td>
+                  </ng-container>
                 <!-- Otras columnas -->
             <!-- Otras columnas -->
         <ng-container matColumnDef="accion02">
