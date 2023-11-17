@@ -19,7 +19,7 @@ export class ListarEventuserComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     });
     this.uS.getlist().subscribe((data) => {
-     
+   
       this.dataSource.paginator = this.paginator;
     });
   }

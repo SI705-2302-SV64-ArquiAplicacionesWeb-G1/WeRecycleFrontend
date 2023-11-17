@@ -39,6 +39,8 @@ import { CreaeditaEventuserComponent } from './eventuser/creaedita-eventuser/cre
 import { UsuariosRegistradosComponent } from './reportes/usuarios-registrados/usuarios-registrados.component';
 import { ListarPublicationComponent } from './publication/listar-publication/listar-publication.component';
 import { ListarPiblicationIdComponent } from './publication/listar-piblication-id/listar-piblication-id.component';
+import { EventuserComponent } from './eventuser/eventuser.component';
+import { ListarEventuserComponent } from './eventuser/listar-eventuser/listar-eventuser.component';
 
 
 const routes: Routes = [
@@ -131,17 +133,34 @@ const routes: Routes = [
       { path: 'crear', component: CreaeditaCommenttsComponent },
     ],
   },
+
   {
     path: 'likes',
     component: LikeComponent,
     children: [
       { path: 'nuevo', component: ListarLikeComponent },
 
-
-      { path: 'crear', component: CreaeditaLikeComponent },
+      { path: 'crear', component: CreaeditaCommenttsComponent },
     ],
   },
- 
+  {
+    path: 'eventsusercontroller',
+    component: EventuserComponent,
+    children: [
+      { path: 'nuevo', component: ListarEventuserComponent },
+
+      { path: 'crear', component: CreaeditaEventuserComponent },
+    ],
+  },
+  {
+    path: 'MaterialUserControllet',
+    component: UsermaterialComponent,
+    children: [
+      { path: 'nuevo', component: ListarUsermaterialComponent },
+
+      { path: 'crear', component: CreaeditaUsermaterialComponent },
+    ],
+  },
 {
   path: 'PublicationController',
   component: PublicationComponent,
@@ -164,20 +183,9 @@ const routes: Routes = [
 {
   path: 'cantidad-usuarios',
   component: UsuariosRegistradosComponent,
-}
+},
 
-  {
-    path: 'eventsusercontroller',
-    component: UsermaterialComponent,
-    children: [
-      { path: 'nuevo', component: ListarEventComponent },
-
-
-      { path: 'crear', component: CreaeditaEventuserComponent },
-    ],
-  },
-
-
+  
 
 ];
 
