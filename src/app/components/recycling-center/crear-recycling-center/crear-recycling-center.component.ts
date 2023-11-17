@@ -83,30 +83,29 @@ export class CrearRecyclingCenterComponent implements OnInit {
       this.init();
     });
 
-        this.userS.list().subscribe({
-          next: (users: Useror[]) => {
-            this.userLast = users[users.length - 1];
-            console.log(this.userLast)
-          },
-          error: (error) => {
-            console.error('Error al obtener las ubicaciones', error);
-          }
-        });
+    const currentUser = this.userS.getCurrentUser();
+
+    if (currentUser) {
+        this.userLast=currentUser;
+    }
+    else {
+      console.error('Usuario actual no encontrado');
+    }
  
 
 
     this.form = this.formBuilder.group({
       idRecyclingCenter:[''],
-      nameRecyclingCenter: ['q', Validators.required],
-      licenseRecyclingCenter: ['q', Validators.required],
-      openinghourRecyclingCenter: ['1', [Validators.required]],
-      closingtimeRecyclingCenter: ['2', [Validators.required]],
+      nameRecyclingCenter: ['', Validators.required],
+      licenseRecyclingCenter: ['', Validators.required],
+      openinghourRecyclingCenter: ['', [Validators.required]],
+      closingtimeRecyclingCenter: ['', [Validators.required]],
       idUbication: ['0', Validators.required],
-      addressUbication:['111', Validators.required],
-      cityUbication:['1', Validators.required],
-      contactUbication:['111111111', [Validators.required, this.validateContactNumber.bind(this)]],
-      descUbication:['1',],
-      typeUbication:['otros',Validators.required]
+      addressUbication:['', Validators.required],
+      cityUbication:['', Validators.required],
+      contactUbication:['', [Validators.required, this.validateContactNumber.bind(this)]],
+      descUbication:['',],
+      typeUbication:['',Validators.required]
     });
 
     this.filteredTipoCiudad = this.cityUbication.valueChanges.pipe(

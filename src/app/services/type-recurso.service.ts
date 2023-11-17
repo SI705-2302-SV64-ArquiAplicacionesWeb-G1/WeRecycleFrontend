@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TypeRecurso } from '../models/typerecurso';
 
 const base_url=environment.base;
@@ -16,11 +16,21 @@ export class TypeRecursoService {
 
   constructor(private http: HttpClient) {}
   list() {
-    return this.http.get<TypeRecurso[]>(this.url);
+    let token = sessionStorage.getItem('token');
+    return this.http.get<TypeRecurso[]>(this.url,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
   }
 
-  insert(camp: TypeRecurso) {
-    return this.http.post(this.url, camp);
+  insert(typere: TypeRecurso) {
+    let token = sessionStorage.getItem('token');
+    return this.http.post(this.url, typere,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
   setList(listaNueva: TypeRecurso[]) {

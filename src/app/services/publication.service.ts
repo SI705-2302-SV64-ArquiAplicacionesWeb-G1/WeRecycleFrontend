@@ -16,16 +16,22 @@ import { Injectable } from '@angular/core';
 
     list() {
       let token = sessionStorage.getItem('token');
-      return this.http.get<Publication[]>(this.url,{
-        headers: new HttpHeaders()
-        .set('Authorization', `Bearer ${token}`)
-        .set('Content-Type', 'application/json'),
-      });
+
+    return this.http.get<Publication[]>(this.url,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
     }
 
     
     insert(user: Publication) {
-      return this.http.post(this.url, user);
+      let token = sessionStorage.getItem('token');
+    return this.http.post(this.url, user,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
     }
 
     setlist(listaNueva: Publication[]) {
@@ -40,10 +46,20 @@ import { Injectable } from '@angular/core';
       return this.http.delete(`${this.url}/${id}`);
     }
     listId(id: number) {
-      return this.http.get<Publication>(`${this.url}/${id}`);
+      let token = sessionStorage.getItem('token');
+      return this.http.get<Publication>(`${this.url}/${id}`,{
+        headers: new HttpHeaders()
+          .set('Authorization', `Bearer ${token}`)
+          .set('Content-Type', 'application/json'),
+      });
     }
 
-    update(u: Publication) {
-      return this.http.put(this.url, u);
+    update(p: Publication) {
+      let token = sessionStorage.getItem('token');
+      return this.http.put(this.url, p,{
+        headers: new HttpHeaders()
+          .set('Authorization', `Bearer ${token}`)
+          .set('Content-Type', 'application/json'),
+      });
     }
 }

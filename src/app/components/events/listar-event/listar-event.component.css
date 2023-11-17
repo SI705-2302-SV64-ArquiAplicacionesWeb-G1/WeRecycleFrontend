@@ -1,7 +1,16 @@
 /* Estilos generales del botón */
 
+.btn-rojo {
+  background-color: red;
+  color: white;
+}
 
 
+.filtro-fecha{
+  width: 180px;
+  margin-left: 30px;
+  margin-top: 25px;
+}
 
 
 .sidenav {

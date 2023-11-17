@@ -1,7 +1,7 @@
 
 
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Params, ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import {
   FormGroup,
@@ -16,6 +16,7 @@ import { Useror } from 'src/app/models/useror';
 import { TypeRecurso } from 'src/app/models/typerecurso';
 import { UserorService } from 'src/app/services/useror.service';
 import { TypeRecursoService } from 'src/app/services/type-recurso.service';
+
 
 @Component({
   selector: 'app-creaedita-publication',
@@ -43,10 +44,16 @@ export class CreaeditaPublicationComponent implements OnInit {
     private tS: TypeRecursoService,
     
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+      this.edicion = data['id'] != null;
+      this.init();
+    });
     this.form = this.formBuilder.group({
       idPublication: [''],
       title: ['', Validators.required],
@@ -68,20 +75,27 @@ export class CreaeditaPublicationComponent implements OnInit {
   }
   aceptar(): void {
     if (this.form.valid) {
-      this.publicacion.idPublication = this.form.value.idPublication;
       this.publicacion.title = this.form.value.title;
       this.publicacion.description=this.form.value.description;
       this.publicacion.archivo=this.form.value.archivo;
       this.publicacion.datePublication = this.form.value.datePublication;
-      this.publicacion.id_TypeRecurso.idTypeRecurso = this.form.value.id_TypeRecurso.idTypeRecurso;
-      this.publicacion.idUser.idUser = this.form.value.idUser.idUser;
+      this.publicacion.id_TypeRecurso.idTypeRecurso = this.form.value.id_TypeRecurso;
+      this.publicacion.idUser.idUser = this.form.value.idUser;
 
-      this.pS.insert(this.publicacion).subscribe((data) => {
-        this.pS.list().subscribe((data) => {
-          this.pS.setlist(data);
+      if (this.edicion) {
+        this.pS.update(this.publicacion).subscribe(() => {
+          this.pS.list().subscribe((data) => {
+            this.pS.setlist(data);
+          });
         });
-      });
-      this.router.navigate(['PublicationController']);
+      } else {
+        this.pS.insert(this.publicacion).subscribe((data) => {
+          this.pS.list().subscribe((data) => {
+            this.pS.setlist(data);
+          });
+        });
+      }
+      this.router.navigate(['components/PublicationController']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
@@ -109,12 +123,11 @@ export class CreaeditaPublicationComponent implements OnInit {
           description: new FormControl(data.description),
           archivo: new FormControl(data.archivo),
           datePublication : new FormControl(data.datePublication),
-          id_TypeRecurso : new FormControl(data.id_TypeRecurso),
-          idUser:new FormControl(data.idUser),
+          id_TypeRecurso : new FormControl(data.id_TypeRecurso.idTypeRecurso),
+          idUser:new FormControl(data.idUser.idUser)  ,
         })
       })
     }
   }
 
- 
 }

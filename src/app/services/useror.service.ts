@@ -3,6 +3,7 @@ import { Observable, Subject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Useror } from '../models/useror';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UsuarioRolDTO } from '../models/usuarioRolDTO';
 
 const base_url = environment.base;
 @Injectable({
@@ -12,7 +13,18 @@ export class UserorService {
 
   private url = `${base_url}/users`;
   private listaCambio = new Subject<Useror[]>();
+  private currentUser: Useror | null = null;
+
   constructor(private http:HttpClient) { }
+
+  
+  getCurrentUser(): Useror | null {
+    return this.currentUser;
+  }
+
+  setCurrentUser(user: Useror): void {
+    this.currentUser = user;
+  }
 
   list() {
     let token = sessionStorage.getItem('token');
@@ -71,14 +83,23 @@ export class UserorService {
       });
       }
 
-      getLastCreatedUser(): Observable<Useror | null> {
-        return this.listaCambio.pipe(
-          map(users => {
-            const lastUser = users.length > 0 ? users[users.length - 1] : null;
-            console.log("Último usuario emitido:", lastUser);
-            return lastUser;
-          })
-        );
-      
-}
+
+    getUserByName(name: String):Observable<Useror>  {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Useror>(`${this.url}/${name}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+    }
+
+    getCount():Observable<UsuarioRolDTO[]>{
+      let token = sessionStorage.getItem('token');
+      return this.http.get<UsuarioRolDTO[]>(`${this.url}/cantidad-centro`,{
+        headers: new HttpHeaders()
+          .set('Authorization', `Bearer ${token}`)
+          .set('Content-Type', 'application/json'),
+      });
+    }
 }

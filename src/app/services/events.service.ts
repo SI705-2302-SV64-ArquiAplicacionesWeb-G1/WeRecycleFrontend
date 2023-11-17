@@ -1,4 +1,4 @@
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Events } from '../models/events';
@@ -15,6 +15,8 @@ export class EventsService {
   private listaCambio=new Subject<Events[]>();
 
   constructor(private http:HttpClient) { }
+  
+
 
   list() {
     let token = sessionStorage.getItem('token');
@@ -22,7 +24,7 @@ export class EventsService {
       headers: new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json'),
-    });
+    })
   }
 
 
@@ -80,4 +82,32 @@ export class EventsService {
         .set('Content-Type', 'application/json'),
       });
     }
+
+   
+  findByDate(fecha: string): Observable<Events[]> {
+  let token = sessionStorage.getItem('token');
+  const url = `${this.url}/evento-por-fecha`;
+  const fechaF=fecha;
+
+  return this.http.post<Events[]>(url, fechaF, {
+    headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+  });
 }
+
+
+  getEventosPorUbicacion(ubicacion: string): Observable<Events[]> {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Events[]>(`${this.url}/evento-por-ubicacion/${ubicacion}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+      });
+  }
+
+}
+
+
+    

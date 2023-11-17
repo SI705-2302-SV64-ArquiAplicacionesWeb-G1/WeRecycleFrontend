@@ -7,6 +7,10 @@
         <mat-form-field class="buscador">
             <input matInput  (keyup)="filter($event)" placeholder="Buscador" /><mat-icon class="icon-search">search</mat-icon>
         </mat-form-field>
+        <!--<div>
+          <mat-checkbox [(ngModel)]="vacantesLibres">Vacantes Libres</mat-checkbox>
+        </div>-->
+   
 
         <h4>Resultados</h4>
 
@@ -14,6 +18,8 @@
             <mat-card-content *ngFor="let evento of filteredData" class="example-card" (click)="selectEvent(evento)">
               <div class="card-container">
                 <mat-card >
+                  <p>Vacantes: {{evento.numberParticipant}}</p><br>
+
                   <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
                     <mat-card-title>{{ evento.title }}</mat-card-title>
@@ -35,9 +41,17 @@
         showFirstLastButtons
         ></mat-paginator>
     </mat-sidenav>
-    
 
+    <form [formGroup]="miFormulario">
+      <mat-form-field class="filtro-fecha">
+        <mat-label>Fecha</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+</form>
     <mat-card class="event-info-container" >
+      
         <mat-card-content >
               <mat-card-header>
                 <mat-card-title><h3>{{ eventSelected?.title }}</h3></mat-card-title>
@@ -51,7 +65,14 @@
                         <p> {{eventSelected?.hora}}:00 horas</p>
                     </div>
                 </div>
-               <button class="btn-verde btn-regular" >Seguir</button> 
+                <div class="contendor-info-select">
+                  <!-- ... (otro contenido) -->
+                  <button class="btn-verde btn-regular" (click)="seguirEvento()" [ngClass]="{'btn-rojo': userFollowed}">
+                    {{ userFollowed ? 'Dejar de seguir' : 'Seguir' }}
+                  </button>
+                  <p class="p-descripcion">{{ eventSelected?.description }}</p>
+                </div>
+              
                <p class="p-descripcion">{{eventSelected?.description}}</p>
               </mat-card-content>
         </mat-card-content>

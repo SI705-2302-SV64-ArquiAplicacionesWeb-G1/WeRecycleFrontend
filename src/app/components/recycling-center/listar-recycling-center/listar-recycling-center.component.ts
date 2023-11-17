@@ -33,31 +33,15 @@ export class ListarRecyclingCenterComponent implements OnInit{
     'telefono',
     ];
 
-    isMenuOpen = false;
-  todasLasHoras: string[] = ['Hora 1', 'Hora 2', 'Hora 3', /* ... otras horas ... */];
 
-
-
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
-
-  seleccionarHora(hora: string) {
-    // Aquí puedes implementar la lógica para manejar la selección de la hora
-    console.log('Hora seleccionada:', hora);
-
-    // Puedes cerrar el menú después de seleccionar la hora
-    this.isMenuOpen = false;
-  }
 
 
     constructor(private rS: RecyclingCenterService) {}
 
-center = {lat: -12.046374, lng: -77.042793};
-zoom = 10;
-heatmapOptions = {radius: 5};
-heatmapData = [
-
+    center = {lat: -12.046374, lng: -77.042793};
+    zoom = 10;
+    heatmapOptions = {radius: 5};
+    heatmapData = [
 ];
 
   

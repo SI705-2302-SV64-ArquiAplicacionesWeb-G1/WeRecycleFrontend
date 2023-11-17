@@ -1,4 +1,47 @@
+
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2 style="text-align: center;">Lista de Pulicaciones</h2>
+ 
+  <div class="container">
+    <div class="card-container">
+      <div class="card" *ngFor="let element of dataSource.data">
+        <div class="card-content">
+          <div class="card-header">
+            <div class="card-avatar" [style.background-image]="'url(assets/avatars/avatar1.jpg)'"></div>
+            <div class="title-subtitle-container">
+              <div class="card-title">{{ element.title }}</div>
+              <div class="card-subtitle">{{ element.datePublication }}</div>
+            </div>
+          </div>
+          <img class="card-image" src="{{ element.archivo }}" alt="Image">
+          <div class="card-content-text">
+            <div class="card-text">{{ element.description }}</div>
+          </div>
+          
+          <div class="card-actions" style="text-align: center;">
+            <!--<button class="ver-mas" mat-raised-button  [routerLink]="['ediciones', element.idPublication]">Ver más</button>-->
+            <button class="ver-mas" mat-raised-button  [routerLink]="['publicacion', element.idPublication]">Ver más</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+</body>
+</html>
+
+
+
+
+<!--<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,8 +57,7 @@
 
                   The actual rendered columns are set as a property on the row definition" -->
 
-        <!-- Position Column -->
-
+        <!-- Position Column --
         <ng-container matColumnDef="codigo">
           <th mat-header-cell *matHeaderCellDef>Código</th>
 
@@ -24,7 +66,7 @@
           </td>
         </ng-container>
 
-        <!-- Name Column -->
+        <!-- Name Column --
 
         <ng-container matColumnDef="titulo">
           <th mat-header-cell *matHeaderCellDef>titulo</th>
@@ -72,3 +114,4 @@
     </div>
   </body>
 </html>
+-->

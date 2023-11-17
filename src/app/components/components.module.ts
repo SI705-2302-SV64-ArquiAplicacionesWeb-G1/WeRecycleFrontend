@@ -52,6 +52,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ListarMisEventosComponent } from './events/listar-mis-eventos/listar-mis-eventos.component';
 import { ListarMiCentroComponent } from './recycling-center/listar-mi-centro/listar-mi-centro.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 import { CommenttsComponent } from './commentts/commentts.component';
 import { CreaeditaCommenttsComponent } from './commentts/creaedita-commentts/creaedita-commentts.component';
 import { ListarCommenttsComponent } from './commentts/listar-commentts/listar-commentts.component';
@@ -64,6 +65,10 @@ import { ListarUsermaterialComponent } from './usermaterial/listar-usermaterial/
 import { EventuserComponent } from './eventuser/eventuser.component';
 import { CreaeditaEventuserComponent } from './eventuser/creaedita-eventuser/creaedita-eventuser.component';
 import { ListarEventuserComponent } from './eventuser/listar-eventuser/listar-eventuser.component';
+
+import { UsuariosRegistradosComponent } from './reportes/usuarios-registrados/usuarios-registrados.component';
+import { NgChartsModule } from 'ng2-charts';
+import { ListarPiblicationIdComponent } from './publication/listar-piblication-id/listar-piblication-id.component';
 
 
 @NgModule({
@@ -99,6 +104,7 @@ import { ListarEventuserComponent } from './eventuser/listar-eventuser/listar-ev
     CreaeditaTiporecursoComponent,
     ListarMisEventosComponent,
     ListarMiCentroComponent,
+
     CommenttsComponent,
     CreaeditaCommenttsComponent,
     ListarCommenttsComponent,
@@ -111,6 +117,8 @@ import { ListarEventuserComponent } from './eventuser/listar-eventuser/listar-ev
     EventuserComponent,
     CreaeditaEventuserComponent,
     ListarEventuserComponent,
+    UsuariosRegistradosComponent,
+    ListarPiblicationIdComponent,
   ],
   imports: [
     CommonModule,
@@ -135,7 +143,8 @@ import { ListarEventuserComponent } from './eventuser/listar-eventuser/listar-ev
     FormsModule,
     MatCardModule,
     GoogleMapsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgChartsModule
   ]
 })
 export class ComponentsModule { }

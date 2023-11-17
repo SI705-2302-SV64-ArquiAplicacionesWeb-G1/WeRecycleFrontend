@@ -79,6 +79,15 @@ export class CrearEventComponent implements OnInit {
 
   ngOnInit(): void {
 
+    const currentUser = this.userS.getCurrentUser();
+
+        if (currentUser) {
+            this.userLast=currentUser;
+        }
+        else {
+          console.error('Usuario actual no encontrado');
+        }
+        
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
@@ -87,14 +96,7 @@ export class CrearEventComponent implements OnInit {
       this.init();
     });
 
-    this.userS.list().subscribe({
-      next: (users: Useror[]) => {
-        this.userLast = users[users.length - 1];
-      },
-      error: (error) => {
-        console.error('Error al obtener las ubicaciones', error);
-      }
-    });
+
 
     this.form = this.formBuilder.group({
       idEvent:[''],

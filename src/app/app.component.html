@@ -2,50 +2,105 @@
   <div class="banner">
     <!-- Menú largo -->
     <mat-toolbar class="menu menu-largo">
-      
       <div class="menu-izquierda">
         <div class="contenedor-logo">
-          <a href="/">
+          <a href="/home">
             <div class="logo-menu"></div>
           </a>
         </div>
-  
+
         <div>
-          <button mat-button >Materiales</button>
-          <button mat-button>Blog</button>
-          <button mat-button [matMenuTriggerFor]="eventMenu">Eventos</button>
+          <button
+            mat-button
+            [matMenuTriggerFor]="rolMenu"
+            *ngIf="role == 'ADMIN'"
+          >
+            Roles
+          </button>
+          <button mat-button [matMenuTriggerFor]="userMenu"*ngIf="verificar()">Usuarios</button>
+          <button mat-button *ngIf="verificar()">Materiales</button>
+          <button mat-button *ngIf="verificar()">Blog</button>
+          <button mat-button [matMenuTriggerFor]="eventMenu" *ngIf="verificar()">Eventos</button>
   
-          <button mat-button routerLink="components/center-recycling">Mapa</button>
-          <button mat-button>Preguntas frecuentes</button>
+          <button mat-button routerLink="components/center-recycling" *ngIf="verificar()">Mapa</button>
+          <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
   
         </div>
       </div>
       <mat-menu #eventMenu="matMenu">
-  
         <button mat-menu-item routerLink="components/event">Ver Eventos</button>
-        <button mat-menu-item routerLink="components/event/mis-eventos"  *ngIf="verificar()">Mis Eventos</button>
+        <button
+          mat-menu-item
+          routerLink="components/event/mis-eventos"
+          *ngIf="verificar()"
+        >
+          Mis Eventos
+        </button>
+        <!-- Agrega más opciones de menú según sea necesario -->
+      </mat-menu>
+      <mat-menu #rolMenu="matMenu">
+        <button mat-menu-item routerLink="components/typeusers/lista">
+          Ver Roles
+        </button>
+        <button
+          mat-menu-item
+          routerLink="components/typeusers/nuevo"
+          *ngIf="verificar()"
+        >
+          Registrar Rol
+        </button>
+        <!-- Agrega más opciones de menú según sea necesario -->
+      </mat-menu>
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item routerLink="components/users/user">
+          Registrar Usuario
+        </button>
+        <button
+          mat-menu-item
+          routerLink="components/users/lista"
+          *ngIf="verificar()"
+        >
+          Lista de Usuarios
+        </button>
         <!-- Agrega más opciones de menú según sea necesario -->
       </mat-menu>
 
-
       <div class="btn-inicio">
-        <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="verificar()">
+        <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="role == 'centro'">
           <mat-icon>store</mat-icon>
         </button>
-        <button mat-button routerLink="/login" (click)="cerrar()" *ngIf="verificar()">
-          <mat-icon >logout</mat-icon>
+        <button
+          mat-button
+          routerLink="/login"
+          (click)="cerrar()"
+          *ngIf="verificar()"
+        >
+          <mat-icon>logout</mat-icon>
           <span>Cerrar sesión</span>
         </button>
-        <button mat-button *ngIf="verificar()">Rol: <span>{{role}}</span></button>
-        <button class="btn-principal btn-verde" *ngIf="!verificar()" routerLink="/login" >Iniciar sesión</button>
-        <button class="btn-principal btn-blanco" *ngIf="!verificar()" routerLink="components/users/user">Regístrate</button>
+        <button mat-button *ngIf="verificar()">
+          Rol: <span>{{ role }}</span>
+        </button>
+        <button
+          class="btn-principal btn-verde"
+          *ngIf="!verificar()"
+          routerLink="/login"
+        >
+          Iniciar sesión
+        </button>
+        <button
+          class="btn-principal btn-blanco"
+          *ngIf="!verificar()"
+          routerLink="components/users/user"
+        >
+          Regístrate
+        </button>
       </div>
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item >Mis materiales</button>
-        <button mat-menu-item (click)="redirectToRecyclingCenter()">Centro de reciclaje</button>
+        <button mat-menu-item *ngIf="verificar()">Mis materiales</button>
+        <button mat-menu-item (click)="redirectToRecyclingCenter()"*ngIf="verificar()">Centro de reciclaje</button>
       </mat-menu>
-
     </mat-toolbar>
 
     <!-- Menú corto -->
@@ -56,16 +111,26 @@
             <div class="logo-menu"></div>
           </a>
         </div>
+        <button
+          mat-button
+          [matMenuTriggerFor]="rolMenu"
+          *ngIf="role == 'ADMIN'"
+        >
+          Roles
+        </button>
+        <button mat-button [matMenuTriggerFor]="userMenu" *ngIf="verificar()">Usuarios</button>
         <button mat-button>Materiales</button>
         <button mat-button>Blog</button>
         <button mat-button>Eventos</button>
-        <button mat-button >Mapa</button>
-        <button mat-button>Preguntas frecuentes</button>
+        <button mat-button>Mapa</button>
+        <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
         <button mat-button routerLink="/login" (click)="cerrar()">
           <mat-icon>logout</mat-icon>
           <span>Cerrar sesión</span>
         </button>
-        <button mat-button>Rol: <span>{{role}}</span></button>
+        <button mat-button>
+          Rol: <span>{{ role }}</span>
+        </button>
       </div>
 
       <div>
@@ -77,8 +142,14 @@
 
     <!-- Contenedor de slogan -->
     <div class="contenedor-slogan">
-      <h1>Rescatando El planeta, <br /> un reciclaje a la vez</h1>
-      <h3>¡Únete a nuestra comunidad para marcar la <br /> diferencia hoy!</h3>
+      <h1>
+        Rescatando El planeta, <br />
+        un reciclaje a la vez
+      </h1>
+      <h3>
+        ¡Únete a nuestra comunidad para marcar la <br />
+        diferencia hoy!
+      </h3>
       <button class="btn-regular btn-verde">Comenzar</button>
     </div>
   </div>
@@ -163,7 +234,9 @@
     <div class="contendor-action">
       <div class="column-action">
         <h3>Convierte tu compromiso en acción. Regístrate y participa</h3>
-        <button class="btn-regular btn-rojo"routerLink="components/users/user">Regístrate</button>
+        <button class="btn-regular btn-rojo" routerLink="components/users/user">
+          Regístrate
+        </button>
       </div>
 
       <div class="contendor-action-img">
@@ -176,7 +249,9 @@
     <div class="column footer-logo"></div>
     <div class="column footer-redes">
       <h3>Contáctanos</h3>
-      <button class="btn-regular btn-rojo"routerLink="components/users/user">Regístrate</button>
+      <button class="btn-regular btn-rojo" routerLink="components/users/user">
+        Regístrate
+      </button>
     </div>
     <div class="column footer-menu">
       <h3>Site map</h3>
@@ -192,13 +267,16 @@
         <li class="list-item_footer"><button mat-button>Blog</button></li>
         <li class="list-item_footer"><button mat-button>Eventos</button></li>
         <li class="list-item_footer">
-          <button mat-button onclick="window.location.href='components/ubications/mapa'">
+          <button
+            mat-button
+            onclick="window.location.href='components/ubications/mapa'"
+          >
             Mapa
           </button>
         </li>
       </ul>
     </div>
-    </footer>
+  </footer>
 </div>
 
 <router-outlet></router-outlet>
@@ -213,41 +291,74 @@
       </div>
 
       <div>
-        <button mat-button >Materiales</button>
-        <button mat-button>Blog</button>
-        <button mat-button [matMenuTriggerFor]="eventMenu">Eventos</button>
+        <button mat-button *ngIf="verificar()">Materiales</button>
+        <button mat-button *ngIf="verificar()">Blog</button>
+        <button mat-button [matMenuTriggerFor]="eventMenu" *ngIf="verificar()">Eventos</button>
 
-        <button mat-button routerLink="components/center-recycling">Mapa</button>
-        <button mat-button>Preguntas frecuentes</button>
+        <button mat-button routerLink="components/center-recycling" *ngIf="verificar()">Mapa</button>
+        <button mat-button [matMenuTriggerFor]="ReporteMenu" *ngIf="verificar()">Reportes</button>
+        <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
 
       </div>
     </div>
     <mat-menu #eventMenu="matMenu">
-
       <button mat-menu-item routerLink="components/event">Ver Eventos</button>
-      <button mat-menu-item routerLink="components/event/mis-eventos"  *ngIf="verificar()">Mis Eventos</button>
-      <!-- Agrega más opciones de menú según sea necesario -->
+      <button
+        mat-menu-item
+        routerLink="components/event/mis-eventos"
+        *ngIf="verificar()"
+      >
+        Mis Eventos
+      </button>
     </mat-menu>
 
-    <div class="btn-inicio" >
+    <mat-menu #ReporteMenu="matMenu">
+      <button mat-menu-item routerLink="components/cantidad-usuarios">Usuarios registrados</button>
+    </mat-menu>
 
-      <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="role == 'centro'">
+    <div class="btn-inicio">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        *ngIf="role == 'centro'"
+      >
         <mat-icon>store</mat-icon>
       </button>
-      <button mat-button routerLink="/login" (click)="cerrar()" *ngIf="verificar()">
+      <button
+        mat-button
+        routerLink="/login"
+        (click)="cerrar()"
+        *ngIf="verificar()"
+      >
         <mat-icon>logout</mat-icon>
         <span>Cerrar sesión</span>
       </button>
-      <button mat-button *ngIf="verificar()">Rol: <span>{{role}}</span></button>
-      <button class="btn-principal btn-verde" *ngIf="!verificar()" routerLink="/login" >Iniciar sesión</button>
-      <button class="btn-principal btn-blanco" *ngIf="!verificar()" routerLink="components/users/user">Regístrate</button>
+      <button mat-button *ngIf="verificar()">
+        Rol: <span>{{ role }}</span>
+      </button>
+      <button
+        class="btn-principal btn-verde"
+        *ngIf="!verificar()"
+        routerLink="/login"
+      >
+        Iniciar sesión
+      </button>
+      <button
+        class="btn-principal btn-blanco"
+        *ngIf="!verificar()"
+        routerLink="components/users/user"
+      >
+        Regístrate
+      </button>
       <button mat-icon-button *ngIf="role == 'ADMIN'">
         <mat-icon>person</mat-icon>
       </button>
     </div>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item >Mis materiales</button>
-      <button mat-menu-item (click)="redirectToRecyclingCenter()">Centro de reciclaje</button>
+      <button mat-menu-item>Mis materiales</button>
+      <button mat-menu-item (click)="redirectToRecyclingCenter()">
+        Centro de reciclaje
+      </button>
     </mat-menu>
   </mat-toolbar>
 
