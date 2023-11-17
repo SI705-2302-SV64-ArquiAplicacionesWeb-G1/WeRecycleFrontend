@@ -23,79 +23,125 @@ import { TypeRecursoComponent } from './type-recurso/type-recurso.component';
 import { CreaeditaTiporecursoComponent } from './type-recurso/creaedita-tiporecurso/creaedita-tiporecurso.component';
 import { ListarMiCentroComponent } from './recycling-center/listar-mi-centro/listar-mi-centro.component';
 import { ListarMisEventosComponent } from './events/listar-mis-eventos/listar-mis-eventos.component';
+
+import { Comment } from '../models/commentts';
+import { ListarCommenttsComponent } from './commentts/listar-commentts/listar-commentts.component';
+import { CreaeditaCommenttsComponent } from './commentts/creaedita-commentts/creaedita-commentts.component';
+import { CommenttsComponent } from './commentts/commentts.component';
+import { LikeComponent } from './like/like.component';
+import { ListarLikeComponent } from './like/listar-like/listar-like.component';
+import { CreaeditaLikeComponent } from './like/creaedita-like/creaedita-like.component';
+import { UsermaterialComponent } from './usermaterial/usermaterial.component';
+import { ListarUsermaterialComponent } from './usermaterial/listar-usermaterial/listar-usermaterial.component';
+import { CreaeditaUsermaterialComponent } from './usermaterial/creaedita-usermaterial/creaedita-usermaterial.component';
+import { ListarEventComponent } from './events/listar-event/listar-event.component';
+import { CreaeditaEventuserComponent } from './eventuser/creaedita-eventuser/creaedita-eventuser.component';
 import { UsuariosRegistradosComponent } from './reportes/usuarios-registrados/usuarios-registrados.component';
 import { ListarPublicationComponent } from './publication/listar-publication/listar-publication.component';
 import { ListarPiblicationIdComponent } from './publication/listar-piblication-id/listar-piblication-id.component';
 
 
-const routes: Routes = [  {
-  path: 'RecyclableMaterialController',
-  component: RecyclableMaterialComponent,
-  children: [
-    {
-      path: 'nuevo',
-      component: CreaeditaRecyclablematerialComponent,
-    },
-    {
-      path: 'lista',
-      component: ListarRecyclablematerialComponent,
-    },
-  ],
-},
-{
-  path: 'frequentquestioncontroller',
-  component: FrequenquestionsComponent,
-  children: [
-    { path: 'nuevo', component: CreaeditaFrequenquestionsComponent },
-  ],
-},
-{
-  path: 'ubications',
-  component: UbicationComponent,
-  children: [{ path: 'mapa', component: CrearUbicationComponent }],
-},
-{
-  path: 'users',
-  component: UserorComponent,
-  children: [
-    { path: 'user', component: CreaeditaUserorComponent },
-    { path: 'lista', component: ListaUserorComponent },
-  ],
-},
-{
-  path: 'typeusers',
-  component: RolesComponent,
-  children: [
-    {
-      path: 'rol',
-      component: CreaeditaRolesComponent,
-    },
-    {
-      path: 'lista',
-      component: ListaRolesComponent,
-    },
-  ],
-},
+const routes: Routes = [
+  {
+    path: 'RecyclableMaterialController',
+    component: RecyclableMaterialComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: CreaeditaRecyclablematerialComponent,
+      },
+      {
+        path: 'lista',
+        component: ListarRecyclablematerialComponent,
+      },
+    ],
+  },
+  {
+    path: 'frequentquestioncontroller',
+    component: FrequenquestionsComponent,
+    children: [
+      { path: 'nuevo', component: CreaeditaFrequenquestionsComponent },
+    ],
+  },
+  {
+    path: 'ubications',
+    component: UbicationComponent,
+    children: [{ path: 'mapa', component: CrearUbicationComponent }],
+  },
+  {
+    path: 'users',
+    component: UserorComponent,
+    children: [
+      { path: 'user', component: CreaeditaUserorComponent },
+      { path: 'lista', component: ListaUserorComponent },
+    ],
+  },
+  {
+    path: 'typeusers',
+    component: RolesComponent,
+    children: [
+      {
+        path: 'rol',
+        component: CreaeditaRolesComponent,
+      },
+      {
+        path: 'lista',
+        component: ListaRolesComponent,
+      },
+    ],
+  },
 
-{
-  path: 'center-recycling',
-   component: RecyclingCenterComponent, children: [
-    { path: 'nuevo', component: CrearRecyclingCenterComponent },
-    { path: 'mi-centro', component: ListarMiCentroComponent },
-    { path: 'mi-centro/:id', component: CrearRecyclingCenterComponent },
+  {
+    path: 'center-recycling',
+    component: RecyclingCenterComponent,
+    children: [
+      { path: 'nuevo', component: CrearRecyclingCenterComponent },
+      { path: 'mi-centro', component: ListarMiCentroComponent },
+      { path: 'mi-centro/:id', component: CrearRecyclingCenterComponent },
+    ],
+  },
 
-  ]
-},
+  {
+    path: 'event',
+    component: EventsComponent,
+    children: [
+      { path: 'nuevo', component: CrearEventComponent },
+      { path: 'mis-eventos/:id', component: CrearEventComponent },
+      { path: 'mis-eventos', component: ListarMisEventosComponent },
+    ],
+  },
+
+  {
+    path: 'PublicationController',
+    component: PublicationComponent,
+    children: [{ path: 'nuevo', component: CreaeditaPublicationComponent }],
+  },
+
+  {
+    path: 'TypeRecursoController',
+    component: TypeRecursoComponent,
+    children: [{ path: 'nuevo', component: CreaeditaTiporecursoComponent }],
+  },
+  {
+    path: 'comments',
+    component: CommenttsComponent,
+    children: [
+      { path: 'nuevo', component: ListarCommenttsComponent },
+
+      { path: 'crear', component: CreaeditaCommenttsComponent },
+    ],
+  },
+  {
+    path: 'likes',
+    component: LikeComponent,
+    children: [
+      { path: 'nuevo', component: ListarLikeComponent },
 
 
-{
-  path: 'event', component: EventsComponent, children: [
-    { path: 'nuevo', component: CrearEventComponent },
-    { path: 'mis-eventos/:id', component: CrearEventComponent },
-    { path: 'mis-eventos', component: ListarMisEventosComponent }
-  ]
-},
-
+      { path: 'crear', component: CreaeditaLikeComponent },
+    ],
+  },
+ 
 {
   path: 'PublicationController',
   component: PublicationComponent,
@@ -120,12 +166,23 @@ const routes: Routes = [  {
   component: UsuariosRegistradosComponent,
 }
 
+  {
+    path: 'eventsusercontroller',
+    component: UsermaterialComponent,
+    children: [
+      { path: 'nuevo', component: ListarEventComponent },
+
+
+      { path: 'crear', component: CreaeditaEventuserComponent },
+    ],
+  },
+
 
 
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ComponentsRoutingModule { }
+export class ComponentsRoutingModule {}

@@ -1,38 +1,37 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { RecyclableMaterial } from '../models/recyclable-material';
+import { Like } from '../models/like';
+import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 const base_url = environment.base;
-@Injectable({
-  providedIn: 'root',
-})
-export class RecyclableMaterialService {
-  private url = `${base_url}/RecyclableMaterialController`;
-  private listaCambio = new Subject<RecyclableMaterial[]>();
-  constructor(private http: HttpClient) {}
 
+@Injectable({
+  providedIn: 'root'
+})
+export class LikeService {
+  private url = `${base_url}/likes`;
+  private listaCambio = new Subject<Like[]>();
+  constructor(private http:HttpClient) { }
   list() {
     let token = sessionStorage.getItem('token');
-    return this.http.get<RecyclableMaterial[]>(this.url,{
+    console.log("nose");
+    return this.http.get<Like[]>(this.url,{
       headers: new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json'),
     });
-    
   }
-  insert(recyclableMaterial: RecyclableMaterial) {
+  insert(like: Like) {
     let token = sessionStorage.getItem('token');
-    return this.http.post(this.url, recyclableMaterial,{
+    console.log("Lista actualizada en el servicio wata:", like);
+    return this.http.post(this.url, like,{
       headers: new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json'),
     });
-    
   }
 
-  setlist(listaNueva: RecyclableMaterial[]) {
+  setlist(listaNueva: Like[]) {
     this.listaCambio.next(listaNueva);
   }
 
@@ -40,5 +39,3 @@ export class RecyclableMaterialService {
     return this.listaCambio.asObservable();
   }
 }
-
-console.log("Se logro entrar al service")

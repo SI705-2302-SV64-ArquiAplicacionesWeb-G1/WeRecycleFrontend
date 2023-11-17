@@ -16,6 +16,7 @@ import { Injectable } from '@angular/core';
 
     list() {
       let token = sessionStorage.getItem('token');
+
     return this.http.get<Publication[]>(this.url,{
       headers: new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
