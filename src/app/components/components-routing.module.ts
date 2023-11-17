@@ -98,6 +98,8 @@ const routes: Routes = [  {
   component: PublicationComponent,
   children: [
     { path: 'nuevo', component: CreaeditaPublicationComponent },
+    { path: 'ediciones/:id', component: CreaeditaPublicationComponent },
+    
   ],
 },
 
