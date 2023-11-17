@@ -83,15 +83,14 @@ export class CrearRecyclingCenterComponent implements OnInit {
       this.init();
     });
 
-        this.userS.list().subscribe({
-          next: (users: Useror[]) => {
-            this.userLast = users[users.length - 1];
-            console.log(this.userLast)
-          },
-          error: (error) => {
-            console.error('Error al obtener las ubicaciones', error);
-          }
-        });
+    const currentUser = this.userS.getCurrentUser();
+
+    if (currentUser) {
+        this.userLast=currentUser;
+    }
+    else {
+      console.error('Usuario actual no encontrado');
+    }
  
 
 

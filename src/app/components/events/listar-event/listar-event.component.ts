@@ -19,6 +19,7 @@ export class ListarEventComponent implements OnInit {
   vacantesLibres: boolean = true;
   dateControl = new FormControl(new Date());
   miFormulario: FormGroup;
+  userFollowed:boolean=false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -57,14 +58,13 @@ export class ListarEventComponent implements OnInit {
       switchMap((fecha: Date | null) => {
         if (fecha) {
           const formattedDate = `${fecha.getFullYear()}-${('0' + (fecha.getMonth() + 1)).slice(-2)}-${('0' + fecha.getDate()).slice(-2)}`;
-          console.log(formattedDate)
-          return this.eS.findByDate(formattedDate);
+          const fechaF= formattedDate.toString();
+          return this.eS.findByDate(fechaF);
         } else {
           return of([]);
         }
       })
     ).subscribe((data) => {
-      console.log('Data recibida:', data);
       this.dataSource = data;
       this.filteredData = this.dataSource;
     });
@@ -78,10 +78,30 @@ export class ListarEventComponent implements OnInit {
     this.filteredData = this.dataSource.filter((item) =>
       item.title.toLowerCase().includes(filterValue)
     );
-    console.log('Filtered Data:', this.filteredData);
   }
 
   selectEvent(event: any) {
     this.eventSelected = event;
   }
+
+  seguirEvento() {
+    if (!this.userFollowed) {
+      // Seguir el evento
+      this.eventSelected.numberParticipant--;
+      this.userFollowed = true;
+    } else {
+      // Dejar de seguir el evento
+      this.eventSelected.numberParticipant++;
+      this.userFollowed = false;
+    }
+  
+    // Llamada al nuevo método del servicio para actualizar solo el número de participantes
+    this.eS.update(this.eventSelected).subscribe(
+      () => {
+        // Lógica adicional si es necesario
+      },
+      (error) => {
+        console.error('Error al actualizar el evento', error);
+      }
+    );}
 }

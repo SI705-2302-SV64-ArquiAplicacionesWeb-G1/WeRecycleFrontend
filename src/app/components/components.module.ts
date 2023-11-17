@@ -52,6 +52,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ListarMisEventosComponent } from './events/listar-mis-eventos/listar-mis-eventos.component';
 import { ListarMiCentroComponent } from './recycling-center/listar-mi-centro/listar-mi-centro.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { UsuariosRegistradosComponent } from './reportes/usuarios-registrados/usuarios-registrados.component';
+import { NgChartsModule } from 'ng2-charts';
 import { ListarPiblicationIdComponent } from './publication/listar-piblication-id/listar-piblication-id.component';
 
 
@@ -88,6 +90,7 @@ import { ListarPiblicationIdComponent } from './publication/listar-piblication-i
     CreaeditaTiporecursoComponent,
     ListarMisEventosComponent,
     ListarMiCentroComponent,
+    UsuariosRegistradosComponent,
     ListarPiblicationIdComponent,
   ],
   imports: [
@@ -113,7 +116,8 @@ import { ListarPiblicationIdComponent } from './publication/listar-piblication-i
     FormsModule,
     MatCardModule,
     GoogleMapsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgChartsModule
   ]
 })
 export class ComponentsModule { }
