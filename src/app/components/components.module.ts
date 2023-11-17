@@ -54,6 +54,7 @@ import { ListarMiCentroComponent } from './recycling-center/listar-mi-centro/lis
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { UsuariosRegistradosComponent } from './reportes/usuarios-registrados/usuarios-registrados.component';
 import { NgChartsModule } from 'ng2-charts';
+import { ListarPiblicationIdComponent } from './publication/listar-piblication-id/listar-piblication-id.component';
 
 
 @NgModule({
@@ -90,6 +91,7 @@ import { NgChartsModule } from 'ng2-charts';
     ListarMisEventosComponent,
     ListarMiCentroComponent,
     UsuariosRegistradosComponent,
+    ListarPiblicationIdComponent,
   ],
   imports: [
     CommonModule,

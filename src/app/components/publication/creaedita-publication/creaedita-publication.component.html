@@ -139,6 +139,12 @@
    <div class="container" style="text-align: center">
       <h2>Registro de Publicaciones</h2>
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>idPublication</mat-label>
+          <input matInput placeholder="Id" formControlName="idPublication" />
+        </mat-form-field>
+
         <mat-form-field class="example-full-width">
           <mat-label>Titulo</mat-label>
           <input matInput placeholder="titulo" formControlName="title" />
@@ -248,13 +254,13 @@
           </mat-error>
       </mat-form-field> -->
 
-
-        <button mat-raised-button color="primary">Aceptar</button>
-        <button mat-raised-button color="warn" routerLink="/PublicationController">
+      <div class="contenedor-btn">
+        <button class="btn-verde btn-regular" >Aceptar</button>
+        <button class="btn-rojo btn-regular" routerLink="/components/PublicationController">
           Cancelar
         </button>
         <p>{{ mensaje }}</p>
-        
+      </div>
 
         
       </form>

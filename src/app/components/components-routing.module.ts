@@ -24,6 +24,8 @@ import { CreaeditaTiporecursoComponent } from './type-recurso/creaedita-tiporecu
 import { ListarMiCentroComponent } from './recycling-center/listar-mi-centro/listar-mi-centro.component';
 import { ListarMisEventosComponent } from './events/listar-mis-eventos/listar-mis-eventos.component';
 import { UsuariosRegistradosComponent } from './reportes/usuarios-registrados/usuarios-registrados.component';
+import { ListarPublicationComponent } from './publication/listar-publication/listar-publication.component';
+import { ListarPiblicationIdComponent } from './publication/listar-piblication-id/listar-piblication-id.component';
 
 
 const routes: Routes = [  {
@@ -99,6 +101,9 @@ const routes: Routes = [  {
   component: PublicationComponent,
   children: [
     { path: 'nuevo', component: CreaeditaPublicationComponent },
+    { path: 'ediciones/:id', component: CreaeditaPublicationComponent },
+    { path: 'publicacion/:id', component: ListarPiblicationIdComponent},
+
   ],
 },
 
