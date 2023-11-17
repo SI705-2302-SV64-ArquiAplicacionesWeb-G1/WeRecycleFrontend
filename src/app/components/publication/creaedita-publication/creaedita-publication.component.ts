@@ -1,7 +1,7 @@
 
 
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Params, ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import {
   FormGroup,
@@ -16,6 +16,7 @@ import { Useror } from 'src/app/models/useror';
 import { TypeRecurso } from 'src/app/models/typerecurso';
 import { UserorService } from 'src/app/services/useror.service';
 import { TypeRecursoService } from 'src/app/services/type-recurso.service';
+
 
 @Component({
   selector: 'app-creaedita-publication',
@@ -43,10 +44,16 @@ export class CreaeditaPublicationComponent implements OnInit {
     private tS: TypeRecursoService,
     
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+      this.edicion = data['id'] != null;
+      this.init();
+    });
     this.form = this.formBuilder.group({
       idPublication: [''],
       title: ['', Validators.required],
@@ -75,11 +82,19 @@ export class CreaeditaPublicationComponent implements OnInit {
       this.publicacion.id_TypeRecurso.idTypeRecurso = this.form.value.id_TypeRecurso;
       this.publicacion.idUser.idUser = this.form.value.idUser;
 
-      this.pS.insert(this.publicacion).subscribe((data) => {
-        this.pS.list().subscribe((data) => {
-          this.pS.setlist(data);
+      if (this.edicion) {
+        this.pS.update(this.publicacion).subscribe(() => {
+          this.pS.list().subscribe((data) => {
+            this.pS.setlist(data);
+          });
         });
-      });
+      } else {
+        this.pS.insert(this.publicacion).subscribe((data) => {
+          this.pS.list().subscribe((data) => {
+            this.pS.setlist(data);
+          });
+        });
+      }
       this.router.navigate(['components/PublicationController']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
@@ -99,7 +114,7 @@ export class CreaeditaPublicationComponent implements OnInit {
     return control;
   }
 
-  /*init(){
+  init(){
     if(this.edicion){
       this.pS.listId(this.id).subscribe((data)=>{
         this.form = new FormGroup({
@@ -109,10 +124,10 @@ export class CreaeditaPublicationComponent implements OnInit {
           archivo: new FormControl(data.archivo),
           datePublication : new FormControl(data.datePublication),
           id_TypeRecurso : new FormControl(data.id_TypeRecurso.idTypeRecurso),
-          idUser:new FormControl(data.idUser.idUser),
+          idUser:new FormControl(data.idUser.idUser)  ,
         })
       })
     }
-  }*/
+  }
 
 }

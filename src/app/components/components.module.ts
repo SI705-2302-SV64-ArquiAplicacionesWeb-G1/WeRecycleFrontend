@@ -52,6 +52,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ListarMisEventosComponent } from './events/listar-mis-eventos/listar-mis-eventos.component';
 import { ListarMiCentroComponent } from './recycling-center/listar-mi-centro/listar-mi-centro.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ListarPiblicationIdComponent } from './publication/listar-piblication-id/listar-piblication-id.component';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     CreaeditaTiporecursoComponent,
     ListarMisEventosComponent,
     ListarMiCentroComponent,
+    ListarPiblicationIdComponent,
   ],
   imports: [
     CommonModule,
