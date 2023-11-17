@@ -38,7 +38,10 @@ export class ListarMiCentroComponent implements OnInit {
         this.rS.getList().subscribe((data=>{
           this.dataSource = data.sort((a, b) => new Date(b.idUbication.ubicationDate).getTime() - new Date(a.idUbication.ubicationDate).getTime());
         }))
+
+        
       }
+      
       
 
       eliminar(id:number){

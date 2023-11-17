@@ -296,6 +296,7 @@
         <button mat-button [matMenuTriggerFor]="eventMenu" *ngIf="verificar()">Eventos</button>
 
         <button mat-button routerLink="components/center-recycling" *ngIf="verificar()">Mapa</button>
+        <button mat-button [matMenuTriggerFor]="ReporteMenu" *ngIf="verificar()">Reportes</button>
         <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
 
       </div>
@@ -309,7 +310,10 @@
       >
         Mis Eventos
       </button>
-      <!-- Agrega más opciones de menú según sea necesario -->
+    </mat-menu>
+
+    <mat-menu #ReporteMenu="matMenu">
+      <button mat-menu-item routerLink="components/cantidad-usuarios">Usuarios registrados</button>
     </mat-menu>
 
     <div class="btn-inicio">

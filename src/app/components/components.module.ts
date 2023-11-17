@@ -52,6 +52,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ListarMisEventosComponent } from './events/listar-mis-eventos/listar-mis-eventos.component';
 import { ListarMiCentroComponent } from './recycling-center/listar-mi-centro/listar-mi-centro.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { UsuariosRegistradosComponent } from './reportes/usuarios-registrados/usuarios-registrados.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -87,6 +89,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     CreaeditaTiporecursoComponent,
     ListarMisEventosComponent,
     ListarMiCentroComponent,
+    UsuariosRegistradosComponent,
   ],
   imports: [
     CommonModule,
@@ -111,7 +114,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     FormsModule,
     MatCardModule,
     GoogleMapsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgChartsModule
   ]
 })
 export class ComponentsModule { }

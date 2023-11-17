@@ -87,8 +87,9 @@ export class EventsService {
   findByDate(fecha: string): Observable<Events[]> {
   let token = sessionStorage.getItem('token');
   const url = `${this.url}/evento-por-fecha`;
+  const fechaF=fecha;
 
-  return this.http.post<Events[]>(url, `"${fecha}"`, {
+  return this.http.post<Events[]>(url, fechaF, {
     headers: new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json'),

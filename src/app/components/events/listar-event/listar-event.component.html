@@ -18,6 +18,8 @@
             <mat-card-content *ngFor="let evento of filteredData" class="example-card" (click)="selectEvent(evento)">
               <div class="card-container">
                 <mat-card >
+                  <p>Vacantes: {{evento.numberParticipant}}</p><br>
+
                   <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
                     <mat-card-title>{{ evento.title }}</mat-card-title>
@@ -47,9 +49,7 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-    </form>
-    
-
+</form>
     <mat-card class="event-info-container" >
       
         <mat-card-content >
@@ -65,7 +65,14 @@
                         <p> {{eventSelected?.hora}}:00 horas</p>
                     </div>
                 </div>
-               <button class="btn-verde btn-regular" >Seguir</button> 
+                <div class="contendor-info-select">
+                  <!-- ... (otro contenido) -->
+                  <button class="btn-verde btn-regular" (click)="seguirEvento()" [ngClass]="{'btn-rojo': userFollowed}">
+                    {{ userFollowed ? 'Dejar de seguir' : 'Seguir' }}
+                  </button>
+                  <p class="p-descripcion">{{ eventSelected?.description }}</p>
+                </div>
+              
                <p class="p-descripcion">{{eventSelected?.description}}</p>
               </mat-card-content>
         </mat-card-content>
