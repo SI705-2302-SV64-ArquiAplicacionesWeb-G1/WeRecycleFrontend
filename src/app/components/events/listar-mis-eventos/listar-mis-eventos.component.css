@@ -4,6 +4,10 @@ mat-card{
     padding: 10px;
 }
 
+section{
+    margin-top: 60px;
+}
+
 button.btn-rojo{
     position:absolute;
     top: 30px;
