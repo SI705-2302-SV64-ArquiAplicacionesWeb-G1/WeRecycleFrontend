@@ -10,21 +10,16 @@
         </div>
 
         <div>
-          <button
-            mat-button
-            [matMenuTriggerFor]="rolMenu"
-            *ngIf="role == 'ADMIN'"
-          >
-            Roles
-          </button>
-          <button mat-button [matMenuTriggerFor]="userMenu"*ngIf="verificar()">Usuarios</button>
+
           <button mat-button *ngIf="verificar()">Materiales</button>
-          <button mat-button *ngIf="verificar()">Blog</button>
+          <button mat-button *ngIf="verificar() " routerLink="components/PublicationController">Blog</button>
           <button mat-button [matMenuTriggerFor]="eventMenu" *ngIf="verificar()">Eventos</button>
-  
           <button mat-button routerLink="components/center-recycling" *ngIf="verificar()">Mapa</button>
+          <button mat-button [matMenuTriggerFor]="ReporteMenu" *ngIf="verificar()">Reportes</button>
           <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
-  
+          <mat-menu #ReporteMenu="matMenu">
+            <button mat-menu-item routerLink="components/cantidad-usuarios">Usuarios registrados</button>
+          </mat-menu>
         </div>
       </div>
       <mat-menu #eventMenu="matMenu">
@@ -36,51 +31,37 @@
         >
           Mis Eventos
         </button>
-        <!-- Agrega más opciones de menú según sea necesario -->
       </mat-menu>
-      <mat-menu #rolMenu="matMenu">
-        <button mat-menu-item routerLink="components/typeusers/lista">
-          Ver Roles
-        </button>
-        <button
-          mat-menu-item
-          routerLink="components/typeusers/nuevo"
-          *ngIf="verificar()"
-        >
-          Registrar Rol
-        </button>
-        <!-- Agrega más opciones de menú según sea necesario -->
-      </mat-menu>
-      <mat-menu #userMenu="matMenu">
-        <button mat-menu-item routerLink="components/users/user">
-          Registrar Usuario
-        </button>
-        <button
-          mat-menu-item
-          routerLink="components/users/lista"
-          *ngIf="verificar()"
-        >
-          Lista de Usuarios
-        </button>
-        <!-- Agrega más opciones de menú según sea necesario -->
-      </mat-menu>
+
+
 
       <div class="btn-inicio">
         <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="role == 'centro'">
           <mat-icon>store</mat-icon>
         </button>
-        <button
-          mat-button
-          routerLink="/login"
-          (click)="cerrar()"
-          *ngIf="verificar()"
-        >
-          <mat-icon>logout</mat-icon>
-          <span>Cerrar sesión</span>
-        </button>
+
         <button mat-button *ngIf="verificar()">
           Rol: <span>{{ role }}</span>
         </button>
+        <button mat-icon-button [matMenuTriggerFor]="mainMenu" *ngIf="verificar()">
+          <mat-icon>person</mat-icon>
+        </button>
+  
+        <mat-menu #mainMenu="matMenu">
+          <button mat-menu-item *ngIf="role === 'ADMIN'" [matMenuTriggerFor]="rolMenu">Roles</button>
+          <mat-menu #rolMenu="matMenu">
+            <button mat-menu-item routerLink="components/typeusers/lista" > Ver Roles</button>
+            <button mat-menu-item routerLink="components/typeusers/nuevo"
+            *ngIf="verificar()"> Registrar Rol </button> </mat-menu>
+        
+          <button mat-menu-item *ngIf="role === 'ADMIN'" [matMenuTriggerFor]="userMenu"><mat-icon>person</mat-icon><span>Usuarios</span></button>
+          <button mat-button routerLink="/login"(click)="cerrar()" *ngIf="verificar()"><mat-icon>logout</mat-icon><span>Cerrar sesión</span></button>
+          
+          <mat-menu #userMenu="matMenu">
+          <button mat-menu-item routerLink="components/users/user">Registrar Usuario</button>
+          <button mat-menu-item routerLink="components/users/lista" *ngIf="verificar()">Lista de Usuarios </button>
+          </mat-menu>
+        </mat-menu>
         <button
           class="btn-principal btn-verde"
           *ngIf="!verificar()"
@@ -111,26 +92,20 @@
             <div class="logo-menu"></div>
           </a>
         </div>
-        <button
-          mat-button
-          [matMenuTriggerFor]="rolMenu"
-          *ngIf="role == 'ADMIN'"
-        >
-          Roles
-        </button>
-        <button mat-button [matMenuTriggerFor]="userMenu" *ngIf="verificar()">Usuarios</button>
+  
+
         <button mat-button>Materiales</button>
         <button mat-button>Blog</button>
         <button mat-button>Eventos</button>
         <button mat-button>Mapa</button>
         <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
         <button mat-button routerLink="/login" (click)="cerrar()">
-          <mat-icon>logout</mat-icon>
-          <span>Cerrar sesión</span>
+        <button mat-icon-button *ngIf="verificar()"><mat-icon>person</mat-icon></button>
+        <mat-icon>logout</mat-icon><span>Cerrar sesión</span></button>
+        <button mat-button>Rol: <span>{{ role }}</span>
         </button>
-        <button mat-button>
-          Rol: <span>{{ role }}</span>
-        </button>
+
+        
       </div>
 
       <div>
@@ -150,7 +125,7 @@
         ¡Únete a nuestra comunidad para marcar la <br />
         diferencia hoy!
       </h3>
-      <button class="btn-regular btn-verde">Comenzar</button>
+      <button class="btn-regular btn-verde" routerLink="/login">Comenzar</button>
     </div>
   </div>
 
@@ -177,37 +152,6 @@
         </p>
       </div>
     </div>
-  </section>
-
-  <section id="blog">
-    <h2>Descubre el Mundo del reciclaje</h2>
-    <mat-grid-list cols="3" rowHeight="1:1.3">
-      <mat-grid-tile>
-        <div class="contenedor-blog"></div>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <div class="contenedor-blog"></div>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <div class="contenedor-blog"></div>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <div class="contenedor-blog"></div>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <div class="contenedor-blog"></div>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <div class="contenedor-blog"></div>
-      </mat-grid-tile>
-    </mat-grid-list>
-
-    <button class="btn-regular btn-rojo">Ver más</button>
   </section>
 
   <section id="eleccion">
@@ -292,7 +236,7 @@
 
       <div>
         <button mat-button *ngIf="verificar()">Materiales</button>
-        <button mat-button *ngIf="verificar()">Blog</button>
+        <button mat-button *ngIf="verificar()" routerLink="components/PublicationController">Blog</button>
         <button mat-button [matMenuTriggerFor]="eventMenu" *ngIf="verificar()">Eventos</button>
 
         <button mat-button routerLink="components/center-recycling" *ngIf="verificar()">Mapa</button>
@@ -324,35 +268,28 @@
       >
         <mat-icon>store</mat-icon>
       </button>
-      <button
-        mat-button
-        routerLink="/login"
-        (click)="cerrar()"
-        *ngIf="verificar()"
-      >
-        <mat-icon>logout</mat-icon>
-        <span>Cerrar sesión</span>
-      </button>
-      <button mat-button *ngIf="verificar()">
-        Rol: <span>{{ role }}</span>
-      </button>
-      <button
-        class="btn-principal btn-verde"
-        *ngIf="!verificar()"
-        routerLink="/login"
-      >
-        Iniciar sesión
-      </button>
-      <button
-        class="btn-principal btn-blanco"
-        *ngIf="!verificar()"
-        routerLink="components/users/user"
-      >
-        Regístrate
-      </button>
-      <button mat-icon-button *ngIf="role == 'ADMIN'">
+
+      <button mat-button *ngIf="verificar()"> Rol: <span>{{ role }}</span></button>
+         
+      <button mat-icon-button [matMenuTriggerFor]="mainMenu" *ngIf="verificar()">
         <mat-icon>person</mat-icon>
       </button>
+
+      <mat-menu #mainMenu="matMenu">
+        <button mat-menu-item *ngIf="role === 'ADMIN'" [matMenuTriggerFor]="rolMenu">Roles</button>
+        <mat-menu #rolMenu="matMenu">
+          <button mat-menu-item routerLink="components/typeusers/lista" > Ver Roles</button>
+          <button mat-menu-item routerLink="components/typeusers/nuevo"
+          *ngIf="verificar()"> Registrar Rol </button> </mat-menu>
+      
+        <button mat-menu-item  *ngIf="role === 'ADMIN'"  [matMenuTriggerFor]="userMenu"><mat-icon>person</mat-icon><span>Usuarios</span></button>
+        <button mat-button routerLink="/login"(click)="cerrar()" *ngIf="verificar()"><mat-icon>logout</mat-icon><span>Cerrar sesión</span></button>
+        
+        <mat-menu #userMenu="matMenu">
+        <button mat-menu-item routerLink="components/users/user">Registrar Usuario</button>
+        <button mat-menu-item routerLink="components/users/lista" *ngIf="verificar()">Lista de Usuarios </button>
+        </mat-menu>
+      </mat-menu>
     </div>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>Mis materiales</button>

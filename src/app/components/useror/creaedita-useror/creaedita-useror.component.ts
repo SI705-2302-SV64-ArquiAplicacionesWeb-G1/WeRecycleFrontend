@@ -65,7 +65,7 @@ export class CreaeditaUserorComponent implements OnInit {
         });
       });
 
-      this.router.navigate(['users']);
+      this.router.navigate(['components/users']);
     } else {
       this.mensaje = 'Por Favor complete todos los campos obligatorios.';
     }
