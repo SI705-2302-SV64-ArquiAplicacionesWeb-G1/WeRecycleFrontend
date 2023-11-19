@@ -189,13 +189,13 @@ const routes: Routes = [
   component: UsuariosRegistradosComponent,
 },
 {
-  path: 'cantidad-likesnose',
+  path: 'cantidad-likes-por-publicacion',
   component: CantidaDeLikesPorPublicacionReporteComponent,
 },
-
+{
   path: 'cantidad-comentarios',
   component: CantidadComentariosPorPublicacionComponent,
-}
+},
 
 {
   path: 'cantidad-eventos-por-ubicacion',
