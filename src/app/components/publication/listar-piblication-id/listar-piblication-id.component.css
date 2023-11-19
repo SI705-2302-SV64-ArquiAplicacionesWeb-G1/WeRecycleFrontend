@@ -22,3 +22,16 @@
     color: #666;
     text-align: right;
   }
+  .ver-mas {
+  
+    color: white;
+    border: none;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }

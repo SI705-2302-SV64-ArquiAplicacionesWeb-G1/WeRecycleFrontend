@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { RecyclableMaterial } from '../models/recyclable-material';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -38,6 +38,17 @@ export class RecyclableMaterialService {
 
   getlist() {
     return this.listaCambio.asObservable();
+  }
+  buscar(nameRecyclableMaterial: string): Observable<RecyclableMaterial[]>{
+    let token = sessionStorage.getItem('token');
+    const urlWithName = `${this.url}/buscarMaterialReciclablePorNombre/${nameRecyclableMaterial}`
+    return this.http.post<RecyclableMaterial[]>(
+      urlWithName,{
+        headers: new HttpHeaders()
+          .set('Authorization', `Bearer ${token}`)
+          .set('Content-Type', 'application/json'),
+      }
+    );
   }
 }
 

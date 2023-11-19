@@ -11,7 +11,7 @@
 
         <div>
 
-          <button mat-button *ngIf="verificar()">Materiales</button>
+          <button mat-button [mat-menu-trigger-for]="MaterialesMenu" *ngIf="verificar()" >Materiales</button>
           <button mat-button *ngIf="verificar() " routerLink="components/PublicationController">Blog</button>
           <button mat-button [matMenuTriggerFor]="eventMenu" *ngIf="verificar()">Eventos</button>
           <button mat-button routerLink="components/center-recycling" *ngIf="verificar()">Mapa</button>
@@ -19,6 +19,13 @@
           <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
           <mat-menu #ReporteMenu="matMenu">
             <button mat-menu-item routerLink="components/cantidad-usuarios">Usuarios registrados</button>
+            <button mat-menu-item routerLink="components/cantidad-comentarios">Cantidad Comentarios por Publicacion</button>
+            <button mat-menu-item routerLink="components/cantidad-eventos-por-ubicacion">Eventos registrados</button>
+          </mat-menu> 
+          
+      <mat-menu #MaterialesMenu="matMenu">
+        <button mat-menu-item routerLink="components/RecyclableMaterialController/lista">Lista</button>
+        <button mat-menu-item routerLink="components/RecyclableMaterialController/nuevo">Nuevo</button>
           </mat-menu>
         </div>
       </div>
@@ -32,8 +39,6 @@
           Mis Eventos
         </button>
       </mat-menu>
-
-
 
       <div class="btn-inicio">
         <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="role == 'centro'">
@@ -51,7 +56,7 @@
           <button mat-menu-item *ngIf="role === 'ADMIN'" [matMenuTriggerFor]="rolMenu">Roles</button>
           <mat-menu #rolMenu="matMenu">
             <button mat-menu-item routerLink="components/typeusers/lista" > Ver Roles</button>
-            <button mat-menu-item routerLink="components/typeusers/nuevo"
+            <button mat-menu-item routerLink="components/typeusers/rol"
             *ngIf="verificar()"> Registrar Rol </button> </mat-menu>
         
           <button mat-menu-item *ngIf="role === 'ADMIN'" [matMenuTriggerFor]="userMenu"><mat-icon>person</mat-icon><span>Usuarios</span></button>
@@ -79,7 +84,7 @@
       </div>
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item *ngIf="verificar()">Mis materiales</button>
+        <button mat-menu-item  [mat-menu-trigger-for]="MaterialesMenu" *ngIf="verificar()">Mis materiales</button>
         <button mat-menu-item (click)="redirectToRecyclingCenter()"*ngIf="verificar()">Centro de reciclaje</button>
       </mat-menu>
     </mat-toolbar>
@@ -94,7 +99,7 @@
         </div>
   
 
-        <button mat-button>Materiales</button>
+        <button mat-button [mat-menu-trigger-for]="MaterialesMenu"*ngIf="verificar()" >Materiales</button>
         <button mat-button>Blog</button>
         <button mat-button>Eventos</button>
         <button mat-button>Mapa</button>
@@ -235,7 +240,7 @@
       </div>
 
       <div>
-        <button mat-button *ngIf="verificar()">Materiales</button>
+        <button mat-button [mat-menu-trigger-for]="MaterialesMenu" *ngIf="verificar() ">Materiales</button>
         <button mat-button *ngIf="verificar()" routerLink="components/PublicationController">Blog</button>
         <button mat-button [matMenuTriggerFor]="eventMenu" *ngIf="verificar()">Eventos</button>
 
@@ -255,9 +260,16 @@
         Mis Eventos
       </button>
     </mat-menu>
+             
+    <mat-menu #MaterialesMenu="matMenu">
+      <button mat-menu-item routerLink="components/RecyclableMaterialController/lista">Lista</button>
+      <button mat-menu-item routerLink="components/RecyclableMaterialController/nuevo">Nuevo</button>
+    </mat-menu> 
 
     <mat-menu #ReporteMenu="matMenu">
       <button mat-menu-item routerLink="components/cantidad-usuarios">Usuarios registrados</button>
+      <button mat-menu-item routerLink="components/cantidad-comentarios">Cantidad de Comentarios</button>
+      <button mat-menu-item routerLink="components/cantidad-eventos-por-ubicacion">Eventos registrados</button>
     </mat-menu>
 
     <div class="btn-inicio">
