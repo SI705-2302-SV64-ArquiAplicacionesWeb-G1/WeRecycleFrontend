@@ -47,7 +47,7 @@ export class CreaeditaCommenttsComponent implements OnInit {
             this.uS.setlist(data);
           });
         });
-        this.router.navigate(['comments']);
+        this.router.navigate(['']);
       }else{
         this.mensaje = 'Por Favor complete todos los campos obligatorios.';
       }
