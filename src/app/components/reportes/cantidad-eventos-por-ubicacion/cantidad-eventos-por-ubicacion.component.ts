@@ -11,7 +11,8 @@ import { EventsService } from 'src/app/services/events.service';
 export class CantidadEventosPorUbicacionComponent implements OnInit{
   barChartOptions: ChartOptions = {
     responsive:true,
-    aspectRatio: 0.8,
+    maintainAspectRatio: false,
+    aspectRatio: 0.9,
   };
   
 
@@ -24,13 +25,13 @@ export class CantidadEventosPorUbicacionComponent implements OnInit{
 
   ngOnInit(): void {
       this.eS.getQuantityOfEventsForUbication().subscribe((data) => { 
-      this.barChartData=[
-      {
-        data: data.map((item) => item.QuantityOfEvents),
-        label: 'registrados',
-      }
-      ]
-  
+        this.barchartLabels=data.map((item)=>item.city);
+        this.barChartData=[
+        {
+          data: data.map((item) => item.QuantityOfEvents),
+          label: 'Total de eventos',
+        },
+      ];
     });
   }
 }

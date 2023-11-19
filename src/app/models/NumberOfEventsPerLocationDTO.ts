@@ -1,4 +1,4 @@
 export class NumberOfEventsPerLocationDTO{
-    IdUbication:number=0
+    city:string=""
     QuantityOfEvents:number=0
 }
