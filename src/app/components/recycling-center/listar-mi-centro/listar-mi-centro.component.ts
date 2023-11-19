@@ -25,13 +25,12 @@ export class ListarMiCentroComponent implements OnInit {
         const currentUser = this.userS.getCurrentUser();
 
         if (currentUser) {
-    // Llama al servicio para obtener los eventos del usuario
           this.rS.getCentroForUser(currentUser.idUser).pipe(take(1)).subscribe((data) => {
           this.dataSource = data.sort((a, b) => new Date(b.idUbication.ubicationDate).getTime() - new Date(a.idUbication.ubicationDate).getTime());
           this.filteredData = this.dataSource;
         });
         } else {
-          console.error('Usuario actual no encontrado');
+          console.error('Usuario actual no eXDDDDDDDDDDDncontrado');
         }
 
 

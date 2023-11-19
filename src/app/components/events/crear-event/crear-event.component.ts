@@ -26,6 +26,7 @@ export class CrearEventComponent implements OnInit {
   userLast:Useror=new Useror()
   edicion: boolean = false;
   id: number = 0;
+  minDate = new Date(); 
 
 
   tipoCiudad = [
@@ -110,7 +111,7 @@ export class CrearEventComponent implements OnInit {
       cityUbication:['', Validators.required],
       contactUbication:['', [Validators.required, this.validateContactNumber.bind(this)]],
       typeUbication:['', Validators.required],
-      descUbication:['', Validators.required],
+      descUbication:['',],
     });
 
     this.filteredTipoCiudad = this.cityUbication.valueChanges.pipe(
@@ -128,6 +129,7 @@ export class CrearEventComponent implements OnInit {
     }
   }
 
+  
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.tipoCiudad
@@ -160,6 +162,9 @@ export class CrearEventComponent implements OnInit {
 
         this.uS.insert(newUbication).subscribe({
           next: (createdUbication: Ubication) => {
+            this.uS.list().subscribe((data) => {
+              this.uS.setList(data);
+            });
             this.uS.list().subscribe({
               next: (ubications: Ubication[]) => {
                 const lastUbication = ubications[ubications.length - 1];
@@ -181,22 +186,23 @@ export class CrearEventComponent implements OnInit {
 
 
   addEvent(ubication: Ubication) {
-    this.event.title = this.form.value.title;
+    if(this.form)
+    {
+      this.event.title = this.form.value.title;
     this.event.date = this.form.value.date;
     this.event.description = this.form.value.description;
     this.event.hora = this.form.value.hora;
     this.event.numberParticipant=this.form.value.numberParticipant;
     this.event.idUbication = ubication;
     
-      this.eS.insert(this.event).subscribe(
-        () => {
-          console.log('Recycling Center inserted successfully.');
-          this.router.navigate(['components/event']);
-        },
-        (error) => {
-          console.error('Error al actualizar el centro de reciclaje', error);
-        }
-      );
+      this.eS.insert(this.event).subscribe((data) => {
+        this.eS.list().subscribe((data) => {
+          this.eS.setList(data);
+        });
+      });
+      this.router.navigate(['components/event']);
+    }
+      
   }
 
 

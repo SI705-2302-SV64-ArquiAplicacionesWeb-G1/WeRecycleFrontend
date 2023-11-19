@@ -105,7 +105,7 @@ border-radius: 10px;
   padding: 20px !important;
   margin:30px;
   width: 81% !important;
-  min-height: 350px;
+  min-height: 310px;
 }
 
 .contendor-info-select{
@@ -114,7 +114,7 @@ border-radius: 10px;
 }
 
 .event-info-container button{
-  margin:10px 20px 50px!important;
+  margin:10px 20px 30px!important;
 }
 
 .example-card mat-card-title{
@@ -129,4 +129,21 @@ border-radius: 10px;
 .event-info-container h3{
   font-size: 30px !important;
   font-weight: 600 !important;
+}
+
+.btn-crear{
+  position: absolute;
+  bottom: 4vw;
+  background-color:transparent;
+  color: #006400;
+  border: none;
+  font-family: "Nunito Sans";;
+  padding-left: 32px;
+  display: inline-block;
+  margin: 4px 12px;
+  cursor: pointer;
+  background-image: url("img/icon-more.svg");
+  background-size: 2.2vw;
+  background-position: center left;
+  background-repeat: no-repeat;
 }
