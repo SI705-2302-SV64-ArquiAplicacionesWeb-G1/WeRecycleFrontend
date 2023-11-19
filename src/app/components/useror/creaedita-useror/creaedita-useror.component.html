@@ -11,12 +11,12 @@
 <form [formGroup]="form" (submit)="aceptar()" class="example-form">
 <mat-form-field class="example-full-width" *ngIf="edicion">
 <mat-label>idUser</mat-label>
-<input matInput placeholder="Id" formControlName="idUser" />
+<input  placeholder="Id" formControlName="idUser" />
 </mat-form-field>
 <br/>
 
-    <mat-form-field class="example-full-width">
-    <mat-label>Nombre</mat-label>
+    <mat-form-field >
+    
     <input
     matInput
     placeholder="Nombre"
@@ -28,7 +28,7 @@
     <br />
     
 
-<mat-form-field class="example-full-width">
+<mat-form-field >
 <mat-label>Password</mat-label>
 <input
     matInput [type]="hide ? 'password':'text'"
@@ -43,7 +43,7 @@
 </mat-form-field>
 
 <br />
-<mat-form-field class="example-full-width">
+<mat-form-field >
     <mat-label>Correo Electronico</mat-label>
     <input
         type="email"
@@ -62,7 +62,7 @@
 
 
 
-    <mat-form-field appearance="fill" class="example-full-width">
+    <mat-form-field >
       <input
       matInput
       placeholder="Ingrese fecha de nacimiento"
@@ -82,13 +82,13 @@
 
 
 
-<button mat-raised-button color="primary">Aceptar</button>
-<button mat-raised-button color="warn" routerLink="components/typeusers/lista">
-Cancelar
-</button>
+<button  class="btn-verde btn-regular" routerLink="/components/users/lista">Aceptar</button>
+<!--<button  class="btn-rojo btn-regular" routerLink="components/typeusers/lista">Cancelar</button>-->
 <p>{{ mensaje }}</p>
 </form>
 </div>
+<p>¿Ya tienes una cuenta? Regístrate <a routerLink="../../../login/">Aqui</a></p>
+
 </body>
 </html>
 

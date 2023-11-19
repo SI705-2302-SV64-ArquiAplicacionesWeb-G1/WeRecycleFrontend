@@ -59,13 +59,20 @@ export class CreaeditaUserorComponent implements OnInit {
       this.useror.userPassword = this.form.value.userPassword;
       this.useror.userEmail = this.form.value.userEmail;
       this.useror.userAge = this.form.value.userAge;
+      if(this.edicion){
+        this.uS.update(this.useror).subscribe(()=>{
+          this.uS.list().subscribe((data)=>{
+            this.uS.setlist(data);
+          });
+        });
+      }else
       this.uS.insert(this.useror).subscribe((data) => {
         this.uS.list().subscribe((data) => {
           this.uS.setlist(data);
         });
       });
 
-      this.router.navigate(['users']);
+      this.router.navigate(['components/users']);
     } else {
       this.mensaje = 'Por Favor complete todos los campos obligatorios.';
     }

@@ -69,7 +69,10 @@ import { ListarEventuserComponent } from './eventuser/listar-eventuser/listar-ev
 import { UsuariosRegistradosComponent } from './reportes/usuarios-registrados/usuarios-registrados.component';
 import { NgChartsModule } from 'ng2-charts';
 import { ListarPiblicationIdComponent } from './publication/listar-piblication-id/listar-piblication-id.component';
+
 import { CantidaDeLikesPorPublicacionReporteComponent } from './reportes/cantida-de-likes-por-publicacion-reporte/cantida-de-likes-por-publicacion-reporte.component';
+import { CantidadComentariosPorPublicacionComponent } from './reportes/cantidad-comentarios-por-publicacion/cantidad-comentarios-por-publicacion.component';
+import { CantidadEventosPorUbicacionComponent } from './reportes/cantidad-eventos-por-ubicacion/cantidad-eventos-por-ubicacion.component';
 
 
 @NgModule({
@@ -121,6 +124,8 @@ import { CantidaDeLikesPorPublicacionReporteComponent } from './reportes/cantida
     UsuariosRegistradosComponent,
     ListarPiblicationIdComponent,
     CantidaDeLikesPorPublicacionReporteComponent,
+    CantidadComentariosPorPublicacionComponent,
+    CantidadEventosPorUbicacionComponent,
   ],
   imports: [
     CommonModule,
