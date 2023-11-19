@@ -36,7 +36,7 @@ export class UsuariosRegistradosComponent implements OnInit {
         {
           data: data.map((item) => item.quantityAccount),
           label: 'Registrados',
-          backgroundColor: ['#00BF35', '#BF0035'],
+          backgroundColor: ['#00BF35', '#BF0035', '#3500BF' ],
           borderColor: '#8FBC8F',
           borderWidth: 1,
         },
