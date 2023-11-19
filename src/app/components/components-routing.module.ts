@@ -42,6 +42,7 @@ import { ListarPiblicationIdComponent } from './publication/listar-piblication-i
 import { EventuserComponent } from './eventuser/eventuser.component';
 import { ListarEventuserComponent } from './eventuser/listar-eventuser/listar-eventuser.component';
 import { CantidadComentariosPorPublicacionComponent } from './reportes/cantidad-comentarios-por-publicacion/cantidad-comentarios-por-publicacion.component';
+import { CantidadEventosPorUbicacionComponent } from './reportes/cantidad-eventos-por-ubicacion/cantidad-eventos-por-ubicacion.component';
 
 
 const routes: Routes = [
@@ -188,6 +189,11 @@ const routes: Routes = [
 {
   path: 'cantidad-comentarios',
   component: CantidadComentariosPorPublicacionComponent,
+}
+
+{
+  path: 'cantidad-eventos-por-ubicacion',
+  component: CantidadEventosPorUbicacionComponent,
 }
 
   
