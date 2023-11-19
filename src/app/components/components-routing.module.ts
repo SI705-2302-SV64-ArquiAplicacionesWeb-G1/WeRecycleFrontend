@@ -41,6 +41,7 @@ import { ListarPublicationComponent } from './publication/listar-publication/lis
 import { ListarPiblicationIdComponent } from './publication/listar-piblication-id/listar-piblication-id.component';
 import { EventuserComponent } from './eventuser/eventuser.component';
 import { ListarEventuserComponent } from './eventuser/listar-eventuser/listar-eventuser.component';
+import { CantidadComentariosPorPublicacionComponent } from './reportes/cantidad-comentarios-por-publicacion/cantidad-comentarios-por-publicacion.component';
 import { CantidadEventosPorUbicacionComponent } from './reportes/cantidad-eventos-por-ubicacion/cantidad-eventos-por-ubicacion.component';
 
 
@@ -185,6 +186,10 @@ const routes: Routes = [
   path: 'cantidad-usuarios',
   component: UsuariosRegistradosComponent,
 },
+{
+  path: 'cantidad-comentarios',
+  component: CantidadComentariosPorPublicacionComponent,
+}
 
 {
   path: 'cantidad-eventos-por-ubicacion',
