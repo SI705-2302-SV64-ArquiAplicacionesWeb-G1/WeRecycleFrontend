@@ -6,11 +6,11 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="container" style="text-align: center">
-      <h2>Registro de Materiales Reciclables</h2>
+    <div class="container">
+      <h2 class="h2">Material Reciclable</h2>
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
-        <mat-form-field class="example-full-width">
-          <mat-label>Material Reciclable</mat-label>
+        <mat-form-field class="example-full-width" >
+          <mat-label>Nombre</mat-label>
           <input
             matInput
             placeholder="Nombre"
@@ -36,6 +36,7 @@
             La direcciónes obligatoria .
           </mat-error>
         </mat-form-field>
+        <br />
         <mat-form-field class="example-full-width">
             <mat-label>Tipo</mat-label>
             <input
@@ -49,8 +50,24 @@
               El tipo es obligatorio .
             </mat-error>
           </mat-form-field>
-        <button mat-raised-button color="primary">Aceptar</button>
-        <button mat-raised-button color="warn" routerLink="/RecyclableMaterialController/lista">
+          <br />
+          <mat-form-field class="example-full-width">
+            <mat-label>Costo</mat-label>
+            <input
+              matInput
+              placeholder="costo"
+              formControlName="costMaterial"
+              type="number"
+            />
+            <mat-error
+              *ngIf="obtenerControlCampo('costMaterial')?.errors?.['required']"
+            >
+              El costo es obligatorio .
+            </mat-error>
+          </mat-form-field> 
+          <br />
+        <button mat-raised-button class="boton-aceptar">Aceptar</button>  
+        <button mat-raised-button routerLink="/components/RecyclableMaterialController/lista" class="btn-cancelar">
           Cancelar
         </button>
         <p>{{ mensaje }}</p>

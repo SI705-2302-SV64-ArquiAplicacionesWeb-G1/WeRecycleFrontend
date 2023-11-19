@@ -1,69 +1,44 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <br />
-        <h2 style="text-align: center">Lista de Materiales Reciclables</h2> <!-- Cambié "ubicaiones" a "ubicaciones" -->
-        <div style="text-align: right">
-            <button mat-raised-button color="primary" routerLink="/RecyclableMaterialController/nuevo">
-                Nuevo
-            </button>
-        </div>
-
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-            <!-- Agregué un atributo para definir las columnas que se mostrarán -->
-            <ng-container matColumnDef="idRecyclableMaterial">
-                <th mat-header-cell *matHeaderCellDef>Código</th>
-                <td mat-cell *matCellDef="let element">{{ element.idRecyclableMaterial }}</td>
-            </ng-container>
-
-
-                <ng-container matColumnDef="nameRecyclableMaterial">
-                    <th mat-header-cell *matHeaderCellDef>Nombre</th>
-                    <td mat-cell *matCellDef="let element">{{ element.nameRecyclableMaterial }}</td>
-                </ng-container>
-                
-                <ng-container matColumnDef="descriptionRecyclableMaterial">
-                    <th mat-header-cell *matHeaderCellDef>Descripcion</th>
-                    <td mat-cell *matCellDef="let element">{{ element.descriptionRecyclableMaterial }}</td>
-                </ng-container>
-    
-                <ng-container matColumnDef="typeRecyclableMaterial">
-                    <th mat-header-cell *matHeaderCellDef>Tipo</th>
-                    <td mat-cell *matCellDef="let element">{{ element.typeRecyclableMaterial }}</td>
-                </ng-container>
-
-                <!-- Otras columnas -->
-            <!-- Otras columnas -->
- 
-  
-        <ng-container matColumnDef="accion01">
-        <th mat-header-cell *matHeaderCellDef>Acciones</th>
-        <td mat-cell *matCellDef="let element">
-        <button
-        mat-raised-button
-        color="warn"
-        [routerLink]="['ediciones', element.idUniversity]"
-        >
-        Actualizar
-        </button>
-        </td></ng-container
-        >
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
-        <mat-paginator
-        [pageSizeOptions]="[5, 10, 25, 100]"
-        showFirstLastButtons
-        ></mat-paginator>
-   
-
+    <div class="container-title">
+        <h1 class="title1">!Te Damos la Bienvenida a WeRecycle!</h1>
     </div>
+    <mat-form-field class="buscador" >
+        <input matInput (keyup)="filter($event)" placeholder="buscar" /><mat-icon class="icon-search">search</mat-icon>
+      </mat-form-field>
+  <div class="container">
+    <div class="card-container">
+      <div class="card" *ngFor="let element of filteredData">
+        <div class="card-content">
+          <div class="card-header">
+            <div class="card-avatar" [style.background-image]="'url(assets/avatars/avatar1.jpg)'"></div>
+            <div class="title-subtitle-container">
+            </div>
+          </div>
+          <div class="card-content-text">
+            <div class="card-text title">{{ element.nameRecyclableMaterial }}</div>
+            <div class="card-text">Costo: {{ element.costMaterial }}</div>
+          </div>
+          
+          <div class="card-actions" style="text-align: right;">
+            <!--<button class="ver-mas" mat-raised-button  [routerLink]="['ediciones', element.idPublication]">Ver más</button>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+
+
+
+  
 </body>
 </html>
+

@@ -3,4 +3,5 @@ export class RecyclableMaterial{
     nameRecyclableMaterial: string = ""
     descriptionRecyclableMaterial: string = ""
     typeRecyclableMaterial: string = ""
+    costMaterial: number =0
 }

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Comment } from '../models/commentts';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {  QuantityOfCommentsForPublicationDTO } from '../models/QuantityOfCommentsForPublicationDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root',
@@ -37,5 +38,13 @@ export class CommenttsService {
 
   getlist() {
     return this.listaCambio.asObservable();
+  }
+  getCount(): Observable<QuantityOfCommentsForPublicationDTO[]>{
+    let token = sessionStorage.getItem('token');
+    return this.http.get<QuantityOfCommentsForPublicationDTO[]>(`${this.url}/cantidaDeComentariosPorPublicacion`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    })
   }
 }
