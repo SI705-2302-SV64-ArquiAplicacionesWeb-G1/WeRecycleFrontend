@@ -19,6 +19,8 @@
           <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
           <mat-menu #ReporteMenu="matMenu">
             <button mat-menu-item routerLink="components/cantidad-usuarios">Usuarios registrados</button>
+            <button mat-menu-item routerLink="components/cantidad-eventos-por-ubicacion">Eventos registrados</button>
+
           </mat-menu>
         </div>
       </div>
@@ -258,6 +260,7 @@
 
     <mat-menu #ReporteMenu="matMenu">
       <button mat-menu-item routerLink="components/cantidad-usuarios">Usuarios registrados</button>
+      <button mat-menu-item routerLink="components/cantidad-eventos-por-ubicacion">Eventos registrados</button>
     </mat-menu>
 
     <div class="btn-inicio">
