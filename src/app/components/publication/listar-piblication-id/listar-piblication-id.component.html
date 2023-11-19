@@ -6,38 +6,67 @@
     <title>Document</title>
   </head>
   <body>
-
-
     <div class="container">
-        <div class="card-container">
-          <div class="card" *ngFor="let element of dataSource.data">
-            <div class="card-content">
-                <div style="text-align: right;">
-                    <!--<button class="ver-mas" mat-raised-button  [routerLink]="['ediciones', element.idPublication]">Ver más</button>-->
-                    <button class="volver" mat-raised-button  routerLink="/components/PublicationController">Volver</button>
-                  </div>
-              <div class="card-header">
-                <div class="card-avatar" [style.background-image]="'url(assets/avatars/avatar1.jpg)'"></div>
-                <div class="title-subtitle-container">
-                  <div class="card-title" style="text-align: center;">{{ element.title }}</div>
-                  <div class="card-subtitle" style="text-align: right;">{{ element.datePublication }}</div>
+      <div class="card-container">
+        <div class="card" *ngFor="let element of dataSource.data">
+          <div class="card-content">
+            <div style="text-align: right">
+              <!--<button class="ver-mas" mat-raised-button  [routerLink]="['ediciones', element.idPublication]">Ver más</button>-->
+              <button
+                class="volver"
+                mat-raised-button
+                routerLink="/components/PublicationController"
+              >
+                Volver
+              </button>
+            </div>
+            <div class="card-header">
+              <div
+                class="card-avatar"
+                [style.background-image]="'url(assets/avatars/avatar1.jpg)'"
+              ></div>
+              <div class="title-subtitle-container">
+                <div class="card-title" style="text-align: center">
+                  {{ element.title }}
+                </div>
+                <div class="card-subtitle" style="text-align: right">
+                  {{ element.datePublication }}
                 </div>
               </div>
-              <img class="card-image" src="{{ element.archivo }}" alt="Image">
-              <div class="card-content-text">
-                <div class="card-text">{{ element.description }}</div>
-              </div>
             </div>
-            <button mat-button>Basic</button>
-
+            <img class="card-image" src="{{ element.archivo }}" alt="Image" />
+            <div class="card-content-text">
+              <div class="card-text">{{ element.description }}</div>
+            </div>
           </div>
+          <button mat-button>Basic</button>
         </div>
+        <div></div>
       </div>
-      
-      
+    </div>
+<div>
+  <!-- En tu componente Angular -->
+<table *ngIf="listacomentarios.length > 0" class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Itera sobre la lista de comentarios -->
+    <tr *ngFor="let comentario of listacomentarios">
+      <td>{{ comentario.idComment }}</td>
+      <td>{{ comentario.description }}</td>
+    </tr>
+  </tbody>
+</table>
 
+<!-- Si deseas mostrar un mensaje cuando no hay comentarios -->
+<div *ngIf="listacomentarios.length === 0">No hay comentarios disponibles.</div>
 
-   <!--<div class="container" style="text-align: center">
+</div>
+    <!--<div class="container" style="text-align: center">
       >
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
 
