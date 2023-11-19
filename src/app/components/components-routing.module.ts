@@ -41,6 +41,8 @@ import { ListarPublicationComponent } from './publication/listar-publication/lis
 import { ListarPiblicationIdComponent } from './publication/listar-piblication-id/listar-piblication-id.component';
 import { EventuserComponent } from './eventuser/eventuser.component';
 import { ListarEventuserComponent } from './eventuser/listar-eventuser/listar-eventuser.component';
+import { CantidaDeLikesPorPublicacionReporteComponent } from './reportes/cantida-de-likes-por-publicacion-reporte/cantida-de-likes-por-publicacion-reporte.component';
+
 import { CantidadComentariosPorPublicacionComponent } from './reportes/cantidad-comentarios-por-publicacion/cantidad-comentarios-por-publicacion.component';
 import { CantidadEventosPorUbicacionComponent } from './reportes/cantidad-eventos-por-ubicacion/cantidad-eventos-por-ubicacion.component';
 
@@ -187,6 +189,10 @@ const routes: Routes = [
   component: UsuariosRegistradosComponent,
 },
 {
+  path: 'cantidad-likesnose',
+  component: CantidaDeLikesPorPublicacionReporteComponent,
+},
+
   path: 'cantidad-comentarios',
   component: CantidadComentariosPorPublicacionComponent,
 }
