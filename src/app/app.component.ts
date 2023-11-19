@@ -18,9 +18,8 @@ export class AppComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject<void>();
   isHomePage: boolean;
   recyclingCenter: any;
-
+  userLast=new Useror();
   users: Useror[]=[];
-  userLast = this.users[this.users.length - 1];
   dataSource: RecyclingCenter[] = [];
   role : string ='';
   constructor(private router: Router, private rS: RecyclingCenterService, private userS: UserorService, private loginService:LoginService) {
@@ -34,19 +33,12 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.userS.list().subscribe({
-      next: (users: Useror[]) => {
-        this.userLast = users[users.length - 1];
-  
-      },
-      error: (error) => {
-        console.error('Error al obtener las ubicaciones', error);
-      }
-    });
+    
 
   }
 
  redirectToRecyclingCenter() {
+  this.userLast=this.userS.getCurrentUser();
   this.rS.getCentroForUser(this.userLast.idUser)
     .pipe(takeUntil(this.ngUnsubscribe))
     .subscribe((data) => {

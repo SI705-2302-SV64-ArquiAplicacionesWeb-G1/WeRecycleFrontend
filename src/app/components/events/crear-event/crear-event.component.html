@@ -10,10 +10,12 @@
       <br/>
       <mat-form-field class="example-full-width">
         <mat-label>Ingrese fecha</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="date" required>
+        <input matInput [matDatepicker]="picker" formControlName="date" required
+               [min]="minDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+      
      <br/> 
 
       <mat-form-field class="example-full-width">
@@ -23,17 +25,25 @@
       
         <br />
       
-      <mat-form-field class="example-full-width">
-        <mat-label for="hora">Hora:</mat-label>
-        <input matInput type="number" id="hora" formControlName="hora" required required  max="24" min="0">
-      </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label for="hora">Hora:</mat-label>
+          <input matInput type="number" id="hora" formControlName="hora" required max="24" min="0">
+          <mat-error *ngIf="form.controls['hora'].hasError('max')">
+            La hora no puede ser mayor a 24.
+          </mat-error>
+        </mat-form-field>
+        
       
         <br />
  
-      <mat-form-field class="example-full-width">
-        <mat-label for="numberParticipant">Numero de participantes</mat-label>
-        <input matInput type="number" id="numberParticipant" formControlName="numberParticipant" >
-      </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label for="numberParticipant">Numero de participantes</mat-label>
+          <input matInput type="number" id="numberParticipant" formControlName="numberParticipant" min="0">
+          <mat-error *ngIf="form.controls['numberParticipant'].hasError('min')">
+            El número de participantes no puede ser menor a 0.
+          </mat-error>
+        </mat-form-field>
+        
       
         <br />
 
@@ -45,7 +55,7 @@
         
       
         <mat-form-field class="form-ciudad">
-          <input type="text" placeholder="Distrito" matInput formControlName="cityUbication" [matAutocomplete]="auto">
+          <input type="text" placeholder="Distrito" matInput formControlName="cityUbication" [matAutocomplete]="auto" required>
           <mat-autocomplete #auto="matAutocomplete">
             <mat-option *ngFor="let option of filteredTipoCiudad | async" [value]="option">
               {{ option }}
@@ -55,13 +65,13 @@
         
       </div>
 <br>
-      <mat-form-field class="example-full-width">
-         <mat-label for="contactUbication">Número de contacto</mat-label>
-        <input matInput type="number" id="contactUbication" formControlName="contactUbication" required>
-        <mat-error *ngIf="form.get('contactUbication')?.hasError('invalidContactNumber')">
-           El número de contacto debe tener exactamente 9 dígitos.
-         </mat-error>
-      </mat-form-field> <br>
+<mat-form-field class="example-full-width">
+  <mat-label for="contactUbication">Número de contacto</mat-label>
+  <input matInput type="number" id="contactUbication" formControlName="contactUbication" required pattern="9\d{8}">
+  <mat-error *ngIf="form.get('contactUbication')?.hasError('required')">El número de contacto es obligatorio.</mat-error>
+  <mat-error *ngIf="form.get('contactUbication')?.hasError('pattern')">El número de contacto debe comenzar con '9' y tener exactamente 9 dígitos.</mat-error>
+</mat-form-field>
+ <br>
 
       <mat-form-field class="example-full-width">
         <mat-label>Tipo</mat-label>
@@ -76,7 +86,7 @@
 
       <mat-form-field class="example-full-width">
         <mat-label for="descUbication">Referencia de Ubicación:</mat-label>
-        <input matInput type="text" id="descUbication" formControlName="descUbication" required>
+        <input matInput type="text" id="descUbication" formControlName="descUbication">
       </mat-form-field> <br/>
       
       <div class="contenedor-btn">

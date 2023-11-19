@@ -98,7 +98,7 @@ export class CrearRecyclingCenterComponent implements OnInit {
       idRecyclingCenter:[''],
       nameRecyclingCenter: ['', Validators.required],
       licenseRecyclingCenter: ['', Validators.required],
-      openinghourRecyclingCenter: ['', [Validators.required]],
+      openinghourRecyclingCenter: ['', [Validators.required, Validators.max(24), Validators.min(0)]],
       closingtimeRecyclingCenter: ['', [Validators.required]],
       idUbication: ['0', Validators.required],
       addressUbication:['', Validators.required],

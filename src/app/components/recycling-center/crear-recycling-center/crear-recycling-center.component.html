@@ -13,14 +13,21 @@
     
     
 <div class="container-flex"> 
-  <mat-form-field class="form-hora" >
-      <mat-label for="openinghourRecyclingCenter">Hora de Apertura</mat-label>
-      <input matInput type="number" id="openinghourRecyclingCenter" (input)="checkValue()" formControlName="openinghourRecyclingCenter" required max="24" min="0">
-    </mat-form-field> <br/>
+  <mat-form-field class="form-hora" >   
+      <mat-label for="openinghourRecyclingCenter">Hora de apertura:</mat-label>
+      <input matInput type="number" id="openinghourRecyclingCenter" (blur)="checkValue()" formControlName="openinghourRecyclingCenter" required max="24" min="0">
+      <mat-error *ngIf="form.get('hora')?.hasError('max')">
+        La hora no puede ser mayor a 24.
+      </mat-error>
+    </mat-form-field> 
+    <br/>
     
     <mat-form-field class="form-hora" >
-      <mat-label for="closingtimeRecyclingCenter">Hora de cierre</mat-label>
-      <input matInput type="number" id="closingtimeRecyclingCenter" (input)="checkValue()" formControlName="closingtimeRecyclingCenter" required max="24" min="0">
+      <mat-label for="closingtimeRecyclingCenter">Hora de apertura:</mat-label>
+      <input matInput type="number" id="closingtimeRecyclingCenter" (blur)="checkValue()" formControlName="closingtimeRecyclingCenter" required max="24" min="0">
+      <mat-error *ngIf="form.get('hora')?.hasError('max')">
+        La hora no puede ser mayor a 24.
+      </mat-error>
     </mat-form-field> <br/>
 
 </div>
@@ -46,13 +53,12 @@
   <br/>
 
 
-    <mat-form-field class="example-full-width">
-  <mat-label for="contactUbication">Número de contacto</mat-label>
-  <input matInput type="number" id="contactUbication" formControlName="contactUbication" required>
-  <mat-error *ngIf="form.get('contactUbication')?.hasError('invalidContactNumber')">
-    El número de contacto debe tener exactamente 9 dígitos.
-  </mat-error>
-</mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label for="contactUbication">Número de contacto</mat-label>
+    <input matInput type="number" id="contactUbication" formControlName="contactUbication" required pattern="9\d{8}">
+    <mat-error *ngIf="form.get('contactUbication')?.hasError('required')">El número de contacto es obligatorio.</mat-error>
+    <mat-error *ngIf="form.get('contactUbication')?.hasError('pattern')">El número de contacto debe comenzar con '9' y tener exactamente 9 dígitos.</mat-error>
+  </mat-form-field>
 
 
 <mat-form-field class="example-full-width">

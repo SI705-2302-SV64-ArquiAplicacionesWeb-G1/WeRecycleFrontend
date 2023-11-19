@@ -104,4 +104,6 @@ export class ListarEventComponent implements OnInit {
         console.error('Error al actualizar el evento', error);
       }
     );}
+
+    
 }
