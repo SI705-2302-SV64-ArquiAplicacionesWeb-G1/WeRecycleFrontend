@@ -70,14 +70,12 @@ export class PublicationService {
 
     return this.http.get<quantityPublicacionByTypeDTO[]>(`${this.url}/cantidadPorTipo`, {
 
-  update(p: Publication) {
-    let token = sessionStorage.getItem('token');
-    return this.http.put(this.url, p, {
-
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
     });
     }
+    
   }
-}
+
+
