@@ -10,25 +10,7 @@ import { quantityPublicacionByTypeDTO } from '../models/quantityPublucationByTyp
   @Injectable({
     providedIn: 'root',
   })
-  export class PublicationService {
-    private url = `${base_url}/PublicationController`;
-    private listaCambio = new Subject<Publication[]>();
-    constructor(private http: HttpClient) {}
 
-    list() {
-      let token = sessionStorage.getItem('token');
-
-    return this.http.get<Publication[]>(this.url,{
-
-import { Subject } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { Publication } from '../models/publication';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-const base_url = environment.base;
-@Injectable({
-  providedIn: 'root',
-})
 export class PublicationService {
   private url = `${base_url}/PublicationController`;
   private listaCambio = new Subject<Publication[]>();
@@ -96,8 +78,6 @@ export class PublicationService {
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
     });
-
     }
-
   }
 }
