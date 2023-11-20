@@ -31,6 +31,7 @@ export class CreaeditaRecyclablematerialComponent implements OnInit {
       nameRecyclableMaterial: ['', Validators.required],
       descriptionRecyclableMaterial: ['', Validators.required],
       typeRecyclableMaterial: ['', Validators.required],
+      costMaterial:['',Validators.required],
     });
   }
   aceptar(): void {
@@ -41,6 +42,7 @@ export class CreaeditaRecyclablematerialComponent implements OnInit {
         this.form.value.descriptionRecyclableMaterial;
       this.recyclablematerial.typeRecyclableMaterial =
         this.form.value.typeRecyclableMaterial;
+      this.recyclablematerial.costMaterial = this.form.value.costMaterial;
       this.uS.insert(this.recyclablematerial).subscribe((data) => {
         this.uS.list().subscribe((data) => {
           this.uS.setlist(data);

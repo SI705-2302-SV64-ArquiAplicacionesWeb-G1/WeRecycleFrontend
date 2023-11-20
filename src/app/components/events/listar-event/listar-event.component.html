@@ -7,10 +7,7 @@
         <mat-form-field class="buscador">
             <input matInput  (keyup)="filter($event)" placeholder="Buscador" /><mat-icon class="icon-search">search</mat-icon>
         </mat-form-field>
-        <!--<div>
-          <mat-checkbox [(ngModel)]="vacantesLibres">Vacantes Libres</mat-checkbox>
-        </div>-->
-   
+    
 
         <h4>Resultados</h4>
 
@@ -36,10 +33,6 @@
             </mat-card-content>
           </mat-card> 
 
-        <mat-paginator
-        [pageSizeOptions]="[5, 10, 25, 100]"
-        showFirstLastButtons
-        ></mat-paginator>
     </mat-sidenav>
 
     <form [formGroup]="miFormulario">
@@ -65,13 +58,9 @@
                         <p> {{eventSelected?.hora}}:00 horas</p>
                     </div>
                 </div>
-                <div class="contendor-info-select">
-                  <!-- ... (otro contenido) -->
-                  <button class="btn-verde btn-regular" (click)="seguirEvento()" [ngClass]="{'btn-rojo': userFollowed}">
-                    {{ userFollowed ? 'Dejar de seguir' : 'Seguir' }}
-                  </button>
-                  <p class="p-descripcion">{{ eventSelected?.description }}</p>
-                </div>
+                <button class="btn-verde btn-regular" (click)="seguirEvento()" [ngClass]="{'btn-rojo': userFollowed}">
+                  {{ userFollowed ? 'Dejar de seguir' : 'Seguir' }}
+                </button>
               
                <p class="p-descripcion">{{eventSelected?.description}}</p>
               </mat-card-content>

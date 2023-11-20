@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Events } from '../models/events';
 import { environment } from 'src/environments/environment';
 import { Useror } from '../models/useror';
+import { NumberOfEventsPerLocationDTO } from '../models/NumberOfEventsPerLocationDTO';
 
 const base_url = environment.base;
 
@@ -105,6 +106,16 @@ export class EventsService {
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
       });
+  }
+
+  getQuantityOfEventsForUbication():Observable<NumberOfEventsPerLocationDTO[]>{
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<NumberOfEventsPerLocationDTO[]>(`${this.url}/cantidaDeEventosPorUbicacion`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
 }
