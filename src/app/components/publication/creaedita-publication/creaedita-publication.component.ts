@@ -38,6 +38,8 @@ export class CreaeditaPublicationComponent implements OnInit {
   listaUsuarios: Useror[] = [];
   listaTiporecurso: TypeRecurso[] = [];
 
+  campoDesactivado: boolean = true;
+
   constructor(
     private pS: PublicationService,
     private uS: UserorService,
@@ -54,12 +56,15 @@ export class CreaeditaPublicationComponent implements OnInit {
       this.edicion = data['id'] != null;
       this.init();
     });
+
+    const fechaActual = moment().add(1, 'days').format('YYYY-MM-DD');
+
     this.form = this.formBuilder.group({
       idPublication: [''],
       title: ['', Validators.required],
       description: ['', Validators.required],
       archivo:['', Validators.required],
-      datePublication: ['', Validators.required],
+      datePublication: [{ value: fechaActual, disabled: true }, Validators.required],
       id_TypeRecurso: ['', Validators.required],
       idUser: ['', Validators.required],
     });
