@@ -1,3 +1,5 @@
+import { ActivatedRoute,Router } from '@angular/router';
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./reportes.component.css']
 })
 export class ReportesComponent {
+  constructor(public route: ActivatedRoute){}
 
 }

@@ -16,8 +16,8 @@
 
         <button mat-button [matMenuTriggerFor]="submenu">Escribir</button>
           <mat-menu #submenu="matMenu" >
-          <button mat-menu-item routerLink="/mis-publicaciones">Mis Publicaciones</button>
-          <button mat-menu-item routerLink="/crear">Crear</button>
+          <button mat-menu-item routerLink="">Mis Publicaciones</button>
+          <button mat-menu-item routerLink="/components/PublicationController/nuevo">Crear</button>
         </mat-menu>
     
        <div class="icon-blog"></div> 
@@ -36,7 +36,7 @@
               <div class="card-title">{{ element.idUser.userName }}</div>
             </div>
           </div>
-          <img class="card-image" src="{{ element.archivo }}" alt="Image">
+          <img style="text-align: center;" class="card-image" src="assets/uploads/Publicacion02.jpg" alt="Image">
           <div class="card-content-text">
             <div class="card-text title">{{ element.title }}</div>
             <div class="card-text">{{ element.datePublication }}</div>

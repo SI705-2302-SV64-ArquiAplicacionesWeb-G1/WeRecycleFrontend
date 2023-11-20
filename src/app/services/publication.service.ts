@@ -1,9 +1,10 @@
 
 import { Injectable } from '@angular/core';
-  import { Subject } from 'rxjs';
+  import { Observable, Subject } from 'rxjs';
   import { environment } from 'src/environments/environment';
   import { Publication } from '../models/publication';
   import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { quantityPublicacionByTypeDTO } from '../models/quantityPublucationByTypeDTO';
 
   const base_url = environment.base;
   @Injectable({
@@ -61,5 +62,15 @@ import { Injectable } from '@angular/core';
           .set('Authorization', `Bearer ${token}`)
           .set('Content-Type', 'application/json'),
       });
+    }
+
+    getCount():Observable<quantityPublicacionByTypeDTO[]>{
+      let token = sessionStorage.getItem('token');
+
+    return this.http.get<quantityPublicacionByTypeDTO[]>(`${this.url}/cantidadPorTipo`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
     }
 }

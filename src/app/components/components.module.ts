@@ -69,6 +69,7 @@ import { ListarEventuserComponent } from './eventuser/listar-eventuser/listar-ev
 import { UsuariosRegistradosComponent } from './reportes/usuarios-registrados/usuarios-registrados.component';
 import { NgChartsModule } from 'ng2-charts';
 import { ListarPiblicationIdComponent } from './publication/listar-piblication-id/listar-piblication-id.component';
+import { PublicacionPorTipoComponent } from './reportes/publicacion-por-tipo/publicacion-por-tipo.component';
 
 
 @NgModule({
@@ -119,6 +120,7 @@ import { ListarPiblicationIdComponent } from './publication/listar-piblication-i
     ListarEventuserComponent,
     UsuariosRegistradosComponent,
     ListarPiblicationIdComponent,
+    PublicacionPorTipoComponent,
   ],
   imports: [
     CommonModule,

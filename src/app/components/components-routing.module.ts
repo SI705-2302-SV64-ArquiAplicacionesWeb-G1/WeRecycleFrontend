@@ -41,6 +41,7 @@ import { ListarPublicationComponent } from './publication/listar-publication/lis
 import { ListarPiblicationIdComponent } from './publication/listar-piblication-id/listar-piblication-id.component';
 import { EventuserComponent } from './eventuser/eventuser.component';
 import { ListarEventuserComponent } from './eventuser/listar-eventuser/listar-eventuser.component';
+import { PublicacionPorTipoComponent } from './reportes/publicacion-por-tipo/publicacion-por-tipo.component';
 
 
 const routes: Routes = [
@@ -170,6 +171,10 @@ const routes: Routes = [
     { path: 'publicacion/:id', component: ListarPiblicationIdComponent},
 
   ],
+},
+{
+  path:'cantidadPorTipo',
+  component: PublicacionPorTipoComponent,
 },
 
 {

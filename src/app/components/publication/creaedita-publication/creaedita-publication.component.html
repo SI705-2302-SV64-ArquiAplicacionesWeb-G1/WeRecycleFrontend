@@ -181,10 +181,12 @@
           <mat-label>Elige una fecha</mat-label>
           <input
             matInput
-            placeholder="Ingrese fecha"
-            [matDatepicker]="picker"
-            formControlName="datePublication"
-            [max]="maxFecha"
+              placeholder="Ingrese fecha"
+              [matDatepicker]="picker"
+              formControlName="datePublication"
+              [max]="maxFecha"
+              
+              
           />
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
@@ -192,11 +194,6 @@
             [for]="picker"
           ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
-          <mat-error
-            *ngIf="obtenerControlCampo('datePublication')?.errors?.['required']"
-          >
-            La fecha de creación es obligatoria.
-          </mat-error>
         </mat-form-field>
         <br />
 
