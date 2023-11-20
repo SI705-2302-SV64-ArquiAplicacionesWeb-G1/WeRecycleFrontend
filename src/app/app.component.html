@@ -16,7 +16,7 @@
           <button mat-button [matMenuTriggerFor]="eventMenu" *ngIf="verificar()">Eventos</button>
           <button mat-button routerLink="components/center-recycling" *ngIf="verificar()">Mapa</button>
           <button mat-button [matMenuTriggerFor]="ReporteMenu" *ngIf="verificar()">Reportes</button>
-          <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
+          <button mat-button *ngIf="verificar()" routerLink="components/frequentquestioncontroller">Preguntas frecuentes</button>
           <mat-menu #ReporteMenu="matMenu">
             <button mat-menu-item routerLink="components/cantidad-usuarios">Usuarios registrados</button>
             <button mat-menu-item routerLink="components/cantidad-comentarios">Cantidad Comentarios por Publicacion</button>
@@ -104,7 +104,7 @@
         <button mat-button>Blog</button>
         <button mat-button>Eventos</button>
         <button mat-button>Mapa</button>
-        <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
+        <button mat-button *ngIf="verificar()" routerLink="components/frequentquestioncontroller">Preguntas frecuentes</button>
         <button mat-button routerLink="/login" (click)="cerrar()">
         <button mat-icon-button *ngIf="verificar()"><mat-icon>person</mat-icon></button>
         <mat-icon>logout</mat-icon><span>Cerrar sesión</span></button>
@@ -247,7 +247,7 @@
 
         <button mat-button routerLink="components/center-recycling" *ngIf="verificar()">Mapa</button>
         <button mat-button [matMenuTriggerFor]="ReporteMenu" *ngIf="verificar()">Reportes</button>
-        <button mat-button *ngIf="verificar()">Preguntas frecuentes</button>
+        <button mat-button *ngIf="verificar()" routerLink="components/frequentquestioncontroller">Preguntas frecuentes</button>
 
       </div>
     </div>
