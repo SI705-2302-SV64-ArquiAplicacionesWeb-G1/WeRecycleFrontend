@@ -11,7 +11,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(request: JwtRequest) {
-    return this.http.post("https://werecycle-32be86b245c9.herokuapp.com", request);
+    return this.http.post("https://werecycle-32be86b245c9.herokuapp.com/authenticate", request);
   }
   verificar() {
     let token = sessionStorage.getItem("token");
